@@ -1,0 +1,335 @@
+{
+    "Actor": {
+        "types": ["lame", "figurant"],
+        "templates": {
+            "informations": {
+                "age": "",
+                "sexe": "",
+                "taille": 0,
+                "origine": "",
+                "description": "",
+                "habillement": ""
+            }
+        },
+        "lame": {
+            "templates": ["informations"],
+            "caracteritiques": {
+                "puissance": {
+                    "valeur": 0,
+                    "label": "Puissance",
+                    "signe": "griffe",
+                    "max": 4,
+                    "utilisee": 0
+                },
+                "vivacite": {
+                    "valeur": 0,
+                    "label": "Vivacité",
+                    "signe": "souffle",
+                    "max": 4,
+                    "utilisee": 0
+                },
+                "galanterie": {
+                    "valeur": 0,
+                    "label": "Galanterie",
+                    "signe": "sang",
+                    "max": 4,
+                    "utilisee": 0
+                },
+                "finesse": {
+                    "valeur": 0,
+                    "label": "Finesse",
+                    "signe": "ecaille",
+                    "max": 4,
+                    "utilisee": 0
+                }
+            },
+            "secondaires": {
+                "vitalite": {
+                    "value": 0,
+                    "max": 8,
+                    "utilisee": 0
+                },
+                "tenacite": {
+                    "value": 0,
+                    "max": 8,
+                    "utilisee": 0
+                },
+                "ressources": {
+                    "value": 0,
+                    "max": 8
+                },
+                "contacts": {
+                    "value": 0,
+                    "max": 8
+                }
+            },
+            "competences": {
+                "athletisme": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 4,
+                    "label": "Athlétisme",
+                    "carac": "puissance",
+                    "signe": "griffe"
+                },
+                "autorite": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 10,
+                    "label": "Autorité",
+                    "carac": "puissance",
+                    "signe": "griffe"
+                },
+                "bagarre": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 6,
+                    "label": "Bagarre",
+                    "carac": "puissance",
+                    "signe": "griffe"
+                },
+                "equitation": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 21,
+                    "label": "Equitation",
+                    "carac": "puissance",
+                    "signe": "griffe"
+                },
+                "volonte": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 8,
+                    "label": "Volonté",
+                    "carac": "puissance",
+                    "signe": "griffe"
+                },
+                "creation": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 12,
+                    "label": "Création",
+                    "carac": "vivacite",
+                    "signe": "souffle"
+                },
+                "debrouille": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 20,
+                    "label": "Débrouille",
+                    "carac": "vivacite",
+                    "signe": "souffle"
+                },
+                "duperie": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 17,
+                    "label": "Duperie",
+                    "carac": "vivacite",
+                    "signe": "souffle"
+                },
+                "furtivite": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 14,
+                    "label": "Furtivité",
+                    "carac": "vivacite",
+                    "signe": "souffle"
+                },
+                "vigilance": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 5,
+                    "label": "Vigilance",
+                    "carac": "vivacite",
+                    "signe": "souffle"
+                },
+                "intrigue": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 15,
+                    "label": "Intrigue",
+                    "carac": "galanterie",
+                    "signe": "sang"
+                },
+                "negoce": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 2,
+                    "label": "Négoce",
+                    "carac": "galanterie",
+                    "signe": "sang"
+                },
+                "persuasion": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 16,
+                    "label": "Persuasion",
+                    "carac": "galanterie",
+                    "signe": "sang"
+                },
+                "seduction": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 13,
+                    "label": "Séduction",
+                    "carac": "galanterie",
+                    "signe": "sang"
+                },
+                "strategie": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 3,
+                    "label": "Stratégie",
+                    "carac": "galanterie",
+                    "signe": "sang"
+                },
+                "erudition": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 19,
+                    "label": "Erudition",
+                    "carac": "finesse",
+                    "signe": "ecaille"
+                },
+                "investigation": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 18,
+                    "label": "Investigation",
+                    "carac": "finesse",
+                    "signe": "ecaille"
+                },
+                "medecine": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 1,
+                    "label": "Médecine",
+                    "carac": "finesse",
+                    "signe": "ecaille"
+                },
+                "technique": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 11,
+                    "label": "Technique",
+                    "carac": "finesse",
+                    "signe": "ecaille"
+                },
+                "tir": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 9,
+                    "label": "Tir",
+                    "carac": "finesse",
+                    "signe": "ecaille"
+                },
+                "occultisme": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 0,
+                    "label": "Occultisme",
+                    "carac": "",
+                    "signe": ""
+                },
+                "escrime": {
+                    "valeur": 0,
+                    "reussiteAuto": 0,
+                    "max": 8,
+                    "arcane": 7,
+                    "label": "Escrime",
+                    "carac": "",
+                    "signe": ""
+                }
+            }
+        },
+        "figurant": {
+            "templates": ["informations"],
+            "adversite": 0,
+            "profession": ""
+        }
+    },
+    "Item": {
+        "types": ["profil", "botte", "feinte", "arcane", "contact", "lien", "equipement"],
+        "profil" : {
+            "variations" : "",
+            "description": "",
+            "categorie": "",
+            "niveauVie": 0,
+            "athletisme": 0,
+            "autorite": 0,
+            "bagarre": 0,
+            "equitation": 0,
+            "volonte": 0,
+            "creation": 0,
+            "debrouille": 0,
+            "duperie": 0,
+            "furtivite": 0,
+            "vigilance": 0,
+            "intrigue": 0,
+            "negoce": 0,
+            "persuasion": 0, 
+            "seduction": 0,
+            "strategie": 0,
+            "erudition": 0,
+            "investigation": 0,
+            "medecine": 0,
+            "technique": 0,
+            "tir": 0,
+            "occultisme": 0,
+            "escrime": 0
+        },
+        "botte" : {
+            "ecole" : "",
+            "description": ""
+        },
+        "feinte" : {
+            "ecole" : "",
+            "description": "",
+            "figure": 0
+        },
+        "arcane": {
+            "numero": 0,
+            "description": "",
+            "valeurDraconique": "",
+            "manifestation": "",
+            "competence": "",
+            "marqueDraconique": ""
+        },
+        "contact" : {
+            "description": "",
+            "categorie": "",
+            "importance": 0
+        },
+        "lien": {
+            "lame": "",
+            "niveau": 0
+        },
+        "equipement" : {
+            "description": "",
+            "cout" : "",
+            "niveauRessource": 0
+        }
+    }
+}

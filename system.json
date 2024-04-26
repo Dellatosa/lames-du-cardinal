@@ -1,0 +1,54 @@
+{
+  "title": "Lames du Cardinal",
+  "description": "Les Lames du Cardinal, le JDR",
+  "version": "0.0.1",
+  "esmodules": [
+    "module/lames-du-cardinal.js"
+  ],
+  "styles": [
+    "css/lames-du-cardinal.css"
+  ],
+  "languages": [
+    {
+      "lang": "fr",
+      "name": "Francais",
+      "path": "lang/fr.json",
+      "flags": {}
+    }
+  ],
+  "media": [
+    {
+      "type": "cover",
+      "url": "systems/lames-du-cardinal/images/ldc-back.jpg",
+      "caption": "Les Lames du Cardinal, le JDR",
+      "loop": false,
+      "flags": {}
+    },
+    {
+      "type": "setup",
+      "url": "systems/lames-du-cardinal/images/ldc-back.jpg",
+      "thumbnail": "systems/lames-du-cardinal/images/ldc-back.jpg",
+      "loop": false,
+      "flags": {}
+    }
+  ],
+  "compatibility": {
+    "minimum": "11.315",
+    "verified": "11.315",
+    "maximum": "11"
+  },
+  "gridDistance": 1.5,
+  "gridUnits": "m",
+  "initiative": "1d10",
+  "primaryTokenAttribute": "sante",
+  "url": "https://github.com/Dellatosa/lames-du-cardinal",
+  "manifest": "https://raw.githubusercontent.com/Dellatosa/lames-du-cardinal/master/system.json",
+  "download": "https://github.com/Dellatosa/lames-du-cardinal/archive/refs/tags/v0.0.1.zip",
+  "id": "lames-du-cardinal",
+  "authors": [
+    {
+      "name": "Dellatosa",
+      "flags": {}
+    }
+  ]
+}
