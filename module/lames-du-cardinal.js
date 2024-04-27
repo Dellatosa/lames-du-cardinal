@@ -29,4 +29,6 @@ Hooks.once("init", function() {
 
     // Register Handlebars Helpers
 	registerHandlebarsHelpers();
+
+    console.log(game);
 })

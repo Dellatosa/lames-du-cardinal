@@ -3,11 +3,84 @@
         <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Nom du Profil"/></h1>
     </header>
-    <div class="sheet-content archetype" data-item-id="{{item.id}}">
+    <div class="sheet-content profil" data-item-id="{{item.id}}">
+        <div class="grid-profil">
+            <div class="titre-varia">{{localize "LdC.variations"}}</div>
+            <div class="valeur-varia"><input name="system.variations" type="text" value="{{data.system.variations}}" placeholder="Variations du profil"/></div>
+            <div class="titre-categ">{{localize "LdC.categorie"}}</div>
+            <div class="valeur-categ">
+                <select name="system.categorie">
+                    {{#select data.system.categorie}}
+                    {{#each config.categorie as |categorie keyCategorie|}}
+                        <option value="{{keyCategorie}}">{{categorie}}</option>
+                    {{/each}}
+                    {{/select}} 
+                </select>
+            </div>
+            <div class="titre-niveau">{{localize "LdC.niveauVie"}}</div>
+            <div class="valeur-niveau"><input name="system.niveauVie" type="text" value="{{data.system.niveauVie}}" placeholder="ex : 1 - 3"/></div>
+
+            <div class="signe"><img src="systems/lames-du-cardinal/images/signes/Griffe.png"></div>
+            <div class="titre-comp">{{localize "LdC.athletisme"}}</div>
+            <div class="valeur-comp"><input name="system.athletisme" type="number" value="{{data.system.athletisme}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.autorite"}}</div>
+            <div class="valeur-comp"><input name="system.autorite" type="number" value="{{data.system.autorite}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.bagarre"}}</div>
+            <div class="valeur-comp"><input name="system.bagarre" type="number" value="{{data.system.bagarre}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.equitation"}}</div>
+            <div class="valeur-comp"><input name="system.equitation" type="number" value="{{data.system.equitation}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.volonte"}}</div>
+            <div class="valeur-comp"><input name="system.volonte" type="number" value="{{data.system.volonte}}" placeholder="0"/></div>
+
+            <div class="signe"><img src="systems/lames-du-cardinal/images/signes/Souffle.png"></div>
+            <div class="titre-comp">{{localize "LdC.creation"}}</div>
+            <div class="valeur-comp"><input name="system.creation" type="number" value="{{data.system.creation}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.debrouille"}}</div>
+            <div class="valeur-comp"><input name="system.debrouille" type="number" value="{{data.system.debrouille}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.duperie"}}</div>
+            <div class="valeur-comp"><input name="system.duperie" type="number" value="{{data.system.duperie}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.furtivite"}}</div>
+            <div class="valeur-comp"><input name="system.furtivite" type="number" value="{{data.system.furtivite}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.vigilance"}}</div>
+            <div class="valeur-comp"><input name="system.vigilance" type="number" value="{{data.system.vigilance}}" placeholder="0"/></div>
+
+            <div class="signe"><img src="systems/lames-du-cardinal/images/signes/Sang.png"></div>
+            <div class="titre-comp">{{localize "LdC.intrigue"}}</div>
+            <div class="valeur-comp"><input name="system.intrigue" type="number" value="{{data.system.intrigue}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.negoce"}}</div>
+            <div class="valeur-comp"><input name="system.negoce" type="number" value="{{data.system.negoce}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.persuasion"}}</div>
+            <div class="valeur-comp"><input name="system.persuasion" type="number" value="{{data.system.persuasion}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.seduction"}}</div>
+            <div class="valeur-comp"><input name="system.seduction" type="number" value="{{data.system.seduction}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.strategie"}}</div>
+            <div class="valeur-comp"><input name="system.strategie" type="number" value="{{data.system.strategie}}" placeholder="0"/></div>
+
+            <div class="signe"><img src="systems/lames-du-cardinal/images/signes/Ecaille.png"></div>
+            <div class="titre-comp">{{localize "LdC.erudition"}}</div>
+            <div class="valeur-comp"><input name="system.erudition" type="number" value="{{data.system.erudition}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.investigation"}}</div>
+            <div class="valeur-comp"><input name="system.investigation" type="number" value="{{data.system.investigation}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.medecine"}}</div>
+            <div class="valeur-comp"><input name="system.medecine" type="number" value="{{data.system.medecine}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.technique"}}</div>
+            <div class="valeur-comp"><input name="system.technique" type="number" value="{{data.system.technique}}" placeholder="0"/></div>
+            <div class="titre-comp">{{localize "LdC.tir"}}</div>
+            <div class="valeur-comp"><input name="system.tir" type="number" value="{{data.system.tir}}" placeholder="0"/></div>
+
+            <div class="titre-occulte">{{localize "LdC.occultisme"}}</div>
+            <div class="valeur-occulte"><input name="system.occultisme" type="number" value="{{data.system.occultisme}}" placeholder="0"/></div>
+            <div class="titre-escrime">{{localize "LdC.escrime"}}</div>
+            <div class="valeur-escrime"><input name="system.escrime" type="number" value="{{data.system.escrime}}" placeholder="0"/></div>
+        </div>
         <div class="titre-desc">Description du Profil</div> 
         {{editor data.system.description target="system.description" button=true owner=true editable=true}}
     </div>
-    <footer class="sheet-footer">
-        <div>Profil</div>
-    </footer>
 </form>
+
+<!--        
+            
+           
+            "occultisme": 0,
+            "escrime": 0
+        -->

@@ -1,7 +1,14 @@
 {
+  "id": "lames-du-cardinal",
   "title": "Lames du Cardinal",
   "description": "Les Lames du Cardinal, le JDR",
   "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Dellatosa",
+      "flags": {}
+    }
+  ],
   "esmodules": [
     "module/lames-du-cardinal.js"
   ],
@@ -40,15 +47,8 @@
   "gridDistance": 1.5,
   "gridUnits": "m",
   "initiative": "1d10",
-  "primaryTokenAttribute": "sante",
+  "primaryTokenAttribute": "secondaires.",
   "url": "https://github.com/Dellatosa/lames-du-cardinal",
   "manifest": "https://raw.githubusercontent.com/Dellatosa/lames-du-cardinal/master/system.json",
-  "download": "https://github.com/Dellatosa/lames-du-cardinal/archive/refs/tags/v0.0.1.zip",
-  "id": "lames-du-cardinal",
-  "authors": [
-    {
-      "name": "Dellatosa",
-      "flags": {}
-    }
-  ]
+  "download": "https://github.com/Dellatosa/lames-du-cardinal/archive/refs/tags/v0.0.1.zip"
 }

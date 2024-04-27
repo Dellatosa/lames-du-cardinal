@@ -1,20 +1,41 @@
+:root {
+  --color-tarot-noir: #385B63;
+  --color-tarot-rouge: #662318;
+}
 .ldc.sheet.actor form {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+}
+.ldc.sheet.actor form .separator {
+  margin-top: 15px;
+}
+.ldc.sheet.actor form .txt-noir {
+  color: var(--color-tarot-noir);
+}
+.ldc.sheet.actor form .txt-rouge {
+  color: var(--color-tarot-rouge);
 }
 .ldc.sheet.actor .sheet-header img {
   flex: 0 0 128px;
   height: 128px;
 }
 .ldc.sheet.actor .sheet-header label {
-  padding: 5px 3px;
+  align-self: center;
+  padding: 0 3px;
 }
 .ldc.sheet.actor .sheet-header .titre-nom {
   font-size: 2em;
 }
 .ldc.sheet.actor .sheet-header .titre-nom input[type="text"] {
   height: max-content;
+}
+.ldc.sheet.actor .sheet-header .item-box {
+  border: 1px solid;
+  border-radius: 2px;
+  border-color: grey;
+  margin: 1px;
+  padding: 1px;
 }
 .grid-identite {
   display: grid;
@@ -25,6 +46,11 @@
 .grid-comp {
   display: grid;
   grid-template-columns: 1fr 3em 3em 1fr 3em 3em ;
+}
+.grid-comp input[type="number"] {
+  width: 2.5em;
+  text-align: center;
+  margin: 2px 0;
 }
 .grid-comp .col1 {
   grid-column: 1 / 4;
@@ -43,4 +69,131 @@
   height: 50px;
   margin-left: auto;
   margin-right: auto;
+}
+.grid-comp .valeur-carac {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.grid-comp .ligne-coche-carac {
+  margin: 0 5px;
+}
+.grid-comp .titre-comp {
+  align-self: center;
+}
+.grid-comp .titre-comp-spe {
+  align-self: center;
+  font-size: 1.5em;
+}
+.grid-comp .valeur-comp {
+  justify-self: center;
+}
+.grid-comp .reus-auto {
+  align-self: center;
+  justify-self: center;
+}
+.grid-escrime {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+}
+.grid-escrime .titre-escrime {
+  text-align: center;
+  font-size: 1.5em;
+}
+.grid-escrime .col-escrime {
+  grid-column: 1 / 3;
+}
+.ldc.sheet.item .sheet-content {
+  display: flex;
+  flex-direction: column;
+}
+.ldc.sheet.item .sheet-content select {
+  width: 100%;
+}
+.ldc.sheet.item .sheet-content .editor {
+  height: 150px;
+}
+.ldc.sheet.item .sheet-content div {
+  padding: 1px;
+}
+.ldc.sheet.item .sheet-content .titre-desc {
+  color: var(--color-tarot-noir);
+  font-size: 1.5em;
+}
+.ldc.sheet.item .sheet-content .titre-align {
+  align-self: center;
+  margin: 0 3px;
+}
+.grid-profil {
+  display: grid;
+  grid-template-columns: 50px 1fr 2.5em 1fr 2.5em 1fr 2.5em 1fr 2.5em 1fr 2.5em;
+}
+.grid-profil input[type="number"] {
+  width: 2.5em;
+  text-align: center;
+  margin: 2px 0;
+}
+.grid-profil .titre-varia {
+  grid-column: 1 / 3;
+}
+.grid-profil .valeur-varia {
+  grid-column: 3 / 12;
+}
+.grid-profil .titre-categ {
+  grid-column: 1 / 4;
+}
+.grid-profil .valeur-categ {
+  grid-column: 4 / 8;
+}
+.grid-profil .titre-niveau {
+  grid-column: 8 / 10;
+}
+.grid-profil .valeur-niveau {
+  grid-column: 10 / 12;
+}
+.grid-profil .titre-comp,
+.grid-profil .titre-varia,
+.grid-profil .titre-categ,
+.grid-profil .titre-niveau,
+.grid-profil .titre-occulte,
+.grid-profil .titre-escrime {
+  align-self: center;
+  margin: 0 3px;
+}
+.grid-profil .valeur-comp {
+  justify-self: center;
+  align-self: center;
+}
+.grid-profil .titre-occulte {
+  grid-column: 1 / 5;
+}
+.grid-profil .titre-escrime {
+  grid-column: 8 / 11;
+}
+.grid-profil .signe img {
+  display: block;
+  border: none;
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.grid-feinte {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.grid-feinte input[type="number"] {
+  width: 2.5em;
+  text-align: center;
+  margin: 2px 0;
+}
+.grid-botte {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2.5em;
+}
+.grid-botte input[type="number"] {
+  width: 2.5em;
+  text-align: center;
+  margin: 2px 0;
 }

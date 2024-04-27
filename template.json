@@ -1,6 +1,6 @@
 {
     "Actor": {
-        "types": ["Lame", "Figurant"],
+        "types": [ "Lame", "Figurant" ],
         "templates": {
             "informations": {
                 "age": "",
@@ -11,7 +11,7 @@
             }
         },
         "Lame": {
-            "templates": ["informations"],
+            "templates": [ "informations" ],
             "caracteritiques": {
                 "puissance": {
                     "valeur": 0,
@@ -261,12 +261,16 @@
                     "carac": "",
                     "signe": ""
                 }
+            },
+            "ecole" : "",
+            "experience": {
+                "acquise": 0,
+                "depensee": 0
             }
         },
         "Figurant": {
             "templates": ["informations"],
-            "adversite": 0,
-            "profession": ""
+            "potentiel": 0
         }
     },
     "Item": {
@@ -275,7 +279,7 @@
             "variations" : "",
             "description": "",
             "categorie": "",
-            "niveauVie": 0,
+            "niveauVie": "",
             "athletisme": 0,
             "autorite": 0,
             "bagarre": 0,
@@ -301,12 +305,12 @@
         },
         "Botte" : {
             "ecole" : "",
-            "description": ""
+            "description": "",
+            "figure": 0
         },
         "Feinte" : {
             "ecole" : "",
-            "description": "",
-            "figure": 0
+            "description": ""
         },
         "Arcane": {
             "numero": 0,

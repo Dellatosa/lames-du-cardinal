@@ -3,7 +3,7 @@ export default class LdCItemSheet extends ItemSheet {
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
             width: 650,
-            height: 370,
+            height: 540,
             classes: ["ldc", "sheet", "item"],
             //tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "description" }]
         });

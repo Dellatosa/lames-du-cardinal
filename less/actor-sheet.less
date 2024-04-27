@@ -2,6 +2,18 @@
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
+    .separator {
+        margin-top: 15px;
+    }
+
+    .txt-noir {
+        color: var(--color-tarot-noir);
+    }
+
+    .txt-rouge {
+        color: var(--color-tarot-rouge);
+    }
 }
 
 .ldc.sheet.actor .sheet-header {
@@ -11,7 +23,8 @@
     }
 
     label {
-        padding: 5px 3px;
+        align-self: center;
+        padding: 0 3px;
     }
 
     .titre-nom {
@@ -20,6 +33,14 @@
         input[type="text"] {
             height: max-content;
         }
+    }
+
+    .item-box {
+        border: 1px solid;
+        border-radius: 2px;
+        border-color: grey;
+        margin: 1px;
+        padding: 1px;
     }
 }
 
@@ -34,6 +55,12 @@
 .grid-comp {
     display: grid;
     grid-template-columns: 1fr 3em 3em 1fr 3em 3em ;
+
+    input[type="number"] {
+        width: 2.5em;
+        text-align: center;
+        margin: 2px 0;
+    }
 
     .col1 {
         grid-column: 1 / 4;
@@ -58,5 +85,48 @@
             margin-left: auto;
             margin-right: auto;
         }
+    }
+
+    .valeur-carac {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ligne-coche-carac {
+        margin: 0 5px;
+    }
+
+    .titre-comp {
+        align-self: center;
+    }
+
+    .titre-comp-spe {
+        align-self: center;
+        font-size: 1.5em;
+    }
+
+    .valeur-comp {
+        justify-self: center;
+    }
+
+    .reus-auto {
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+.grid-escrime {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+
+    .titre-escrime {
+        text-align: center;
+        font-size: 1.5em;
+    }
+
+    .col-escrime {
+        grid-column: 1 / 3;
     }
 }

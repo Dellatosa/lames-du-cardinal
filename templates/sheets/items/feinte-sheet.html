@@ -1,0 +1,20 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Nom de la Feinte"/></h1>
+    </header>
+    <div class="sheet-content feinte" data-item-id="{{item.id}}">
+        <div class="grid-feinte">
+            <div class="titre-align">{{localize "LdC.ecole"}}</div>
+            <select name="system.ecole">
+                {{#select data.system.ecole}}
+                {{#each config.ecole as |ecole keyEcole|}}
+                    <option value="{{keyEcole}}">{{ecole.label}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+        </div>
+        <div class="titre-desc">Description de la Feinte</div> 
+        {{editor data.system.description target="system.description" button=true owner=true editable=true}}
+    </div>
+</form>
