@@ -1,0 +1,24 @@
+.ldc.sheet.actor form {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.ldc.sheet.actor .sheet-header img {
+  flex: 0 0 128px;
+  height: 128px;
+}
+.ldc.sheet.actor .sheet-header label {
+  padding: 3px 0;
+}
+.ldc.sheet.actor .sheet-header .titre-nom {
+  font-size: 2em;
+}
+.ldc.sheet.actor .sheet-header input[type="text"] {
+  height: max-content;
+}
+.entete-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
+  margin: 2px;
+  margin-top: 5px;
+}

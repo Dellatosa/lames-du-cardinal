@@ -1,0 +1,27 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="128" width="128">
+        <div class="actor-infos">
+            <div class="titre-nom"><input name="name" type="text" value="{{actor.name}}" placeholder="Nom"/></div>
+            <div class="entete-grid">
+                <label>Age</label>
+                <input name="system.age" type="text" value="{{data.system.age}}" placeholder="Age">
+                <label>Sexe</label>
+                <input name="system.sexe" type="text" value="{{data.system.sexe}}" placeholder="Sexe">
+                <label>Origine</label>
+                <input name="system.origine" type="text" value="{{data.system.origine}}" placeholder="Origine">
+                <label>Profils</label>
+            </div>
+        </div>
+    </header>
+    <div class="sheet-fixed-content">
+        <nav class="sheet-tabs tabs" data-group="principal">
+            <a class="item" data-tab="caracteristiques">Caractéristiques</a>
+            <a class="item" data-tab="escrime">Escrime</a>
+            <a class="item" data-tab="ressContacts">Ressources / Contacts</a>
+        </nav>
+    </div>
+    <section class="sheet-body">
+
+    </section>
+</form>

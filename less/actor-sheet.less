@@ -1,0 +1,32 @@
+.ldc.sheet.actor form {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.ldc.sheet.actor .sheet-header {
+    img {
+        flex: 0 0 128px;
+        height: 128px;
+    }
+
+    label {
+        padding: 3px 0;
+    }
+
+    .titre-nom {
+        font-size: 2em;
+    }
+
+    input[type="text"] {
+        height: max-content;
+    }
+}
+
+.entete-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
+
+    margin: 2px;
+    margin-top: 5px;
+}
