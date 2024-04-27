@@ -1,6 +1,6 @@
 {
     "Actor": {
-        "types": ["lame", "figurant"],
+        "types": ["Lame", "Figurant"],
         "templates": {
             "informations": {
                 "age": "",
@@ -10,7 +10,7 @@
                 "habillement": ""
             }
         },
-        "lame": {
+        "Lame": {
             "templates": ["informations"],
             "caracteritiques": {
                 "puissance": {
@@ -263,15 +263,15 @@
                 }
             }
         },
-        "figurant": {
+        "Figurant": {
             "templates": ["informations"],
             "adversite": 0,
             "profession": ""
         }
     },
     "Item": {
-        "types": ["profil", "botte", "feinte", "arcane", "contact", "lien", "equipement"],
-        "profil" : {
+        "types": ["Profil", "Botte", "Feinte", "Arcane", "Contact", "Lien", "Equipement"],
+        "Profil" : {
             "variations" : "",
             "description": "",
             "categorie": "",
@@ -299,16 +299,16 @@
             "occultisme": 0,
             "escrime": 0
         },
-        "botte" : {
+        "Botte" : {
             "ecole" : "",
             "description": ""
         },
-        "feinte" : {
+        "Feinte" : {
             "ecole" : "",
             "description": "",
             "figure": 0
         },
-        "arcane": {
+        "Arcane": {
             "numero": 0,
             "description": "",
             "valeurDraconique": "",
@@ -316,16 +316,16 @@
             "competence": "",
             "marqueDraconique": ""
         },
-        "contact" : {
+        "Contact" : {
             "description": "",
             "categorie": "",
             "importance": 0
         },
-        "lien": {
+        "Lien": {
             "lame": "",
             "niveau": 0
         },
-        "equipement" : {
+        "Equipement" : {
             "description": "",
             "cout" : "",
             "niveauRessource": 0
