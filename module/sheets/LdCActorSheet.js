@@ -28,6 +28,8 @@ export default class LdCActorSheet extends ActorSheet {
         //data.archetypes = data.items.filter(function (item) { return item.type == "archetype"});
         //data.expertises = data.items.filter(function (item) { return item.type == "expertise"});
 
+        console.log(data);
+        
         return data;
     }
 }

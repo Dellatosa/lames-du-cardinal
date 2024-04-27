@@ -3,11 +3,18 @@
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="128" width="128">
         <div class="actor-infos">
             <div class="titre-nom"><input name="name" type="text" value="{{actor.name}}" placeholder="Nom"/></div>
-            <div class="entete-grid">
+            <div class="grid-identite">
                 <label>Age</label>
                 <input name="system.age" type="text" value="{{data.system.age}}" placeholder="Age">
                 <label>Sexe</label>
-                <input name="system.sexe" type="text" value="{{data.system.sexe}}" placeholder="Sexe">
+                <select name="system.sexe">
+                    {{#select data.system.sexe}}
+                    {{#each config.sexe as |sexe keySexe|}}
+                        <option value="{{keySexe}}">{{sexe}}</option>
+                    {{/each}}
+                    {{/select}} 
+                </select>
+                
                 <label>Origine</label>
                 <input name="system.origine" type="text" value="{{data.system.origine}}" placeholder="Origine">
                 <label>Profils</label>
@@ -22,6 +29,29 @@
         </nav>
     </div>
     <section class="sheet-body">
-
+        <div class="tab" data-group="principal" data-tab="caracteristiques">
+            <div class="grid-comp">
+                <div class="col1 titre-carac">{{localize "LdC.puissance"}}</div>
+                <div class="col2 titre-carac">{{localize "LdC.vivacite"}}</div>
+                <div class="col1 signe"><img src="systems/lames-du-cardinal/images/signes/Griffe.png"></div>
+                <div class="col2 signe"><img src="systems/lames-du-cardinal/images/signes/Souffle.png"></div>
+                <div class="col1 valeur-carac">
+                    <input name="system.caracteritiques.puissance.valeur" type="number" value="{{data.system.caracteritiques.puissance.valeur}}" min="0" max="4">
+                    <div class="ligne-coche-carac">
+                        {{#times data.system.caracteritiques.puissance.valeur}}
+                            <a class="coche-carac" title="p{{@index}}" data-index="p{{@index}}"><i class="fa-regular fa-square"></i></a>
+                        {{/times}}
+                    </div>
+                </div>
+                <div class="col2 valeur-carac">
+                    <input name="system.caracteritiques.vivacite.valeur" type="number" value="{{data.system.caracteritiques.vivacite.valeur}}" min="0" max="4">
+                    <div class="ligne-coche-carac">
+                        {{#times data.system.caracteritiques.vivacite.valeur}}
+                            <a class="coche-carac" title="v{{@index}}" data-index="v{{@index}}"><i class="fa-regular fa-square"></i></a>
+                        {{/times}}
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 </form>

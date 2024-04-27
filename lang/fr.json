@@ -1,1 +1,17 @@
-{}
+{
+    "TYPES.Actor.Lame": "Lame",
+    "TYPES.Actor.Figurant": "Figurant",
+    "TYPES.Item.Botte": "Botte", 
+    "TYPES.Item.Profil": "Profil", 
+    "TYPES.Item.Feinte": "Feinte", 
+    "TYPES.Item.Arcane": "Arcane", 
+    "TYPES.Item.Contact": "Contact", 
+    "TYPES.Item.Lien": "Lien", 
+    "TYPES.Item.Equipement": "Equipement",
+    "LdC" : {
+        "puissance": "Puissance",
+        "vivacite": "Vivacité",
+        "galanterie": "Galanterie",
+        "finesse": "Finesse"
+    }
+}

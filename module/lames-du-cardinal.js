@@ -1,10 +1,11 @@
 import { LdC } from "./config.js";
 import LdCActor from "./LdCActor.js";
 import LdCItem from "./LdCItem.js";
+import registerHandlebarsHelpers from "./common/helpers.js"
 import LdCActorSheet from "./sheets/LdCActorSheet.js";
 import LdCItemSheet from "./sheets/LdCItemSheet.js";
 
-Hooks.once("init", function(){
+Hooks.once("init", function() {
     console.log("Les Lames du Cardinal | Initialisation du système Les Lames du Cardinal, le JDR");
 
     game.LdC = {
@@ -25,4 +26,7 @@ Hooks.once("init", function(){
     Items.registerSheet("lames-du-cardinal", LdCItemSheet, {makeDefault: true});
 
     //registerSystemSettings();
+
+    // Register Handlebars Helpers
+	registerHandlebarsHelpers();
 })

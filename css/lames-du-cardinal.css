@@ -8,17 +8,39 @@
   height: 128px;
 }
 .ldc.sheet.actor .sheet-header label {
-  padding: 3px 0;
+  padding: 5px 3px;
 }
 .ldc.sheet.actor .sheet-header .titre-nom {
   font-size: 2em;
 }
-.ldc.sheet.actor .sheet-header input[type="text"] {
+.ldc.sheet.actor .sheet-header .titre-nom input[type="text"] {
   height: max-content;
 }
-.entete-grid {
+.grid-identite {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
   margin: 2px;
   margin-top: 5px;
+}
+.grid-comp {
+  display: grid;
+  grid-template-columns: 1fr 3em 3em 1fr 3em 3em ;
+}
+.grid-comp .col1 {
+  grid-column: 1 / 4;
+}
+.grid-comp .col2 {
+  grid-column: 4 / 7;
+}
+.grid-comp .titre-carac {
+  text-align: center;
+  font-size: 1.5em;
+}
+.grid-comp .signe img {
+  display: block;
+  border: none;
+  width: 50px;
+  height: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
