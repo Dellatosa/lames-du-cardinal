@@ -55,6 +55,9 @@
   margin: 2px;
   margin-top: 5px;
 }
+.grid-identite .profils {
+  display: flex;
+}
 .grid-comp {
   display: grid;
   grid-template-columns: 1fr 3em 3em 1fr 3em 3em ;
@@ -89,10 +92,6 @@
 }
 .grid-comp .titre-comp {
   align-self: center;
-}
-.grid-comp .titre-comp-spe {
-  align-self: center;
-  font-size: 1.5em;
 }
 .grid-comp .valeur-comp {
   justify-self: center;

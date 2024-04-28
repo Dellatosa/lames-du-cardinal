@@ -159,11 +159,11 @@
                 <div class="reus-auto">( {{data.system.competences.tir.reussiteAuto}} )</div>
             </div>
             <div class="grid-comp separateur15">
-                <div class="titre-comp-spe">{{localize "LdC.occultisme"}}</div>
+                <div class="titre-comp titre-rouge ">{{localize "LdC.occultisme"}}</div>
                 <div class="valeur-comp"><input name="system.competences.occultisme.valeur" type="number" value="{{data.system.competences.occultisme.valeur}}" min="0" max="8"></div>
                 <div class="reus-auto">( {{data.system.competences.occultisme.reussiteAuto}} )</div>
 
-                <div class="titre-comp-spe">{{localize "LdC.escrime"}}</div>
+                <div class="titre-comp titre-noir">{{localize "LdC.escrime"}}</div>
                 <div class="valeur-comp"><input name="system.competences.escrime.valeur" type="number" value="{{data.system.competences.escrime.valeur}}" min="0" max="8"></div>
                 <div class="reus-auto">( {{data.system.competences.escrime.reussiteAuto}} )</div>
             </div>
@@ -182,10 +182,12 @@
                 <div class="titre-align">{{localize "LdC.signe"}}</div>
                 <div class="titre-align"><img src="systems/lames-du-cardinal/images/signes/{{data.system.ecoleSigne}}.png"></div>
                 <div class="titre-align">{{configLocalize "signe" data.system.ecoleSigne}}</div>
-                <div class="col-all titre-rouge">Description de l'école d'escrime</div>
-                <div class="col-all">
-                    {{editor data.system.ecoleDesc target="system.ecoleDesc" button=false owner=true editable=false}}
-                </div>
+                <details class="col-all">
+                    <summary class="center titre-rouge"><label>Description de l'école d'escrime</label></summary>
+                    <div class="col-all">
+                        {{editor data.system.ecoleDesc target="system.ecoleDesc" button=false owner=true editable=false}}
+                    </div>
+                </details>
                 <div class="col1 titre-noir centre separateur10">Feintes</div>
                 <div class="col2 titre-noir centre separateur10">Bottes</div>
                 <div class="feintes col1">
@@ -207,7 +209,7 @@
                         </div>
                     {{/each}}
                 </div>
-                <!-- <div class="titre-escrime txt-rouge">Armes</div> -->
+                <div class="col-all titre-rouge centre separateur10">Armes</div>
             </div>
         </div>
     </section>
