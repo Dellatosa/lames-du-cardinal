@@ -210,6 +210,21 @@
                     {{/each}}
                 </div>
                 <div class="col-all titre-rouge centre separateur10">Armes</div>
+                <div class="col1 titre-rouge centre">Epées</div>
+                <div class="col2 titre-rouge centre">Autres armes</div>
+                <div class="epees col1">
+                    {{#each epees as |epee id|}}
+                        <div class="epee-item item-box">
+                            <label class="item-options titre-epee" data-item-id="{{epee._id}}">{{epee.name}}</label>
+                            <div>Première feinte d'épee : {{epee.system.feinte1Nom}}</div>
+                            <div>{{editor epee.system.feinte1Desc target="epee.system.feinte1Desc" button=false owner=true editable=false}}</div>
+                            <div>Seconde feinte d'épee : {{epee.system.feinte2Nom}}</div>
+                            <div>{{editor epee.system.feinte2Desc target="epee.system.feinte2Desc" button=false owner=true editable=false}}</div>
+                            <div>Description</div>
+                            <div>{{editor epee.system.description target="epee.system.description" button=false owner=true editable=false}}</div>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </section>

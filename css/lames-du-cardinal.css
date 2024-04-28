@@ -134,6 +134,9 @@
 .grid-escrime .botte-nom {
   flex-grow: 3;
 }
+.grid-escrime .titre-epee {
+  font-size: 1.2em;
+}
 .ldc.sheet.item .sheet-content {
   display: flex;
   flex-direction: column;

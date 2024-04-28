@@ -12,7 +12,7 @@
                     <option value="aucun"></option>
                     {{#each feintes as |feinte id|}}
                         {{#if (eq feinte.system.ecole "epee")}}
-                            <option value="{{id}}">{{feinte.name}}</option>
+                            <option value="{{_id}}">{{feinte.name}}</option>
                         {{/if}}
                     {{/each}}
                 {{/select}}
@@ -23,7 +23,7 @@
                     <option value="aucun"></option>
                     {{#each feintes as |feinte id|}}
                         {{#if (eq feinte.system.ecole "epee")}}
-                            <option value="{{id}}">{{feinte.name}}</option>
+                            <option value="{{_id}}">{{feinte.name}}</option>
                         {{/if}}
                     {{/each}}
                 {{/select}}
