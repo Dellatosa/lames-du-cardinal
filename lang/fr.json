@@ -35,11 +35,24 @@
         "tir": "Tir",
         "occultisme": "Occultisme",
         "escrime": "Escrime",
+        "griffe": "Griffe",
+        "souffle": "Souffle",
+        "ecaille": "Ecaille",
+        "sang": "Sang",
 
         "variations": "Variations",
         "categorie": "Catégorie",
         "niveauVie": "Niveau de vie",
         "ecole": "Ecole",
-        "nbFigures": "Nb de figures"
+        "signe": "Signe",
+        "nbFigures": "Nb de figures",
+        "epee": "Epée",
+        "feintesDispo": "Feintes disponible pour cette Epée",
+        "feinte1": "Première feinte",
+        "feinte2": "Seconde feinte",
+
+        "nom": "Nom",
+        "description" : "Description",
+        "aucun": "aucun"
     }
 }

@@ -8,13 +8,14 @@
             <div class="titre-align">{{localize "LdC.ecole"}}</div>
             <select name="system.ecole">
                 {{#select data.system.ecole}}
-                {{#each config.ecole as |ecole keyEcole|}}
-                    <option value="{{keyEcole}}">{{ecole.label}}</option>
-                {{/each}}
+                    {{#each config.ecole as |ecole keyEcole|}}
+                        <option value="{{keyEcole}}">{{ecole.label}}</option>
+                    {{/each}}
+                    <option value="epee">{{localize "LdC.epee"}}</option>
                 {{/select}}
             </select>
         </div>
-        <div class="titre-desc">Description de la Feinte</div> 
+        <div class="titre-noir">Description de la Feinte</div> 
         {{editor data.system.description target="system.description" button=true owner=true editable=true}}
     </div>
 </form>

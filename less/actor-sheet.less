@@ -3,16 +3,39 @@
     flex-direction: column;
     overflow: hidden;
 
-    .separator {
+    .separateur10 {
+        margin-top: 10px;
+    }
+
+    .separateur15 {
         margin-top: 15px;
     }
 
-    .txt-noir {
-        color: var(--color-tarot-noir);
+    .titre-rouge {
+        color: var(--color-tarot-rouge);
+        font-size: 1.5em;
     }
 
-    .txt-rouge {
-        color: var(--color-tarot-rouge);
+    .titre-noir {
+        color: var(--color-tarot-noir);
+        font-size: 1.5em;
+    }
+
+    .titre-align {
+        align-self: center;
+        margin: 0 3px;
+    }
+
+    .centre {
+        text-align: center;
+    }
+
+    .item-box {
+        border: 1px solid;
+        border-radius: 2px;
+        border-color: grey;
+        margin: 1px;
+        padding: 1px;
     }
 }
 
@@ -33,14 +56,6 @@
         input[type="text"] {
             height: max-content;
         }
-    }
-
-    .item-box {
-        border: 1px solid;
-        border-radius: 2px;
-        border-color: grey;
-        margin: 1px;
-        padding: 1px;
     }
 }
 
@@ -68,11 +83,6 @@
 
     .col2 {
         grid-column: 4 / 7;
-    }
-
-    .titre-carac {
-        text-align: center;
-        font-size: 1.5em;
     }
 
     .signe {
@@ -119,14 +129,35 @@
 
 .grid-escrime {
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr;
+    grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
 
-    .titre-escrime {
-        text-align: center;
-        font-size: 1.5em;
+    .col-all {
+        grid-column: 1 / 6;
     }
 
-    .col-escrime {
+    .col1 {
         grid-column: 1 / 3;
     }
+
+    .col2 {
+        grid-column: 3 / 6;
+    }
+
+    img {
+        display: block;
+        border: none;
+        width : 50px;
+        height : 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    select {
+        align-self: center;
+    }
+
+    .editor {
+        background-color: rgba(82, 77, 77, 0.075);
+    }
 }
+

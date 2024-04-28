@@ -10,4 +10,8 @@ export default function registerHandlebarsHelpers() {
         }
         return accum;
       });
+
+    Handlebars.registerHelper("configLocalize", function(liste, val) {
+        return game.i18n.localize(CONFIG.LdC[liste][val]);
+    });  
 }

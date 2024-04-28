@@ -38,10 +38,10 @@
     <section class="sheet-body">
         <div class="tab" data-group="principal" data-tab="caracteristiques">
             <div class="grid-comp">
-                <div class="col1 titre-carac txt-noir">{{localize "LdC.puissance"}}</div>
-                <div class="col2 titre-carac txt-noir">{{localize "LdC.vivacite"}}</div>
-                <div class="col1 signe"><img src="systems/lames-du-cardinal/images/signes/Griffe.png"></div>
-                <div class="col2 signe"><img src="systems/lames-du-cardinal/images/signes/Souffle.png"></div>
+                <div class="col1 titre-noir centre">{{localize "LdC.puissance"}}</div>
+                <div class="col2 titre-noir centre">{{localize "LdC.vivacite"}}</div>
+                <div class="col1 signe"><img src="systems/lames-du-cardinal/images/signes/griffe.png"></div>
+                <div class="col2 signe"><img src="systems/lames-du-cardinal/images/signes/souffle.png"></div>
                 <div class="col1 valeur-carac">
                     <input name="system.caracteritiques.puissance.valeur" type="number" value="{{data.system.caracteritiques.puissance.valeur}}" min="0" max="4">
                     <div class="ligne-coche-carac">
@@ -98,10 +98,10 @@
                 <div class="valeur-comp"><input name="system.competences.vigilance.valeur" type="number" value="{{data.system.competences.vigilance.valeur}}" min="0" max="8"></div>
                 <div class="reus-auto">( {{data.system.competences.vigilance.reussiteAuto}} )</div>
 
-                <div class="col1 titre-carac txt-rouge">{{localize "LdC.galanterie"}}</div>
-                <div class="col2 titre-carac txt-rouge">{{localize "LdC.finesse"}}</div>
-                <div class="col1 signe"><img src="systems/lames-du-cardinal/images/signes/Sang.png"></div>
-                <div class="col2 signe"><img src="systems/lames-du-cardinal/images/signes/Ecaille.png"></div>
+                <div class="col1 titre-rouge centre">{{localize "LdC.galanterie"}}</div>
+                <div class="col2 titre-rouge centre">{{localize "LdC.finesse"}}</div>
+                <div class="col1 signe"><img src="systems/lames-du-cardinal/images/signes/sang.png"></div>
+                <div class="col2 signe"><img src="systems/lames-du-cardinal/images/signes/ecaille.png"></div>
                 <div class="col1 valeur-carac">
                     <input name="system.caracteritiques.galanterie.valeur" type="number" value="{{data.system.caracteritiques.galanterie.valeur}}" min="0" max="4">
                     <div class="ligne-coche-carac">
@@ -158,7 +158,7 @@
                 <div class="valeur-comp"><input name="system.competences.tir.valeur" type="number" value="{{data.system.competences.tir.valeur}}" min="0" max="8"></div>
                 <div class="reus-auto">( {{data.system.competences.tir.reussiteAuto}} )</div>
             </div>
-            <div class="grid-comp separator">
+            <div class="grid-comp separateur15">
                 <div class="titre-comp-spe">{{localize "LdC.occultisme"}}</div>
                 <div class="valeur-comp"><input name="system.competences.occultisme.valeur" type="number" value="{{data.system.competences.occultisme.valeur}}" min="0" max="8"></div>
                 <div class="reus-auto">( {{data.system.competences.occultisme.reussiteAuto}} )</div>
@@ -170,9 +170,8 @@
         </div>
         <div class="tab" data-group="principal" data-tab="escrime">
             <div class="grid-escrime">
-                <div class="col-escrime titre-escrime txt-noir">Escrime</div>
-                <div class="titre-escrime txt-rouge">Armes</div>
-                <div>{{localize "LdC.ecole"}}</div>
+                <div class="col-all titre-noir centre">Escrime</div>
+                <div class="titre-align">{{localize "LdC.ecole"}}</div>
                 <select name="system.ecole">
                     {{#select data.system.ecole}}
                     {{#each config.ecole as |ecole keyEcole|}}
@@ -180,6 +179,30 @@
                     {{/each}}
                     {{/select}}
                 </select>
+                <div class="titre-align">{{localize "LdC.signe"}}</div>
+                <div class="titre-align"><img src="systems/lames-du-cardinal/images/signes/{{data.system.ecoleSigne}}.png"></div>
+                <div class="titre-align">{{configLocalize "signe" data.system.ecoleSigne}}</div>
+                <div class="col-all titre-rouge">Description de l'école d'escrime</div>
+                <div class="col-all">
+                    {{editor data.system.ecoleDesc target="system.ecoleDesc" button=false owner=true editable=false}}
+                </div>
+                <div class="col1 titre-noir centre separateur10">Feintes</div>
+                <div class="col2 titre-noir centre separateur10">Bottes</div>
+                <div class="feintes col1">
+                    {{#each feintes as |feinte id|}}
+                        <div class="feinte-item item-box item-options" data-item-id="{{feinte._id}}">
+                            <label>{{feinte.name}}</label>
+                        </div>
+                    {{/each}}
+                </div>
+                <div class="bottes col2">
+                    {{#each bottes as |botte id|}}
+                        <div class="botte-item item-box item-options" data-item-id="{{botte._id}}">
+                            <label>{{botte.name}}</label>
+                        </div>
+                    {{/each}}
+                </div>
+                <!-- <div class="titre-escrime txt-rouge">Armes</div> -->
             </div>
         </div>
     </section>

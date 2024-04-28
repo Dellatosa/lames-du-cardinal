@@ -26,8 +26,8 @@ export default class LdCActorSheet extends ActorSheet {
         const actorData = data.system;
 
         data.profils = data.items.filter(function (item) { return item.type == "Profil"});
-
-        console.log(data);
+        data.feintes = data.items.filter(function (item) { return item.type == "Feinte"});
+        data.bottes = data.items.filter(function (item) { return item.type == "Botte"});
         
         return data;
     }

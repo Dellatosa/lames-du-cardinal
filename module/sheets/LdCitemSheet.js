@@ -19,6 +19,10 @@ export default class LdCItemSheet extends ItemSheet {
         const data = super.getData();
         data.config = CONFIG.LdC;
 
+        data.feintes = game.items.filter(function (item) { return item.type == "Feinte"});
+
+        console.log(data);
+        
         return data;
     }
 }

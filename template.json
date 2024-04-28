@@ -274,7 +274,7 @@
         }
     },
     "Item": {
-        "types": ["Profil", "Botte", "Feinte", "Arcane", "Contact", "Lien", "Equipement"],
+        "types": ["Profil", "Botte", "Feinte", "Epee", "Arcane", "Contact", "Lien", "Equipement"],
         "Profil" : {
             "variations" : "",
             "description": "",
@@ -311,6 +311,11 @@
         "Feinte" : {
             "ecole" : "",
             "description": ""
+        },
+        "Epee": {
+            "description": "",
+            "feinte1": "",
+            "feinte2": ""
         },
         "Arcane": {
             "numero": 0,

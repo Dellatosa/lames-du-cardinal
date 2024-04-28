@@ -1,0 +1,35 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Nom de l'Epée"/></h1>
+    </header>
+    <div class="sheet-content epee" data-item-id="{{item.id}}">
+        <div class="grid-epee">
+            <div class="titre-align titre-feintes titre-rouge">{{localize "LdC.feintesDispo"}}</div>
+            <div class="titre-align">{{localize "LdC.feinte1"}}</div>
+            <select name="system.feinte1">
+                {{#select data.system.feinte1}}
+                    <option value="aucun"></option>
+                    {{#each feintes as |feinte id|}}
+                        {{#if (eq feinte.system.ecole "epee")}}
+                            <option value="{{id}}">{{feinte.name}}</option>
+                        {{/if}}
+                    {{/each}}
+                {{/select}}
+            </select>
+            <div class="titre-align">{{localize "LdC.feinte2"}}</div>
+            <select name="system.feinte2">
+                {{#select data.system.feinte2}}
+                    <option value="aucun"></option>
+                    {{#each feintes as |feinte id|}}
+                        {{#if (eq feinte.system.ecole "epee")}}
+                            <option value="{{id}}">{{feinte.name}}</option>
+                        {{/if}}
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+        <div class="separateur15 titre-noir">Description de l'Epée</div> 
+        {{editor data.system.description target="system.description" button=true owner=true editable=true}}
+    </div>
+</form>
