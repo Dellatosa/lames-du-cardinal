@@ -190,15 +190,20 @@
                 <div class="col2 titre-noir centre separateur10">Bottes</div>
                 <div class="feintes col1">
                     {{#each feintes as |feinte id|}}
-                        <div class="feinte-item item-box item-options" data-item-id="{{feinte._id}}">
-                            <label>{{feinte.name}}</label>
+                        <div class="feinte-item item-box">
+                            <label class="item-options" data-item-id="{{feinte._id}}">{{feinte.name}}</label>
+                            <div>{{editor feinte.system.description target="feinte.system.description" button=false owner=true editable=false}}</div>
                         </div>
                     {{/each}}
                 </div>
                 <div class="bottes col2">
                     {{#each bottes as |botte id|}}
-                        <div class="botte-item item-box item-options" data-item-id="{{botte._id}}">
-                            <label>{{botte.name}}</label>
+                        <div class="botte-item item-box">
+                            <div class="botte-entete">
+                                <div class="item-options botte-nom" data-item-id="{{botte._id}}">{{botte.name}}</div>
+                                <label>Figures : {{botte.system.figure}}</label>
+                            </div>
+                            <div>{{editor botte.system.description target="botte.system.description" button=false owner=true editable=false}}</div>
                         </div>
                     {{/each}}
                 </div>

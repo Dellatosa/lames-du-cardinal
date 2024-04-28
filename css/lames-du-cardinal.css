@@ -127,6 +127,13 @@
 }
 .grid-escrime .editor {
   background-color: rgba(82, 77, 77, 0.075);
+  font-size: 0.9em;
+}
+.grid-escrime .botte-entete {
+  display: flex;
+}
+.grid-escrime .botte-nom {
+  flex-grow: 3;
 }
 .ldc.sheet.item .sheet-content {
   display: flex;
