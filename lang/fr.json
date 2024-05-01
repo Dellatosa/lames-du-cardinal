@@ -62,5 +62,26 @@
         "description" : "Description",
         "aucun": "Aucun",
         "numero": "Numéro"
+    },
+    "CARDHANDSLIST": {
+        "Heading": "Card Hands",
+        "Open": "Open",
+        "Menu": "Menu",
+        "FlipAll": "Flip All Cards",
+        "Favorite": "Set as Favorite",
+        "Unfavorite": "Unset as Favorite",
+        "Pin": "Pin",
+        "Unpin": "Unpin",
+        "Defaults": "Set Defaults",
+        "DefaultsMessage": "Set default card draw options for <strong>{name}</strong>",
+        "UnsetDefaults": "Unset Defaults",
+        "ObserverLevel": {
+            "Name": "Include Hands with Observer Ownership",
+            "Hint": "Includes hands of which users have Observer-level ownership. Default is Owner-level ownership only."
+        },
+        "MinimalUIBehavior": {
+            "Name": "Minimal UI Module Behavior",
+            "Hint": "Set the interaction behavior pattern for the Card Hands list when using Minimal UI."
+        }
     }
 }

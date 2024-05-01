@@ -1,0 +1,317 @@
+#card-hands-list {
+  --hand-height: 94px;
+  width: 200px;
+  margin: 0 5px 10px 15px;
+  padding: 0;
+  border: 1px solid var(--color-border-dark);
+  pointer-events: all;
+
+  & #card-hands-list-hands-wrapper {
+    container-type: size;
+    padding: 0 2px;
+    overflow-y: auto;
+    pointer-events: all;
+    scroll-snap-type: y mandatory;
+
+    &:has(.card-hands-list-hand:nth-child(n+1)) {
+      height: var(--hand-height);
+    }
+    &:has(.card-hands-list-hand:nth-child(n+2)) {
+      height: calc(var(--hand-height) * 2);
+    }
+    &:has(.card-hands-list-hand:nth-child(n+3)) {
+      height: calc(var(--hand-height) * 3);
+    }
+
+    &:has(#context-menu) {
+      scroll-snap-type: y normal;
+
+      & .card-hands-list-hand {
+        scroll-snap-align: none;
+      }
+    }
+  }
+
+  & .card-hands-list-title {
+    margin: 3px;
+    padding: 4px;
+    border-bottom: 2px groove var(--color-border-dark-secondary);
+    pointer-events: all;
+
+    & i {
+      margin: 0 6px;
+    }
+
+    & .card-hands-list-mode {
+      font-size: var(--font-size-16);
+      margin: 0 5px;
+      color: var(--color-text-light-primary);
+    }
+  }
+
+  & .card-hands-list-hand {
+    height: var(--hand-height);
+    padding: 4px 8px;
+    display: grid;
+    grid-template-columns: 1fr 18px;
+    grid-template-rows: min-content auto;
+    gap: 0 4px;
+    align-items: center;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+
+    &:hover,
+    & *:hover {
+      scroll-snap-align: always;
+    }
+
+    &:not(:last-of-type) {
+      border-bottom: 2px groove var(--color-border-dark-secondary);
+    }
+  }
+
+  &.collapsed {
+    #card-hands-list-hands-wrapper {
+      height: auto;
+
+      &:has(.card-hands-list-hand) {
+        height: var(--hand-height);
+      }
+
+      & .card-hands-list-hand {
+        border: none;
+      }
+    }
+  }
+
+  & .card-hands-list-name {
+    margin: 0;
+    padding: 4px 2px;
+    grid-row: 1/2;
+    grid-column: 1/2;
+    font-size: var(--font-size-14);
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    pointer-events: all;
+
+    &.is-owner {
+      color: #c0eddb;
+    }
+  }
+
+  & .card-hands-list-context-menu-link {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    text-align: center;
+    justify-self: stretch;
+    pointer-events: all;
+    cursor: pointer;
+
+    & #context-menu {
+      width: max-content;
+      justify-self: start;
+      text-align: left;
+      text-wrap: nowrap;
+      text-shadow: none;
+      overflow: auto;
+
+      .collapsed & {
+        margin-top: -1.5em;
+        height: 100cqh;
+      }
+    }
+  }
+
+  & .card-hands-list-buttons {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    align-self: center;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+  }
+
+  & .card-hands-list-button {
+    color: currentColor;
+    cursor: pointer;
+    pointer-events: all;
+
+    &.--hidden {
+      visibility: hidden;
+    }
+  }
+
+  & :is(.card-hands-list-button, .card-hands-list-name) a:hover {
+    text-shadow: 0 0 8px var(--color-shadow-primary);
+  }
+
+  & .card-hands-list-cards {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    container-type: size;
+    grid-column: 1/2;
+    grid-row: 2/3;
+    list-style-type: none;
+    display: flex;
+    gap: 0.25em;
+    align-items: center;
+    justify-content: start;
+    overflow-y: clip;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    pointer-events: all;
+  }
+
+  & .card-hands-list-card {
+    padding: 1px;
+    height: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+
+    &:hover,
+    & *:hover {
+      scroll-snap-align: always;
+    }
+
+    & .card-hands-list-card-image {
+      max-height: 100%;
+      object-position: center;
+      object-fit: contain;
+      border: none;
+      filter: drop-shadow(2px 3px 3px rgba(0, 0, 0, .5));
+
+      &:hover {
+        filter:
+          drop-shadow(2px 3px 3px rgba(0, 0, 0, .5)) drop-shadow(0 0 3px var(--color-shadow-highlight));
+      }
+    }
+  }
+
+  .card-hands-list-context-menu-link .card-hands-list-negative-margin {
+    margin-left: -800%;
+  }
+}
+
+div#camera-views #card-hands-list {
+  background: none;
+  box-shadow: none;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+  border: none;
+  border-top: 6px solid rgba(0, 0, 0, 0.5);
+}
+
+/* Minimal UI Styles */
+div:not(:is(.camera-position-left, .camera-position-right)) #card-hands-list.minimal-ui.list-behavior-autohide {
+  margin-bottom: calc(var(--playerbot) / 6);
+  font-size: var(--playerfsizehv);
+  border: 1px solid var(--bordercolor);
+  box-shadow: 0 var(--hotbarshp) var(--shadowstrength) 2px var(--shadowcolor);
+  opacity: var(--opacity);
+
+  /* Hidden */
+  &:not(:hover) {
+    width: 32px;
+    padding: 2px;
+    opacity: var(--opacity);
+
+    & .card-hands-list-title {
+      margin: 1px;
+      padding-left: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0em;
+      border: none;
+      border-bottom: none;
+
+      & > .fa-cards {
+        font-size: 17.5px;
+        margin: 6px 0 0 0;
+        order: 2;
+      }
+
+      & > .card-hands-list-mode {
+        padding-left: 2px;
+        padding-bottom: 4px;
+        margin: 0 5px;
+        order: 1;
+        border-bottom: 2px groove var(--color-border-dark-secondary);
+      }
+    }
+
+    & #card-hands-list-hands-wrapper:has(.card-hands-list-hand:nth-child(n+1)) {
+      display: none;
+    }
+  }
+
+  /* Hidden and hovered... */
+  &:hover {
+    width: 200px;
+    overflow: clip;
+
+    & .card-hands-list-title {
+      display: block;
+      margin: 1px;
+      padding-left: 2px;
+      border-bottom: revert;
+
+      & > .fa-cards {
+        border-bottom: revert;
+      }
+
+      & > .card-hands-list-mode {
+        order: revert;
+      }
+    }
+  }
+
+  /* Collapsed and hidden */
+  &.collapsed:not(:hover) #card-hands-list-hands-wrapper {
+    display: none;
+  }
+}
+
+/* Tooltip Styles */
+.card-hands-list-tooltip-heading {
+  font-size: 0.9em;
+  font-weight: bold;
+
+  &:has(+ .card-hands-list-card-text-description) {
+    margin-bottom: 0.125em;
+    padding-bottom: 0.125em;
+    border-bottom: 1px dotted currentColor;
+  }
+}
+
+.card-hands-list-card-text-description {
+  margin: 0;
+  font-size: 0.8em;
+}
+
+#tooltip .card-hands-list-tooltip {
+  text-align: left;
+  line-height: 1.4;
+
+  .card-hands-list-tooltip-heading {
+    padding-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+  }
+
+  & a.content-link{
+    color: #000000;
+  }
+}
