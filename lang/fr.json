@@ -50,9 +50,13 @@
         "feintesDispo": "Feintes disponible pour cette Epée",
         "feinte1": "Première feinte",
         "feinte2": "Seconde feinte",
+        "valeurDraco": "Valeur Draconique",
+        "competence": "Compétence",
+        "manifestation": "Manifestation",
 
         "nom": "Nom",
         "description" : "Description",
-        "aucun": "aucun"
+        "aucun": "Aucun",
+        "numero": "Numero"
     }
 }

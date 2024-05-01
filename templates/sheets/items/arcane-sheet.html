@@ -1,0 +1,26 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Nom de l'Arcane'"/></h1>
+    </header>
+    <div class="sheet-content arcane" data-item-id="{{item.id}}">
+        <div class="grid-arcane">
+            <div class="titre-align">{{localize "LdC.numero"}}</div>
+            <div><input name="system.numero" type="number" value="{{data.system.numero}}" placeholder="0"/></div>
+            <div class="titre-align">{{localize "LdC.valeurDraco"}}</div>
+            <div><input name="system.valeurDraconique" type="text" value="{{data.system.valeurDraconique}}" placeholder="Valeur Draconique"/></div>
+            <div class="titre-align">{{localize "LdC.competence"}}</div>
+            <select name="system.competence">
+                {{#select data.system.competence}}
+                {{#each config.competences as |competence keyComp|}}
+                    <option value="{{keyComp}}">{{configLocalize "competences" keyComp}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+            <div class="titre-manif titre-align">{{localize "LdC.manifestation"}}</div>
+            <div class="valeur-manif"><input name="system.manifestation" type="text" value="{{data.system.manifestation}}" placeholder="Manifestation"/></div>
+        </div>
+        <div class="titre-noir">Description de l'Arcane</div> 
+        {{editor data.system.description target="system.description" button=true owner=true editable=true}}
+    </div>
+</form>
