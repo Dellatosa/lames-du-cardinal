@@ -20,6 +20,8 @@
             <div class="titre-manif titre-align">{{localize "LdC.manifestation"}}</div>
             <div class="valeur-manif"><input name="system.manifestation" type="text" value="{{data.system.manifestation}}" placeholder="Manifestation"/></div>
         </div>
+        <div class="titre-rouge">Marque Draconique</div> 
+        {{editor data.system.marqueDraconique target="system.marqueDraconique" button=true owner=true editable=true}}
         <div class="titre-noir">Description de l'Arcane</div> 
         {{editor data.system.description target="system.description" button=true owner=true editable=true}}
     </div>

@@ -1,0 +1,21 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Nom de l'Ecole'"/></h1>
+    </header>
+    <div class="sheet-content ecole" data-item-id="{{item.id}}">
+        <div class="grid-ecole">
+            <div class="titre-align">{{localize "LdC.signe"}}</div>
+            <select name="system.signe">
+                {{#select data.system.signe}}
+                {{#each config.signes as |signe keySigne|}}
+                    <option value="{{keySigne}}">{{configLocalize "signes" keySigne}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+            {{#if (ne data.system.signe "aucun")}}<div class="titre-align"><img src="systems/lames-du-cardinal/images/signes/{{data.system.signe}}.png"></div>{{/if}}
+        </div>
+        <div class="titre-noir">Description de l'Ecole</div> 
+        {{editor data.system.description target="system.description" button=true owner=true editable=true}}
+    </div>
+</form>

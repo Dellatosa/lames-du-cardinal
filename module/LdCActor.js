@@ -19,9 +19,9 @@ export default class LdCActor extends Actor {
                 comp.reussiteAuto = Math.floor(comp.valeur / 2); 
             }
 
-            if(data.ecole != "") {
-                data.ecoleDesc = CONFIG.LdC.ecole[data.ecole].desc;
-                data.ecoleSigne = CONFIG.LdC.ecole[data.ecole].signe;
+            if(data.ecole != "aucun") {
+                data.ecoleDesc = game.items.get(data.ecole).system.description;
+                data.ecoleSigne = game.items.get(data.ecole).system.signe;
             }
             else {
                 data.ecoleDesc = "";

@@ -29,8 +29,7 @@ export default class LdCActorSheet extends ActorSheet {
         data.feintes = data.items.filter(function (item) { return item.type == "Feinte"});
         data.bottes = data.items.filter(function (item) { return item.type == "Botte"});
         data.epees = data.items.filter(function (item) { return item.type == "Epee"});
-        
-        console.log(data.epees);
+        data.ecoles = game.items.filter(function (item) { return item.type == "Ecole"});
         
         return data;
     }

@@ -1,6 +1,7 @@
 {
     "TYPES.Actor.Lame": "Lame",
     "TYPES.Actor.Figurant": "Figurant",
+    "TYPES.Item.Ecole": "Ecole",
     "TYPES.Item.Botte": "Botte", 
     "TYPES.Item.Profil": "Profil", 
     "TYPES.Item.Feinte": "Feinte", 

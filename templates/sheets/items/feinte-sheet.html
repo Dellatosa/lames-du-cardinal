@@ -8,8 +8,9 @@
             <div class="titre-align">{{localize "LdC.ecole"}}</div>
             <select name="system.ecole">
                 {{#select data.system.ecole}}
-                    {{#each config.ecole as |ecole keyEcole|}}
-                        <option value="{{keyEcole}}">{{ecole.label}}</option>
+                    <option value="aucun"></option>
+                    {{#each ecoles as |ecole id|}}
+                        <option value="{{_id}}">{{ecole.name}}</option>
                     {{/each}}
                     <option value="epee">{{localize "LdC.epee"}}</option>
                 {{/select}}

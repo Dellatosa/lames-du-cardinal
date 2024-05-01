@@ -174,20 +174,23 @@
                 <div class="titre-align">{{localize "LdC.ecole"}}</div>
                 <select name="system.ecole">
                     {{#select data.system.ecole}}
-                    {{#each config.ecole as |ecole keyEcole|}}
-                        <option value="{{keyEcole}}">{{ecole.label}}</option>
+                    <option value="aucun"></option>
+                    {{#each ecoles as |ecole id|}}
+                        <option value="{{_id}}">{{ecole.name}}</option>
                     {{/each}}
                     {{/select}}
                 </select>
-                <div class="titre-align">{{localize "LdC.signe"}}</div>
-                <div class="titre-align"><img src="systems/lames-du-cardinal/images/signes/{{data.system.ecoleSigne}}.png"></div>
-                <div class="titre-align">{{configLocalize "signes" data.system.ecoleSigne}}</div>
-                <details class="col-all">
-                    <summary class="center titre-rouge"><label>Description de l'école d'escrime</label></summary>
-                    <div class="col-all">
-                        {{editor data.system.ecoleDesc target="system.ecoleDesc" button=false owner=true editable=false}}
-                    </div>
-                </details>
+                {{#if data.system.ecoleSigne}}
+                    <div class="titre-align">{{localize "LdC.signe"}}</div>
+                    <div class="titre-align"><img src="systems/lames-du-cardinal/images/signes/{{data.system.ecoleSigne}}.png"></div>
+                    <div class="titre-align">{{configLocalize "signes" data.system.ecoleSigne}}</div>
+                    <details class="col-all">
+                        <summary class="center titre-rouge"><label>Description de l'école d'escrime</label></summary>
+                        <div class="col-all">
+                            {{editor data.system.ecoleDesc target="system.ecoleDesc" button=false owner=true editable=false}}
+                        </div>
+                    </details>
+                {{/if}}
                 <div class="col1 titre-noir centre separateur10">Feintes</div>
                 <div class="col2 titre-noir centre separateur10">Bottes</div>
                 <div class="feintes col1">

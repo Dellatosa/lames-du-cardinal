@@ -7,6 +7,7 @@ LdC.sexe = {
 }
 
 LdC.signes = {
+    aucun: "",
     griffe: "LdC.griffe",
     souffle: "LdC.souffle",
     ecaille: "LdC.ecaille",

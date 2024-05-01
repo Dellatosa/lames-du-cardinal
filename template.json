@@ -274,7 +274,7 @@
         }
     },
     "Item": {
-        "types": ["Profil", "Botte", "Feinte", "Epee", "Arcane", "Contact", "Lien", "Equipement"],
+        "types": ["Profil", "Ecole", "Botte", "Feinte", "Epee", "Arcane", "Contact", "Lien", "Equipement"],
         "Profil" : {
             "variations" : "",
             "description": "",
@@ -302,6 +302,10 @@
             "tir": 0,
             "occultisme": 0,
             "escrime": 0
+        },
+        "Ecole" : {
+            "description": "",
+            "signe": ""
         },
         "Botte" : {
             "ecole" : "",
