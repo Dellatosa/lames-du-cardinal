@@ -137,6 +137,21 @@
 .grid-escrime .titre-epee {
   font-size: 1.2em;
 }
+.grid-arcanes {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.grid-arcanes .grid-arcane {
+  display: grid;
+  grid-template-columns: 1fr 5em;
+}
+.grid-arcanes .grid-arcane .col-all {
+  grid-column: 1 / 3;
+}
+.grid-arcanes .editor {
+  background-color: rgba(82, 77, 77, 0.075);
+  font-size: 0.9em;
+}
 .ldc.sheet.item .sheet-content {
   display: flex;
   flex-direction: column;
@@ -281,7 +296,10 @@
   grid-column: 1 / 3;
 }
 .grid-arcane .valeur-manif {
-  grid-column: 3 / 7;
+  grid-column: 3 / 5;
+}
+.grid-arcane .arc-oppose {
+  grid-column: 5 / 7;
 }
 .grid-arcane input[type="number"] {
   width: 2.5em;

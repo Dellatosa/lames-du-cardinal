@@ -54,10 +54,13 @@
         "valeurDraco": "Valeur Draconique",
         "competence": "Compétence",
         "manifestation": "Manifestation",
+        "arcaneBeni": "Arcane Béni",
+        "arcaneOppose": "Arcane Opposé",
+        "marque": "Marque",
 
         "nom": "Nom",
         "description" : "Description",
         "aucun": "Aucun",
-        "numero": "Numero"
+        "numero": "Numéro"
     }
 }

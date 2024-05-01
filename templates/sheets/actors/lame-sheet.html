@@ -230,5 +230,27 @@
                 </div>
             </div>
         </div>
+        <div class="tab" data-group="principal" data-tab="arcanes">
+            <div class="grid-arcanes">
+                {{#each arcanes as |arcane id|}}
+                    <div class="grid-arcane">
+                        <div class="titre-noir item-options" data-item-id="{{arcane._id}}">{{localize "LdC.arcaneBeni"}}</div>
+                        <div class="centre titre-align">{{localize "LdC.numero"}}</div>
+                        <div class="titre-align">{{arcane.name}}</div>
+                        <div class="centre titre-align">{{arcane.system.numero}}</div>
+                        {{#if arcane.system.arcaneOppose}}
+                            <div class="titre-rouge">{{localize "LdC.arcaneOppose"}}</div>
+                            <div class="centre titre-align">{{localize "LdC.numero"}}</div>
+                            <div class="titre-align">{{arcane.system.arcaneOppose.name}}</div>
+                            <div class="centre titre-align">{{arcane.system.arcaneOppose.system.numero}}</div>
+                        {{/if}}
+                        <div class="item-box col-all">
+                            <div>{{localize "LdC.marque"}}</div>
+                            <div>{{editor arcane.system.marqueDraconique target="arcane.system.marqueDraconique" button=false owner=true editable=false}}</div>
+                        </div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
     </section>
 </form>

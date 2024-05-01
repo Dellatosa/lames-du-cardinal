@@ -29,5 +29,9 @@ export default class  LdCItem extends Item {
                 data.feinte2Desc = "";
             }
         }
+
+        if(this.type == "Arcane") {
+             data.arcaneOppose = game.items.find(function (item) { return item.system.numero == 21 - data.numero});
+        }
     }
 }

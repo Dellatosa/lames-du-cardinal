@@ -19,6 +19,7 @@
             </select>
             <div class="titre-manif titre-align">{{localize "LdC.manifestation"}}</div>
             <div class="valeur-manif"><input name="system.manifestation" type="text" value="{{data.system.manifestation}}" placeholder="Manifestation"/></div>
+            {{#if data.system.arcaneOppose}}<div class="arc-oppose titre-align">Opposé : {{data.system.arcaneOppose.system.numero}} - {{data.system.arcaneOppose.name}}</div>{{/if}}
         </div>
         <div class="titre-rouge">Marque Draconique</div> 
         {{editor data.system.marqueDraconique target="system.marqueDraconique" button=true owner=true editable=true}}
