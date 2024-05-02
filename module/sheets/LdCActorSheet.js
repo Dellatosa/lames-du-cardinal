@@ -40,6 +40,9 @@ export default class LdCActorSheet extends ActorSheet {
 
         if (this.actor.isOwner) {
             new ContextMenu(html, ".item-options", this.profilContextMenu);
+
+            // Cocher une case de caracteristique
+            html.find(".case-carac").click(this._onCocherCaracteristique.bind(this));
         }
     }
 
@@ -71,4 +74,16 @@ export default class LdCActorSheet extends ActorSheet {
             }
         }
     ];
+
+    async _onCocherCaracteristique(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+    
+        let index = element.dataset.index;
+        let carac = element.dataset.carac;
+
+        let pointsUtilises = parseInt(this.actor.system.caracteritiques[carac].utilisee != index ? index : index - 1);
+
+        await this.actor.update({ [`system.caracteritiques.${carac}.utilisee`] : pointsUtilises });
+      }
 }

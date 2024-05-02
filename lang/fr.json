@@ -64,24 +64,24 @@
         "numero": "Numéro"
     },
     "CARDHANDSLIST": {
-        "Heading": "Card Hands",
-        "Open": "Open",
+        "Heading": "Mains de cartes",
+        "Open": "Ouvrir",
         "Menu": "Menu",
-        "FlipAll": "Flip All Cards",
-        "Favorite": "Set as Favorite",
-        "Unfavorite": "Unset as Favorite",
-        "Pin": "Pin",
-        "Unpin": "Unpin",
-        "Defaults": "Set Defaults",
-        "DefaultsMessage": "Set default card draw options for <strong>{name}</strong>",
-        "UnsetDefaults": "Unset Defaults",
+        "FlipAll": "Retourner les cartes",
+        "Favorite": "Ajouter aux Favoris",
+        "Unfavorite": "Supprimer des Favoris",
+        "Pin": "Epingler",
+        "Unpin": "Détacher",
+        "Defaults": "Paramétres par défaut",
+        "DefaultsMessage": "Sélectionner les options de pioche par défaut pour <strong>{name}</strong>",
+        "UnsetDefaults": "Supprimer le paramétrage par défaut",
         "ObserverLevel": {
-            "Name": "Include Hands with Observer Ownership",
-            "Hint": "Includes hands of which users have Observer-level ownership. Default is Owner-level ownership only."
+            "Name": "Mains de cartes - Afficher les mains de cartes avec les droits Observateur",
+            "Hint": "Afficher les mains de cartes pour lesquelles les utilisateurs dispose des droits Observateur. Par défaut, seules les mains avec les droits Propriétaire sont affichées."
         },
         "MinimalUIBehavior": {
-            "Name": "Minimal UI Module Behavior",
-            "Hint": "Set the interaction behavior pattern for the Card Hands list when using Minimal UI."
+            "Name": "Mains de cartes - Comportement pour le module Minimal UI",
+            "Hint": "Utiliser ce paramétrage pour adapter le module de gestion des mains de cartes si vous utilisez le module Minimal UI."
         }
     }
 }

@@ -87,8 +87,11 @@
   justify-content: center;
   align-items: center;
 }
-.grid-comp .ligne-coche-carac {
+.grid-comp .ligne-case-carac {
   margin: 0 5px;
+}
+.grid-comp .ligne-case-carac .case-carac {
+  font-size: 1.2em;
 }
 .grid-comp .titre-comp {
   align-self: center;

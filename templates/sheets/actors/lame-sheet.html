@@ -44,17 +44,21 @@
                 <div class="col2 signe"><img src="systems/lames-du-cardinal/images/signes/souffle.png"></div>
                 <div class="col1 valeur-carac">
                     <input name="system.caracteritiques.puissance.valeur" type="number" value="{{data.system.caracteritiques.puissance.valeur}}" min="0" max="4">
-                    <div class="ligne-coche-carac">
+                    <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.puissance.valeur}}
-                            <a class="coche-carac" title="p{{@index}}" data-index="p{{@index}}"><i class="fa-regular fa-square"></i></a>
+                            <a class="case-carac" title="{{@index}}" data-carac="puissance" data-index="{{@index}}">
+                                {{#if (gte data.system.caracteritiques.puissance.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                            </a>
                         {{/times}}
                     </div>
                 </div>
                 <div class="col2 valeur-carac">
                     <input name="system.caracteritiques.vivacite.valeur" type="number" value="{{data.system.caracteritiques.vivacite.valeur}}" min="0" max="4">
-                    <div class="ligne-coche-carac">
+                    <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.vivacite.valeur}}
-                            <a class="coche-carac" title="v{{@index}}" data-index="v{{@index}}"><i class="fa-regular fa-square"></i></a>
+                            <a class="case-carac" title="{{@index}}" data-carac="vivacite" data-index="{{@index}}">
+                                {{#if (gte data.system.caracteritiques.vivacite.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                            </a>
                         {{/times}}
                     </div>
                 </div>
@@ -104,17 +108,21 @@
                 <div class="col2 signe"><img src="systems/lames-du-cardinal/images/signes/ecaille.png"></div>
                 <div class="col1 valeur-carac">
                     <input name="system.caracteritiques.galanterie.valeur" type="number" value="{{data.system.caracteritiques.galanterie.valeur}}" min="0" max="4">
-                    <div class="ligne-coche-carac">
+                    <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.galanterie.valeur}}
-                            <a class="coche-carac" title="g{{@index}}" data-index="g{{@index}}"><i class="fa-regular fa-square"></i></a>
+                            <a class="case-carac" title="{{@index}}" data-carac="galanterie" data-index="{{@index}}">
+                                {{#if (gte data.system.caracteritiques.galanterie.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                            </a>
                         {{/times}}
                     </div>
                 </div>
                 <div class="col2 valeur-carac">
                     <input name="system.caracteritiques.finesse.valeur" type="number" value="{{data.system.caracteritiques.finesse.valeur}}" min="0" max="4">
-                    <div class="ligne-coche-carac">
+                    <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.finesse.valeur}}
-                            <a class="coche-carac" title="f{{@index}}" data-index="f{{@index}}"><i class="fa-regular fa-square"></i></a>
+                            <a class="case-carac" title="{{@index}}" data-carac="finesse" data-index="{{@index}}">
+                                {{#if (gte data.system.caracteritiques.finesse.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                            </a>
                         {{/times}}
                     </div>
                 </div>
@@ -219,11 +227,15 @@
                     {{#each epees as |epee id|}}
                         <div class="epee-item item-box">
                             <label class="item-options titre-epee" data-item-id="{{epee._id}}">{{epee.name}}</label>
-                            <div>Première feinte d'épee : {{epee.system.feinte1Nom}}</div>
-                            <div>{{editor epee.system.feinte1Desc target="epee.system.feinte1Desc" button=false owner=true editable=false}}</div>
-                            <div>Seconde feinte d'épee : {{epee.system.feinte2Nom}}</div>
-                            <div>{{editor epee.system.feinte2Desc target="epee.system.feinte2Desc" button=false owner=true editable=false}}</div>
-                            <div>Description</div>
+                            {{#if epee.system.feinte1Nom}}
+                                <div>Première feinte d'épée : {{epee.system.feinte1Nom}}</div>
+                                <div>{{editor epee.system.feinte1Desc target="epee.system.feinte1Desc" button=false owner=true editable=false}}</div>
+                            {{/if}}
+                            {{#if epee.system.feinte2Nom}}
+                                <div>Seconde feinte d'épée : {{epee.system.feinte2Nom}}</div>
+                                <div>{{editor epee.system.feinte2Desc target="epee.system.feinte2Desc" button=false owner=true editable=false}}</div>
+                                {{/if}}
+                            <div>Description de l'Epée</div>
                             <div>{{editor epee.system.description target="epee.system.description" button=false owner=true editable=false}}</div>
                         </div>
                     {{/each}}
