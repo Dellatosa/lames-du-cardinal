@@ -103,6 +103,8 @@ export class CardHandsList extends Application {
         const contextOptions = this._getHandContextOptions();
         // Pull up menu options from link
         new CardHandContextMenu(html, `.${handsModule.id}-context-menu-link`, contextOptions, { eventName: 'click' });
+        // Afficher la main
+        html.find(`.${handsModule.id}-eye a`)?.click(this._onAfficherCards.bind(this));
     }
 
     // Toggle display of the Card Hands hud setting for whether or not to display all Card Hands available
@@ -193,6 +195,17 @@ export class CardHandsList extends Application {
             cardsDrawn = await hand.drawDialog();
         }
     };
+
+    async _onAfficherCards(e) {
+        e.stopImmediatePropagation();
+        const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
+
+        if (game.modules.get('orcnog-card-viewer')?.active) {
+            hand.cards.forEach(card => { 
+                game.modules.get('orcnog-card-viewer').api.view(hand.name, card.name, false, false, false);
+            });
+        }
+    }
 
     // Flip a Card in a Cards Hand
     async _onFlipCard(e) {

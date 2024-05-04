@@ -50,7 +50,7 @@ Hooks.once("init", function() {
         LdCItem
     };
 
-    CONFIG.debug.hooks = true;
+    //CONFIG.debug.hooks = true;
 
     CONFIG.LdC = LdC;
     CONFIG.Actor.documentClass = LdCActor;
@@ -65,9 +65,7 @@ Hooks.once("init", function() {
     registerSystemSettings();
 
     // Register Handlebars Helpers
-	registerHandlebarsHelpers();
-
-    console.log(game);
+	  registerHandlebarsHelpers();
 })
 
 Hooks.on('setup', async function () {
@@ -92,6 +90,14 @@ Hooks.on('setup', async function () {
       await game.user.setFlag("lames-du-cardinal", 'pinned-hands', favoritedHands);
       await game.user.unsetFlag("lames-du-cardinal", 'favorite-hands');
     }
+
+    if (game.modules.get('orcnog-card-viewer')?.active) {
+      await this.setFlag("lames-du-cardinal", "card-viewer-active", true);
+    }
+    else {
+      await this.setFlag("lames-du-cardinal", "card-viewer-active", false);
+    }
+    
   });
   
   // When the Player List is rendered, render the module UI
@@ -100,23 +106,30 @@ Hooks.on('setup', async function () {
   });
 
   Hooks.on('dropActorSheetData', async(actor, actorSheet, itemUid) => {
+    const item = game.items.get(itemUid.uuid.slice(5));
+    console.log(item);
+
+    if(item.type == "Arcane") {
       let arcanes = actor.items.filter(function (item) { return item.type == "Arcane"});
 
       if(arcanes.length == 2) {
-        ui.notifications.error("Le personnage dispose déjà de deux arcanes béni. Veuillez en supprimer un pour en ajouter un nouveau");
+        ui.notifications.error("Le personnage dispose déjà de deux arcanes béni. Veuillez en supprimer un pour en ajouter un nouveau.");
         itemUid.uuid = null;
       }
-      else if(arcanes.length == 1) {
-        const item = game.items.get(itemUid.uuid.slice(5));
+      else if(arcanes.length == 1 && 21 - arcanes[0].system.numero == item.system.numero) {
+        ui.notifications.error("Le personnage dispose déjà de l'arcane opposé. Vous ne pouvez pas choisir cette arcane.");
+        itemUid.uuid = null;
       }
-
-      
+    }
+    
+    if(item.type == "Profil") {
       let profils = actor.items.filter(function (item) { return item.type == "Profil"});
 
       if(profils.length == 2) {
-        ui.notifications.error("Le personnage dispose déjà de deux profils. Veuillez en supprimer un pour en ajouter un nouveau");
+        ui.notifications.error("Le personnage dispose déjà de deux profils. Veuillez en supprimer un pour en ajouter un nouveau.");
         itemUid.uuid = null
       }
+    }
   });
   
   /* Hooks to listen to changes in settings and Card Hands data */

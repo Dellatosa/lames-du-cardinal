@@ -82,6 +82,7 @@
         "MinimalUIBehavior": {
             "Name": "Mains de cartes - Comportement pour le module Minimal UI",
             "Hint": "Utiliser ce paramétrage pour adapter le module de gestion des mains de cartes si vous utilisez le module Minimal UI."
-        }
+        },
+        "Afficher": "Afficher les cartes"
     }
 }
