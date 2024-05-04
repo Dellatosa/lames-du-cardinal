@@ -53,6 +53,7 @@ export default class LdCActorSheet extends ActorSheet {
             callback: e => {
                 const data = e[0].dataset;
                 const item = this.actor.items.get(data.itemId);
+
                 item.sheet.render(true);
             }
         },

@@ -6,10 +6,16 @@ import LdCActorSheet from "./sheets/LdCActorSheet.js";
 import LdCItemSheet from "./sheets/LdCItemSheet.js";
 import { CardHandsList } from './card-hands/CardHandsList.mjs';
 
-export const handsModule = {
+  export const handsModule = {
     id: 'card-hands-list',
     translationPrefix: 'CARDHANDSLIST',
+    defaultDiscardPile : "Defausse"
   };
+
+  export async function playCard(hand, destPile, card) {
+    const cards = await hand.pass( destPile, [card._id], {action: 'play', chatNotification: false});
+    console.log(cards);
+  }
 
   function registerSystemSettings() {
 

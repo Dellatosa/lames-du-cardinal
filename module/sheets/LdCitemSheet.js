@@ -22,8 +22,21 @@ export default class LdCItemSheet extends ItemSheet {
         data.feintes = game.items.filter(function (item) { return item.type == "Feinte"});
         data.ecoles = game.items.filter(function (item) { return item.type == "Ecole"});
 
-        console.log(data);
-        
+        console.log(data.item);
+               
         return data;
     }
+
+    activateListeners(html) {
+        super.activateListeners(html);
+
+        html.find(".upd-effects").click(this._onUpdateActiveEffects.bind(this));
+    }
+
+    _onUpdateActiveEffects(event) {
+        event.preventDefault();
+
+        this.item.updateActiveEffects();
+    }
+    
 }

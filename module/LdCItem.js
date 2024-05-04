@@ -34,4 +34,22 @@ export default class  LdCItem extends Item {
              data.arcaneOppose = game.items.find(function (item) { return item.system.numero == 21 - data.numero});
         }
     }
+
+    updateActiveEffects() {
+        for (let [key, comp] of Object.entries(CONFIG.LdC.competences)) {
+            
+            if(key != "aucun") {
+                if(this.effects.getName(key) == null) {
+                    const effectData = {
+                        label: key,
+                        icon: "icons/svg/combat.svg",
+                        changes: [],
+                        duration: {},
+                        flags: {},
+                    };
+                    this.createEmbeddedDocuments("ActiveEffect", [effectData]);
+                }
+            }
+        }
+    }
 }

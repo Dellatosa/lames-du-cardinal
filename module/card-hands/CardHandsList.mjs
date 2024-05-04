@@ -1,4 +1,4 @@
-import { handsModule } from "../lames-du-cardinal.js";
+import { handsModule, playCard } from "../lames-du-cardinal.js";
 import { CardHandContextMenu } from "./CardHandContextMenu.mjs";
 /**
  * The UI element which displays the list of Hands available to the User.
@@ -94,8 +94,8 @@ export class CardHandsList extends Application {
         html.find(`.${handsModule.id}-card`)?.click(this._onOpenCard.bind(this));
         // Get a collection of card images
         const cardImages = html.find(`.${handsModule.id}-card-image`);
-        // Flip a Card
-        cardImages?.on('contextmenu', this._onFlipCard.bind(this));
+        // Jouer une carte
+        cardImages?.on('contextmenu', this._onJouerCarte.bind(this));
         // Drag a Card
         cardImages?.on('dragstart', this._onDragCard.bind(this));
         // Drop a Card
@@ -105,7 +105,7 @@ export class CardHandsList extends Application {
         // Pull up menu options from link
         new CardHandContextMenu(html, `.${handsModule.id}-context-menu-link`, contextOptions, { eventName: 'click' });
         // Afficher la main
-        html.find(`.${handsModule.id}-eye a`)?.click(this._onAfficherCards.bind(this));
+        html.find(`.${handsModule.id}-eye a`)?.click(this._onAfficherCartes.bind(this));
     }
 
     // Toggle display of the Card Hands hud setting for whether or not to display all Card Hands available
@@ -205,27 +205,42 @@ export class CardHandsList extends Application {
         }
     };
 
-    async _onAfficherCards(e) {
+    async _onAfficherCartes(e) {
         e.stopImmediatePropagation();
         const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
+
+        console.log(hand);
 
         if (game.user.getFlag("lames-du-cardinal", 'card-viewer-active')) {
             const cards = [];
             cards.push(...hand.cards.map(item => item._id));
 
+            console.log(cards);
+
             const myFancyDealer = await game.modules.get('orcnog-card-viewer').api.CardDealer({
                 deckName: hand.name,
-                discardPileName: 'Defausse'
+                discardPileName: handsModule.defaultDiscardPile
             });
 
             await myFancyDealer.view(cards, false, false, false, false);
         }
     }
 
-    // Flip a Card in a Cards Hand
-    async _onFlipCard(e) {
+    // Popup de validation du jeu d'une carte depuis la main
+    async _onJouerCarte(e) {
+        e.stopImmediatePropagation();
+        const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
+        const destPile = game.cards.getName(handsModule.defaultDiscardPile);
         const card = await fromUuid(e.target.dataset.uuid);
-        await card.flip();
+
+        let content = `<p>Etes-vous certain de vouloir jouer la carte <b>${card.name}</b> ?<p>`
+        let dlg = Dialog.confirm({
+            title: "Jouer cette carte ?",
+            content: content,
+            yes: () => playCard(hand, destPile, card),
+            //no: () =>, On ne fait rien sur le 'Non'
+            defaultYes: false
+        });
     }
 
     // Drag a Card in a Cards Hand
