@@ -92,10 +92,10 @@ Hooks.on('setup', async function () {
     }
 
     if (game.modules.get('orcnog-card-viewer')?.active) {
-      await this.setFlag("lames-du-cardinal", "card-viewer-active", true);
+      await game.user.setFlag("lames-du-cardinal", "card-viewer-active", true);
     }
     else {
-      await this.setFlag("lames-du-cardinal", "card-viewer-active", false);
+      await game.user.setFlag("lames-du-cardinal", "card-viewer-active", false);
     }
     
   });

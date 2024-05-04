@@ -62,6 +62,7 @@ export class CardHandsList extends Application {
             pinned: game?.user?.getFlag("lames-du-cardinal", 'pinned-hands'),
             system: game.system.id,
             favorite: '',
+            cardViewActive: game?.user?.getFlag("lames-du-cardinal", 'card-viewer-active')
         };
 
         if (game.system.id === 'swade') {
@@ -130,12 +131,20 @@ export class CardHandsList extends Application {
         // Prevent multiple executions
         e.preventDefault();
         const card = await fromUuid(e.target.dataset.uuid);
-        // Render the image popout
-        const imgPopout = new ImagePopout(card.img, {
-            title: card.name,
-            uuid: card.uuid
-        });
-        await imgPopout.render(true);
+
+        if (game.user.getFlag("lames-du-cardinal", 'card-viewer-active')) {
+            const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
+            game.modules.get('orcnog-card-viewer').api.view(hand.name, card.name, false, false, false);
+        } 
+        else {
+            // Render the image popout
+            const imgPopout = new ImagePopout(card.img, {
+                title: card.name,
+                uuid: card.uuid
+            });
+            await imgPopout.render(true);
+        }
+        
     }
 
     // Favorite Cards Hand
@@ -200,10 +209,16 @@ export class CardHandsList extends Application {
         e.stopImmediatePropagation();
         const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
 
-        if (game.modules.get('orcnog-card-viewer')?.active) {
-            hand.cards.forEach(card => { 
-                game.modules.get('orcnog-card-viewer').api.view(hand.name, card.name, false, false, false);
+        if (game.user.getFlag("lames-du-cardinal", 'card-viewer-active')) {
+            const cards = [];
+            cards.push(...hand.cards.map(item => item._id));
+
+            const myFancyDealer = await game.modules.get('orcnog-card-viewer').api.CardDealer({
+                deckName: hand.name,
+                discardPileName: 'Defausse'
             });
+
+            await myFancyDealer.view(cards, false, false, false, false);
         }
     }
 
