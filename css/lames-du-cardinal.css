@@ -49,6 +49,10 @@
 .ldc.sheet.actor .sheet-header .titre-nom input[type="text"] {
   height: max-content;
 }
+.ldc.sheet.actor .sheet-header .profil-item {
+  display: flex;
+  align-items: center;
+}
 .grid-identite {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
@@ -207,6 +211,12 @@
 }
 .ldc.sheet.item .sheet-content .separateur15 {
   margin-top: 15px;
+}
+.ldc.sheet.item .sheet-header a {
+  flex: 0 15px;
+}
+.ldc.sheet.item .sheet-header h1 {
+  flex: 3;
 }
 .ldc.sheet.item .sheet-content.ecole .editor {
   height: 250px;

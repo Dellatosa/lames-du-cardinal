@@ -19,8 +19,9 @@
                 <label>Profils</label>
                 <div class="profils">
                     {{#each profils as |profil id|}}
-                        <div class="profil-item item-box item-options" data-item-id="{{profil._id}}">
+                        <div class="profil-item item-box">
                             <label>{{profil.name}}</label>
+                            <a class="profil-suppr" title="{{localize 'LdC.supprProfil'}}" data-item-id="{{profil._id}}"><i class="fa-solid fa-xmark"></i></a>
                         </div>
                     {{/each}}
                 </div>
@@ -183,6 +184,7 @@
                 <div class="valeur-comp"><input name="system.competences.escrime.valeur" type="number" value="{{data.system.competences.escrime.valeur}}" min="0" max="8"></div>
                 <div class="reus-auto">( {{data.system.competences.escrime.reussiteAuto}} )</div>
             </div>
+            <!-- <i class="fa-solid fa-square-xmark"></i><i class="fa-solid fa-square-check"></i> -->
         </div>
         <div class="tab" data-group="principal" data-tab="escrime">
             <div class="grid-escrime">

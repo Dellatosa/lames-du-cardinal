@@ -21,8 +21,6 @@ export default class LdCItemSheet extends ItemSheet {
 
         data.feintes = game.items.filter(function (item) { return item.type == "Feinte"});
         data.ecoles = game.items.filter(function (item) { return item.type == "Ecole"});
-
-        console.log(data.item);
                
         return data;
     }

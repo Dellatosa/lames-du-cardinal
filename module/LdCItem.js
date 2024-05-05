@@ -37,18 +37,27 @@ export default class  LdCItem extends Item {
 
     updateActiveEffects() {
         for (let [key, comp] of Object.entries(CONFIG.LdC.competences)) {
-            
+
             if(key != "aucun") {
-                if(this.effects.getName(key) == null) {
-                    const effectData = {
-                        label: key,
-                        icon: "icons/svg/combat.svg",
-                        changes: [],
-                        duration: {},
-                        flags: {},
-                    };
-                    this.createEmbeddedDocuments("ActiveEffect", [effectData]);
+                if(this.effects.getName(key) != null) {
+                    this.effects.getName(key).delete();
                 }
+
+                console.log(`Création de l'active effect ${this.effects.getName(key).name}`, this.system[key]);
+                const effectData = {
+                    label: key,
+                    icon: "icons/svg/combat.svg",
+                    changes: [{
+                        key: `system.competences.${key}.valeur`,
+                        mode: 2,
+                        value: this.system[key]
+                    }],
+                    duration: {},
+                    flags: {},
+                };
+                this.createEmbeddedDocuments("ActiveEffect", [effectData]);
+
+                console.log(this.effects.getName(key));
             }
         }
     }

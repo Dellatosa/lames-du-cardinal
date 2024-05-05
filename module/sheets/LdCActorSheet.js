@@ -39,7 +39,10 @@ export default class LdCActorSheet extends ActorSheet {
         super.activateListeners(html);
 
         if (this.actor.isOwner) {
-            new ContextMenu(html, ".item-options", this.profilContextMenu);
+            //new ContextMenu(html, ".item-options", this.profilContextMenu);
+
+            // Supprimer un profil
+            html.find(".profil-suppr").click(this._onSupprimerProfil.bind(this));
 
             // Cocher une case de caracteristique
             html.find(".case-carac").click(this._onCocherCaracteristique.bind(this));
@@ -75,6 +78,22 @@ export default class LdCActorSheet extends ActorSheet {
             }
         }
     ];
+
+    _onSupprimerProfil(event) {
+        event.preventDefault();
+
+        const element = event.currentTarget;
+        const item = this.actor.items.get(element.dataset.itemId);
+
+        let content = `<p>${item.type} : ${item.name}<br>Etes-vous certain de vouloir supprimer cet objet ?<p>`
+        let dlg = Dialog.confirm({
+        title: "Confirmation de suppression",
+        content: content,
+        yes: () => item.delete(),
+        //no: () =>, On ne fait rien sur le 'Non'
+        defaultYes: false
+        });
+    }
 
     async _onCocherCaracteristique(event) {
         event.preventDefault();

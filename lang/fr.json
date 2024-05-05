@@ -61,7 +61,9 @@
         "nom": "Nom",
         "description" : "Description",
         "aucun": "Aucun",
-        "numero": "Numéro"
+        "numero": "Numéro",
+        "majActiveEffects": "Mettre à jour les 'Active effects'",
+        "supprProfil": "Supprimer le profil"
     },
     "CARDHANDSLIST": {
         "Heading": "Mains de cartes",
