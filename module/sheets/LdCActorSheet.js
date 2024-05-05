@@ -39,13 +39,22 @@ export default class LdCActorSheet extends ActorSheet {
         super.activateListeners(html);
 
         if (this.actor.isOwner) {
-            //new ContextMenu(html, ".item-options", this.profilContextMenu);
+            new ContextMenu(html, ".item-options", this.profilContextMenu);
 
             // Supprimer un profil
             html.find(".profil-suppr").click(this._onSupprimerProfil.bind(this));
 
+            // Supprimer un Arcane
+            html.find(".arcane-suppr").click(this._onSupprimerArcane.bind(this));
+
             // Cocher une case de caracteristique
             html.find(".case-carac").click(this._onCocherCaracteristique.bind(this));
+
+            // Cocher une case de Ressources
+            html.find(".case-ress").click(this._onCocherRessources.bind(this));
+
+            // Cocher une case de Contacts
+            html.find(".case-contact").click(this._onCocherContacts.bind(this));
         }
     }
 
@@ -85,7 +94,23 @@ export default class LdCActorSheet extends ActorSheet {
         const element = event.currentTarget;
         const item = this.actor.items.get(element.dataset.itemId);
 
-        let content = `<p>${item.type} : ${item.name}<br>Etes-vous certain de vouloir supprimer cet objet ?<p>`
+        let content = `<p>Etes-vous certain de vouloir supprimer le profil <b>${item.name}</b> ?<p>`
+        let dlg = Dialog.confirm({
+        title: "Confirmation de suppression",
+        content: content,
+        yes: () => item.delete(),
+        //no: () =>, On ne fait rien sur le 'Non'
+        defaultYes: false
+        });
+    }
+
+    _onSupprimerArcane(event) {
+        event.preventDefault();
+
+        const element = event.currentTarget;
+        const item = this.actor.items.get(element.dataset.itemId);
+
+        let content = `<p>Etes-vous certain de vouloir supprimer l'Arcane béni <b>${item.name}</b> ?<p>`
         let dlg = Dialog.confirm({
         title: "Confirmation de suppression",
         content: content,
@@ -105,5 +130,27 @@ export default class LdCActorSheet extends ActorSheet {
         let pointsUtilises = parseInt(this.actor.system.caracteritiques[carac].utilisee != index ? index : index - 1);
 
         await this.actor.update({ [`system.caracteritiques.${carac}.utilisee`] : pointsUtilises });
-      }
+    }
+
+    async _onCocherRessources(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+    
+        let index = element.dataset.index;
+
+        let pointsUtilises = parseInt(this.actor.system.secondaires.ressources.utilisee != index ? index : index - 1);
+
+        await this.actor.update({ "system.secondaires.ressources.utilisee" : pointsUtilises });
+    }
+
+    async _onCocherContacts(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+    
+        let index = element.dataset.index;
+
+        let pointsUtilises = parseInt(this.actor.system.secondaires.contacts.utilisee != index ? index : index - 1);
+
+        await this.actor.update({ "system.secondaires.contacts.utilisee" : pointsUtilises });
+    }
 }

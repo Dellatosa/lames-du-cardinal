@@ -35,7 +35,8 @@ export default class  LdCItem extends Item {
         }
     }
 
-    updateActiveEffects() {
+    // Mise à jour des Active effects de profils
+    updateProfilActiveEffects() {
         for (let [key, comp] of Object.entries(CONFIG.LdC.competences)) {
 
             if(key != "aucun") {
@@ -43,7 +44,7 @@ export default class  LdCItem extends Item {
                     this.effects.getName(key).delete();
                 }
 
-                console.log(`Création de l'active effect ${this.effects.getName(key).name}`, this.system[key]);
+                console.log(`Création de l'active effect ${key}`, this.system[key]);
                 const effectData = {
                     label: key,
                     icon: "icons/svg/combat.svg",
@@ -56,9 +57,31 @@ export default class  LdCItem extends Item {
                     flags: {},
                 };
                 this.createEmbeddedDocuments("ActiveEffect", [effectData]);
-
-                console.log(this.effects.getName(key));
             }
         }
+    }
+
+    // Mise à jour de l'Active effect de l'Arcane
+    updateArcaneActiveEffect() {
+        let comp = this.system.competence;
+
+        this.transferredEffects.forEach( effect => {
+            effect.delete();
+        });
+
+        console.log(`Création de l'active effect ${comp}`);
+        const effectData = {
+            label: comp,
+            icon: "icons/svg/combat.svg",
+            changes: [{
+                key: `system.competences.${comp}.valeur`,
+                mode: 2,
+                value: "1"
+            }],
+            duration: {},
+            flags: {},
+        };
+
+        this.createEmbeddedDocuments("ActiveEffect", [effectData]);
     }
 }

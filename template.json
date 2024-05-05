@@ -15,28 +15,24 @@
             "caracteritiques": {
                 "puissance": {
                     "valeur": 0,
-                    "label": "Puissance",
                     "signe": "griffe",
                     "max": 4,
                     "utilisee": 0
                 },
                 "vivacite": {
                     "valeur": 0,
-                    "label": "Vivacité",
                     "signe": "souffle",
                     "max": 4,
                     "utilisee": 0
                 },
                 "galanterie": {
                     "valeur": 0,
-                    "label": "Galanterie",
                     "signe": "sang",
                     "max": 4,
                     "utilisee": 0
                 },
                 "finesse": {
                     "valeur": 0,
-                    "label": "Finesse",
                     "signe": "ecaille",
                     "max": 4,
                     "utilisee": 0
@@ -54,12 +50,14 @@
                     "utilisee": 0
                 },
                 "ressources": {
-                    "value": 0,
-                    "max": 8
+                    "valeur": 0,
+                    "max": 8,
+                    "utilisee": 0
                 },
                 "contacts": {
-                    "value": 0,
-                    "max": 8
+                    "valeur": 0,
+                    "max": 8,
+                    "utilisee": 0
                 }
             },
             "competences": {
@@ -68,7 +66,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 4,
-                    "label": "Athlétisme",
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -77,7 +74,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 10,
-                    "label": "Autorité",
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -86,7 +82,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 6,
-                    "label": "Bagarre",
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -95,7 +90,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 21,
-                    "label": "Equitation",
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -104,7 +98,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 8,
-                    "label": "Volonté",
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -113,7 +106,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 12,
-                    "label": "Création",
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -122,7 +114,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 20,
-                    "label": "Débrouille",
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -131,7 +122,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 17,
-                    "label": "Duperie",
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -140,7 +130,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 14,
-                    "label": "Furtivité",
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -149,7 +138,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 5,
-                    "label": "Vigilance",
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -158,7 +146,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 15,
-                    "label": "Intrigue",
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -167,7 +154,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 2,
-                    "label": "Négoce",
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -176,7 +162,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 16,
-                    "label": "Persuasion",
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -185,7 +170,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 13,
-                    "label": "Séduction",
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -194,7 +178,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 3,
-                    "label": "Stratégie",
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -203,7 +186,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 19,
-                    "label": "Erudition",
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -212,7 +194,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 18,
-                    "label": "Investigation",
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -221,7 +202,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 1,
-                    "label": "Médecine",
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -230,7 +210,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 11,
-                    "label": "Technique",
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -239,7 +218,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 9,
-                    "label": "Tir",
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -248,7 +226,6 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 0,
-                    "label": "Occultisme",
                     "carac": "",
                     "signe": ""
                 },
@@ -257,12 +234,11 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 7,
-                    "label": "Escrime",
                     "carac": "",
                     "signe": ""
                 }
             },
-            "ecole" : "",
+            "ecole" : "aucun",
             "experience": {
                 "acquise": 0,
                 "depensee": 0
@@ -340,8 +316,10 @@
         },
         "Equipement" : {
             "description": "",
+            "effet": "",
+            "qualite": "",
             "cout" : "",
-            "niveauRessource": 0
+            "nivRess": 0
         }
     }
 }

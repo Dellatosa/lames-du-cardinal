@@ -2,11 +2,11 @@
     <header class="sheet-header">
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="128" width="128">
         <div class="actor-infos">
-            <div class="titre-nom"><input name="name" type="text" value="{{actor.name}}" placeholder="Nom"/></div>
+            <div class="titre-nom"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'LdC.nom'}}"/></div>
             <div class="grid-identite">
-                <label>Age</label>
-                <input name="system.age" type="text" value="{{data.system.age}}" placeholder="Age">
-                <label>Sexe</label>
+                <label>{{localize "LdC.age"}}</label>
+                <input name="system.age" type="text" value="{{data.system.age}}" placeholder="{{localize 'LdC.age'}}">
+                <label>{{localize "LdC.sexe"}}</label>
                 <select name="system.sexe">
                     {{#select data.system.sexe}}
                     {{#each config.sexe as |sexe keySexe|}}
@@ -14,9 +14,9 @@
                     {{/each}}
                     {{/select}} 
                 </select>
-                <label>Origine</label>
-                <input name="system.origine" type="text" value="{{data.system.origine}}" placeholder="Origine">
-                <label>Profils</label>
+                <label>{{localize "LdC.origine"}}</label>
+                <input name="system.origine" type="text" value="{{data.system.origine}}" placeholder="{{localize 'LdC.origine'}}">
+                <label>{{localize "LdC.profils"}}</label>
                 <div class="profils">
                     {{#each profils as |profil id|}}
                         <div class="profil-item item-box">
@@ -30,10 +30,10 @@
     </header>
     <div class="sheet-fixed-content">
         <nav class="sheet-tabs tabs" data-group="principal">
-            <a class="item" data-tab="caracteristiques">Caractéristiques</a>
-            <a class="item" data-tab="escrime">Escrime</a>
-            <a class="item" data-tab="arcanes">Arcanes</a>
-            <a class="item" data-tab="ressContacts">Ressources / Contacts</a>
+            <a class="item" data-tab="caracteristiques">{{localize "LdC.caracteristiques"}}</a>
+            <a class="item" data-tab="escrime">{{localize "LdC.escrime"}}</a>
+            <a class="item" data-tab="arcanes">{{localize "LdC.arcanes"}}</a>
+            <a class="item" data-tab="ressContacts">{{localize "LdC.ressContacts"}}</a>
         </nav>
     </div>
     <section class="sheet-body">
@@ -188,7 +188,7 @@
         </div>
         <div class="tab" data-group="principal" data-tab="escrime">
             <div class="grid-escrime">
-                <div class="col-all titre-noir centre">Escrime</div>
+                <div class="col-all titre-noir centre separateur10">{{localize "LdC.escrime"}}</div>
                 <div class="titre-align">{{localize "LdC.ecole"}}</div>
                 <select name="system.ecole">
                     {{#select data.system.ecole}}
@@ -203,14 +203,14 @@
                     <div class="titre-align"><img src="systems/lames-du-cardinal/images/signes/{{data.system.ecoleSigne}}.png"></div>
                     <div class="titre-align">{{configLocalize "signes" data.system.ecoleSigne}}</div>
                     <details class="col-all">
-                        <summary class="center titre-rouge"><label>Description de l'école d'escrime</label></summary>
+                        <summary class="center titre-rouge"><label>{{localize "LdC.descEcole"}}</label></summary>
                         <div class="col-all">
                             {{editor data.system.ecoleDesc target="system.ecoleDesc" button=false owner=true editable=false}}
                         </div>
                     </details>
                 {{/if}}
-                <div class="col1 titre-noir centre separateur10">Feintes</div>
-                <div class="col2 titre-noir centre separateur10">Bottes</div>
+                <div class="col1 titre-noir centre separateur10">{{localize "LdC.feintes"}}</div>
+                <div class="col2 titre-noir centre separateur10">{{localize "LdC.bottes"}}</div>
                 <div class="feintes col1">
                     {{#each feintes as |feinte id|}}
                         <div class="feinte-item item-box">
@@ -231,7 +231,7 @@
                     {{/each}}
                 </div>
             </div>
-            <div class="titre-rouge centre separateur10">Epées</div>
+            <div class="titre-rouge centre separateur10">{{localize "LdC.epees"}}</div>
                 {{#each epees as |epee id|}}
                     <div class="epee-item item-box">
                         <div class="grid-epees">
@@ -253,10 +253,11 @@
         <div class="tab" data-group="principal" data-tab="arcanes">
             {{#each arcanes as |arcane id|}}
                 <div class="grid-arcanes separateur15">
-                    <div class="titre-noir item-options" data-item-id="{{arcane._id}}">{{localize "LdC.arcaneBeni"}}</div>
+                    <div class="titre-noir">{{localize "LdC.arcaneBeni"}}</div>
                     <div class="centre titre-align">{{localize "LdC.numero"}}</div>
                     <div class="titre-rouge">{{localize "LdC.arcaneOppose"}}</div>
                     <div class="centre titre-align">{{localize "LdC.numero"}}</div>
+                    <div class="centre titre-align"><a class="arcane-suppr" title="{{localize 'LdC.supprArcane'}}" data-item-id="{{arcane._id}}"><i class="fa-solid fa-xmark"></i></a></div>
                     <div class="titre-align">{{arcane.name}}</div>
                     <div class="centre titre-align">{{arcane.system.numero}}</div>
                     {{#if arcane.system.arcaneOppose}}    
@@ -269,6 +270,34 @@
                     </div>
                 </div>
             {{/each}}
+        </div>
+        <div class="tab" data-group="principal" data-tab="ressContacts">
+            <div class="grid-ressContacts separateur10">
+                <div class="centre titre-rouge">{{localize "LdC.ressources"}}</div>
+                <div class="centre titre-rouge">{{localize "LdC.contacts"}}</div>
+                <div class="valeur-ress">
+                    <input name="system.secondaires.ressources.valeur" type="number" value="{{data.system.secondaires.ressources.valeur}}" min="0" max="8">
+                    <div class="ligne-case-ress">
+                        {{#times data.system.secondaires.ressources.valeur}}
+                            <a class="case-ress" title="{{@index}}" data-index="{{@index}}">
+                                {{#if (gte data.system.secondaires.ressources.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                            </a>
+                        {{/times}}
+                    </div>
+                </div>
+                <div class="valeur-contact">
+                    <input name="system.secondaires.contacts.valeur" type="number" value="{{data.system.secondaires.contacts.valeur}}" min="0" max="8">
+                    <div class="ligne-case-contact">
+                        {{#times data.system.secondaires.contacts.valeur}}
+                            <a class="case-contact" title="{{@index}}" data-index="{{@index}}">
+                                {{#if (gte data.system.secondaires.contacts.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                            </a>
+                        {{/times}}
+                    </div>
+                </div>
+                <div class="centre titre-noir separateur10">{{localize "LdC.possessions"}}</div>
+                <div class="centre titre-noir separateur10">{{localize "LdC.relations"}}</div>
+            </div>
         </div>
     </section>
 </form>

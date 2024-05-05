@@ -2,7 +2,7 @@ export const LdC = {};
 
 LdC.sexe = {
     aucun: "",
-    feminin: "Feminin",
+    feminin: "Féminin",
     masculin: "Masculin"
 }
 
@@ -46,4 +46,11 @@ LdC.categorie = {
     courtisans: "Courtisans",
     lettres : "Lettrés",
     roturiers : "Roturiers"
+}
+
+LdC.qualiteEquip = {
+    normale: "Normale",
+    superieure: "Supérieure",
+    exceptionelle : "Exceptionelle",
+    unique : "Unique"
 }

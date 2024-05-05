@@ -17,38 +17,7 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     console.log(cards);
   }
 
-  function registerSystemSettings() {
-
-    /* Module Settings - card-hand-list */
-    // Register the ownership level option
-    game.settings.register("lames-du-cardinal", 'observerLevel', {
-        name: `${handsModule.translationPrefix}.ObserverLevel.Name`,
-        hint: `${handsModule.translationPrefix}.ObserverLevel.Hint`,
-        scope: 'world',
-        config: true,
-        type: Boolean,
-        default: false,
-        onChange: () => ui.cardHands.render(true)
-    });
-
-    if (game.modules.get('minimal-ui')?.active) {
-        game.settings.register("lames-du-cardinal", 'minimal-ui-behavior', {
-        name: `${handsModule.translationPrefix}.MinimalUIBehavior.Name`,
-        hint: `${handsModule.translationPrefix}.MinimalUIBehavior.Hint`,
-        scope: 'world',
-        config: true,
-        type: String,
-        choices: {
-            "always": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
-            "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
-        },
-        default: "always",
-        requiresReload: true,
-        });
-    }
-  }
-
-Hooks.once("init", function() {
+  Hooks.once("init", function() {
     console.log("Les Lames du Cardinal | Initialisation du système Les Lames du Cardinal, le JDR");
 
     game.LdC = {
@@ -74,7 +43,7 @@ Hooks.once("init", function() {
 	  registerHandlebarsHelpers();
 })
 
-Hooks.on('setup', async function () {
+  Hooks.on('setup', async function () {
 
     console.log("Les Lames du Cardinal | Parametrage du module de gestion des mains de cartes")
     // Preload the template and render the UI
@@ -138,6 +107,37 @@ Hooks.on('setup', async function () {
     }
   });
   
+  function registerSystemSettings() {
+
+    /* Module Settings - card-hand-list */
+    // Register the ownership level option
+    game.settings.register("lames-du-cardinal", 'observerLevel', {
+        name: `${handsModule.translationPrefix}.ObserverLevel.Name`,
+        hint: `${handsModule.translationPrefix}.ObserverLevel.Hint`,
+        scope: 'world',
+        config: true,
+        type: Boolean,
+        default: false,
+        onChange: () => ui.cardHands.render(true)
+    });
+
+    if (game.modules.get('minimal-ui')?.active) {
+        game.settings.register("lames-du-cardinal", 'minimal-ui-behavior', {
+        name: `${handsModule.translationPrefix}.MinimalUIBehavior.Name`,
+        hint: `${handsModule.translationPrefix}.MinimalUIBehavior.Hint`,
+        scope: 'world',
+        config: true,
+        type: String,
+        choices: {
+            "always": game.i18n.localize("MinimalUI.SettingsAlwaysVisible"),
+            "autohide": game.i18n.localize("MinimalUI.SettingsAutoHide"),
+        },
+        default: "always",
+        requiresReload: true,
+        });
+    }
+  }
+
   /* Hooks to listen to changes in settings and Card Hands data */
   // Array of Card Hooks
   const cardHandsListCardHooksArray = [

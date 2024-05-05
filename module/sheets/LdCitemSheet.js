@@ -19,13 +19,13 @@ export default class LdCItemSheet extends ItemSheet {
         const data = super.getData();
         data.config = CONFIG.LdC;
 
-        data.feintes = game.items.filter(function (item) { return item.type == "Feinte"});
-        data.ecoles = game.items.filter(function (item) { return item.type == "Ecole"});
+        data.feintes = game.items.filter(function (item) { return item.type == "Feinte"} );
+        data.ecoles = game.items.filter(function (item) { return item.type == "Ecole"} );
                
         return data;
     }
 
-    activateListeners(html) {
+    /* activateListeners(html) {
         super.activateListeners(html);
 
         html.find(".upd-effects").click(this._onUpdateActiveEffects.bind(this));
@@ -34,7 +34,18 @@ export default class LdCItemSheet extends ItemSheet {
     _onUpdateActiveEffects(event) {
         event.preventDefault();
 
-        this.item.updateActiveEffects();
-    }
-    
+        this.item.updateProfilActiveEffects();
+        ui.notifications.info("Mise à jour des 'Active effects' terminée.");
+    } */
 }
+
+Hooks.on('closeLdCItemSheet', async (itemSheet) => {
+
+    if(itemSheet.item.type == "Profil") {
+        itemSheet.item.updateProfilActiveEffects();
+    }
+
+    if(itemSheet.item.type == "Arcane") { 
+        itemSheet.item.updateArcaneActiveEffect();
+    }
+});
