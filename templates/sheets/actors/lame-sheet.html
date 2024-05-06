@@ -297,6 +297,20 @@
                 </div>
                 <div class="centre titre-noir separateur10">{{localize "LdC.possessions"}}</div>
                 <div class="centre titre-noir separateur10">{{localize "LdC.relations"}}</div>
+                <div class="equip">
+                    {{#each equipements as |equip id|}}
+                        <div class="equip-item item-box">
+                            <div class="equip-entete">
+                                <div class="item-options equip-nom" data-item-id="{{equip._id}}">{{equip.name}}</div>
+                                <label>Qualité : {{equip.system.qualite}}</label>
+                            </div>
+                            {{#if equip.system.effet}}
+                                <div class="row-titre"> Effet : {{equip.system.effet}}</div>
+                            {{/if}}
+                            <div>{{editor equip.system.description target="equip.system.description" button=false owner=true editable=false}}</div>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </section>

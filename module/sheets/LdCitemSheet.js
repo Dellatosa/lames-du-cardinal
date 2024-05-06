@@ -24,19 +24,6 @@ export default class LdCItemSheet extends ItemSheet {
                
         return data;
     }
-
-    /* activateListeners(html) {
-        super.activateListeners(html);
-
-        html.find(".upd-effects").click(this._onUpdateActiveEffects.bind(this));
-    }
-
-    _onUpdateActiveEffects(event) {
-        event.preventDefault();
-
-        this.item.updateProfilActiveEffects();
-        ui.notifications.info("Mise à jour des 'Active effects' terminée.");
-    } */
 }
 
 Hooks.on('closeLdCItemSheet', async (itemSheet) => {

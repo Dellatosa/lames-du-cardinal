@@ -213,6 +213,18 @@
   text-align: center;
   margin: 2px 0;
 }
+.equip-item .equip-entete {
+  display: flex;
+  align-items: center;
+}
+.equip-item .equip-nom {
+  font-size: 1.2em;
+  flex-grow: 3;
+}
+.equip-item .editor {
+  background-color: rgba(82, 77, 77, 0.075);
+  font-size: 0.9em;
+}
 .ldc.sheet.item .sheet-content {
   display: flex;
   flex-direction: column;
