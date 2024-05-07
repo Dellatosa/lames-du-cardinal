@@ -1,0 +1,28 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="Nom du Contact"/></h1>
+    </header>
+    <div class="sheet-content contact" data-item-id="{{item.id}}">
+        <div class="grid-contact">
+            <div class="titre-align">{{localize "LdC.categorie"}}</div>
+            <select name="system.categorie">
+                {{#select data.system.categorie}}
+                    {{#each config.categorie as |categ keyCateg|}}
+                        <option value="{{keyCateg}}">{{categ}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+            <div class="titre-align">{{localize "LdC.importance"}}</div>
+            <select name="system.importance">
+                {{#select data.system.importance}}
+                    {{#each config.importance as |imp keyImp|}}
+                        <option value="{{keyImp}}">{{imp}}</option>
+                    {{/each}}
+                {{/select}}
+            </select>
+        </div>
+        <div class="titre-noir">Description du Contact</div> 
+        {{editor data.system.description target="system.description" button=true owner=true editable=true}}
+    </div>
+</form>

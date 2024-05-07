@@ -311,6 +311,18 @@
                         </div>
                     {{/each}}
                 </div>
+                <div class="contact">
+                    {{#each contacts as |contact id|}}
+                        <div class="contact-item item-box">
+                            <div class="contact-entete">
+                                <div class="item-options contact-nom" data-item-id="{{contact._id}}">{{contact.name}}</div>
+                                <label>Importance : {{configLocalize "importance" contact.system.importance}}</label>
+                            </div>
+                                <div class="row-titre"> Catégorie : {{configLocalize "categorie" contact.system.categorie}}</div>
+                            <div>{{editor contact.system.description target="contact.system.description" button=false owner=true editable=false}}</div>
+                        </div>
+                    {{/each}}
+                </div>
             </div>
         </div>
     </section>

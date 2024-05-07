@@ -225,6 +225,18 @@
   background-color: rgba(82, 77, 77, 0.075);
   font-size: 0.9em;
 }
+.contact-item .contact-entete {
+  display: flex;
+  align-items: center;
+}
+.contact-item .contact-nom {
+  font-size: 1.2em;
+  flex-grow: 3;
+}
+.contact-item .editor {
+  background-color: rgba(82, 77, 77, 0.075);
+  font-size: 0.9em;
+}
 .ldc.sheet.item .sheet-content {
   display: flex;
   flex-direction: column;
@@ -399,6 +411,19 @@
   width: 2.5em;
   text-align: center;
   margin: 2px 0;
+}
+.grid-contact {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 1fr;
+}
+.grid-contact .col-all {
+  grid-column: 1 / 5;
+}
+.grid-contact .centre {
+  text-align: center;
+}
+.grid-contact select {
+  align-self: center;
 }
 #card-hands-list {
   --hand-height: 94px;

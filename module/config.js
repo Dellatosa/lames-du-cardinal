@@ -48,6 +48,14 @@ LdC.categorie = {
     roturiers : "Roturiers"
 }
 
+LdC.importance = {
+    aucun: "",
+    faible: "LdC.faible",
+    moyenne: "LdC.moyenne",
+    importante : "LdC.importante",
+    emblematique : "LdC.emblematique"
+}
+
 LdC.qualiteEquip = {
     normale: "Normale",
     superieure: "Supérieure",

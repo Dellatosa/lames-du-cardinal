@@ -12,7 +12,7 @@
                 <select name="system.categorie">
                     {{#select data.system.categorie}}
                     {{#each config.categorie as |categorie keyCategorie|}}
-                        <option value="{{keyCategorie}}">{{categorie}}</option>
+                        <option value="{{keyCategorie}}">{{configLocalize "categorie" keyCategorie}}</option>
                     {{/each}}
                     {{/select}} 
                 </select>
