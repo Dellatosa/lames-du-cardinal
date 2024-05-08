@@ -18,15 +18,6 @@ export default class LdCActor extends Actor {
                 if(comp.valeur > comp.max) { comp.valeur = comp.max; }
                 comp.reussiteAuto = Math.floor(comp.valeur / 2); 
             }
-
-            if(data.ecole != "aucun") {
-                data.ecoleDesc = game.items.get(data.ecole).system.description;
-                data.ecoleSigne = game.items.get(data.ecole).system.signe;
-            }
-            else {
-                data.ecoleDesc = "";
-                data.ecoleSigne = "";
-            }
         }
     }
 }

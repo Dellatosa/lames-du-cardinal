@@ -53,7 +53,6 @@
         "ecole": "Ecole",
         "signe": "Signe",
         "nbFigures": "Nb de figures",
-        "epees": "Epées",
         "epee": "Epée",
         "feintes": "Feintes",
         "bottes": "Bottes",
@@ -84,7 +83,8 @@
         "importante": "Importante",
         "emblematique": "Emblématique",
 
-        "plHoldEffet": "Ex : +1 en Résistance",
+        "placeHolderEffet": "Ex : +1 en Résistance",
+        "tooltipNbFigures": "Nombre de figures nécessaires pour réaliser la Botte",
         
         "nom": "Nom",
         "age": "Age",

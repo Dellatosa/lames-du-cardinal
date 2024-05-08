@@ -17,9 +17,15 @@
   color: var(--color-tarot-rouge);
   font-size: 1.5em;
 }
+.ldc.sheet.actor form .rouge {
+  color: var(--color-tarot-rouge);
+}
 .ldc.sheet.actor form .titre-noir {
   color: var(--color-tarot-noir);
   font-size: 1.5em;
+}
+.ldc.sheet.actor form .noir {
+  color: var(--color-tarot-noir);
 }
 .ldc.sheet.actor form .titre-align {
   align-self: center;
@@ -34,6 +40,36 @@
   border-color: grey;
   margin: 1px;
   padding: 1px;
+}
+.ldc.sheet.actor form .item-box .titre {
+  font-size: 1.2em;
+  margin: 0 3px;
+  align-self: center;
+}
+.ldc.sheet.actor form .item-box .box {
+  display: flex;
+}
+.ldc.sheet.actor form .item-box .entete {
+  display: flex;
+  border-bottom: 1px solid;
+  border-color: grey;
+}
+.ldc.sheet.actor form .item-box .item-nom {
+  flex-grow: 3;
+}
+.ldc.sheet.actor form .item-box .edit-box {
+  background-color: rgba(82, 77, 77, 0.075);
+}
+.ldc.sheet.actor form .item-box .editor {
+  font-size: 0.9em;
+}
+.ldc.sheet.actor form .item-box img {
+  display: block;
+  border: none;
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  margin-right: auto;
 }
 .ldc.sheet.actor .sheet-header img {
   flex: 0 0 128px;
@@ -113,20 +149,14 @@
   align-self: center;
   justify-self: center;
 }
-.grid-escrime {
+.grid-ecole {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr 1fr 1fr;
+  grid-template-columns: 5em 1fr;
 }
-.grid-escrime .col-all {
-  grid-column: 1 / 6;
-}
-.grid-escrime .col1 {
+.grid-ecole .col-all {
   grid-column: 1 / 3;
 }
-.grid-escrime .col2 {
-  grid-column: 3 / 6;
-}
-.grid-escrime img {
+.grid-ecole img {
   display: block;
   border: none;
   width: 50px;
@@ -134,44 +164,38 @@
   margin-left: auto;
   margin-right: auto;
 }
-.grid-escrime select {
-  align-self: center;
+.grid-ecole .nom-ecole {
+  font-size: 1.3em;
 }
-.grid-escrime .editor {
+.grid-ecole .editor {
   background-color: rgba(82, 77, 77, 0.075);
   font-size: 0.9em;
 }
-.grid-escrime .botte-entete {
-  display: flex;
-}
-.grid-escrime .botte-nom {
-  flex-grow: 3;
-}
-.grid-epees {
+.grid-escrime-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.grid-epees .col-all {
+.grid-escrime-items .col-all {
   grid-column: 1 / 3;
 }
-.grid-epees .col-1 {
+.grid-escrime-items .col1 {
   grid-column: 1 / 2;
 }
-.grid-epees .col-2 {
+.grid-escrime-items .col2 {
   grid-column: 2 / 3;
 }
-.grid-epees .row-titre {
-  grid-row: 4 / 5;
+.grid-epee {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
-.grid-epees .row-desc {
-  grid-row: 5 / 6;
+.grid-epee .col-all {
+  grid-column: 1 / 3;
 }
-.grid-epees .titre-epee {
-  font-size: 1.2em;
+.grid-epee .col-1 {
+  grid-column: 1 / 2;
 }
-.grid-epees .editor {
-  background-color: rgba(82, 77, 77, 0.075);
-  font-size: 0.9em;
+.grid-epee .col-2 {
+  grid-column: 2 / 3;
 }
 .grid-arcanes {
   display: grid;
@@ -274,53 +298,53 @@
 .ldc.sheet.item .sheet-content.ecole .editor {
   height: 250px;
 }
-.grid-profil {
+.grid-item-profil {
   display: grid;
   grid-template-columns: 50px 1fr 2.5em 1fr 2.5em 1fr 2.5em 1fr 2.5em 1fr 2.5em;
 }
-.grid-profil input[type="number"] {
+.grid-item-profil input[type="number"] {
   width: 2.5em;
   text-align: center;
   margin: 2px 0;
 }
-.grid-profil .titre-varia {
+.grid-item-profil .titre-varia {
   grid-column: 1 / 3;
 }
-.grid-profil .valeur-varia {
+.grid-item-profil .valeur-varia {
   grid-column: 3 / 12;
 }
-.grid-profil .titre-categ {
+.grid-item-profil .titre-categ {
   grid-column: 1 / 4;
 }
-.grid-profil .valeur-categ {
+.grid-item-profil .valeur-categ {
   grid-column: 4 / 8;
 }
-.grid-profil .titre-niveau {
+.grid-item-profil .titre-niveau {
   grid-column: 8 / 10;
 }
-.grid-profil .valeur-niveau {
+.grid-item-profil .valeur-niveau {
   grid-column: 10 / 12;
 }
-.grid-profil .titre-comp,
-.grid-profil .titre-varia,
-.grid-profil .titre-categ,
-.grid-profil .titre-niveau,
-.grid-profil .titre-occulte,
-.grid-profil .titre-escrime {
+.grid-item-profil .titre-comp,
+.grid-item-profil .titre-varia,
+.grid-item-profil .titre-categ,
+.grid-item-profil .titre-niveau,
+.grid-item-profil .titre-occulte,
+.grid-item-profil .titre-escrime {
   align-self: center;
   margin: 0 3px;
 }
-.grid-profil .valeur-comp {
+.grid-item-profil .valeur-comp {
   justify-self: center;
   align-self: center;
 }
-.grid-profil .titre-occulte {
+.grid-item-profil .titre-occulte {
   grid-column: 1 / 5;
 }
-.grid-profil .titre-escrime {
+.grid-item-profil .titre-escrime {
   grid-column: 8 / 11;
 }
-.grid-profil .signe img {
+.grid-item-profil .signe img {
   display: block;
   border: none;
   width: 50px;
@@ -328,37 +352,37 @@
   margin-left: auto;
   margin-right: auto;
 }
-.grid-feinte {
+.grid-item-feinte {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.grid-feinte input[type="number"] {
+.grid-item-feinte input[type="number"] {
   width: 2.5em;
   text-align: center;
   margin: 2px 0;
 }
-.grid-botte {
+.grid-item-botte {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 2.5em;
 }
-.grid-botte input[type="number"] {
+.grid-item-botte input[type="number"] {
   width: 2.5em;
   text-align: center;
   margin: 2px 0;
 }
-.grid-ecole {
+.grid-item-ecole {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
-.grid-ecole input[type="number"] {
+.grid-item-ecole input[type="number"] {
   width: 2.5em;
   text-align: center;
   margin: 2px 0;
 }
-.grid-ecole select {
+.grid-item-ecole select {
   align-self: center;
 }
-.grid-ecole img {
+.grid-item-ecole img {
   display: block;
   border: none;
   width: 50px;
@@ -366,63 +390,63 @@
   margin-left: auto;
   margin-right: auto;
 }
-.grid-epee {
+.grid-item-epee {
   display: grid;
   grid-template-columns: 1fr 3fr;
 }
-.grid-epee .col-all {
+.grid-item-epee .col-all {
   grid-column: 1 / 3;
 }
-.grid-epee select {
+.grid-item-epee select {
   margin: 2px 0;
 }
-.grid-arcane {
+.grid-item-arcane {
   display: grid;
   grid-template-columns: 1fr 2.5em 2fr 2fr 1.5fr 2fr;
 }
-.grid-arcane .col-all {
+.grid-item-arcane .col-all {
   grid-column: 1 / 7;
 }
-.grid-arcane .titre-manif {
+.grid-item-arcane .titre-manif {
   grid-column: 1 / 3;
 }
-.grid-arcane .valeur-manif {
+.grid-item-arcane .valeur-manif {
   grid-column: 3 / 5;
 }
-.grid-arcane .arc-oppose {
+.grid-item-arcane .arc-oppose {
   grid-column: 5 / 7;
 }
-.grid-arcane input[type="number"] {
+.grid-item-arcane input[type="number"] {
   width: 2.5em;
   text-align: center;
   margin: 2px 0;
 }
-.grid-equip {
+.grid-item-equip {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 6em;
 }
-.grid-equip .col-all {
+.grid-item-equip .col-all {
   grid-column: 1 / 5;
 }
-.grid-equip .centre {
+.grid-item-equip .centre {
   text-align: center;
 }
-.grid-equip input[type="number"] {
+.grid-item-equip input[type="number"] {
   width: 2.5em;
   text-align: center;
   margin: 2px 0;
 }
-.grid-contact {
+.grid-item-contact {
   display: grid;
   grid-template-columns: 1fr 2fr 1fr 1fr;
 }
-.grid-contact .col-all {
+.grid-item-contact .col-all {
   grid-column: 1 / 5;
 }
-.grid-contact .centre {
+.grid-item-contact .centre {
   text-align: center;
 }
-.grid-contact select {
+.grid-item-contact select {
   align-self: center;
 }
 #card-hands-list {

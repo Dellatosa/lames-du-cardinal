@@ -4,7 +4,7 @@
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="Nom de l'Equipement"/></h1>
     </header>
     <div class="sheet-content equip" data-item-id="{{item.id}}">
-        <div class="grid-equip">
+        <div class="grid-item-equip">
             <div class="titre-align">{{localize "LdC.qualite"}}</div>
             <select name="system.qualite">
                 {{#select data.system.qualite}}
@@ -16,7 +16,7 @@
             <div class="titre-align">{{localize "LdC.nivRessources"}}</div>
             <div class="centre"><input name="system.nivRess" type="number" value="{{data.system.nivRess}}" placeholder="0"/></div>
             <div class="titre-align">{{localize "LdC.effet"}}</div>
-            <input name="system.effet" type="text" value="{{data.system.effet}}" placeholder="{{localize 'LdC.plHoldEffet'}}"/>
+            <input name="system.effet" type="text" value="{{data.system.effet}}" placeholder="{{localize 'LdC.placeHolderEffet'}}"/>
             <div class="titre-align">{{localize "LdC.cout"}}</div>
             <input name="system.cout" type="text" value="{{data.system.cout}}" placeholder="{{localize 'LdC.cout'}}"/>
         </div>

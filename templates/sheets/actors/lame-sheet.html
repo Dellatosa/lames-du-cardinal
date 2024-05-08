@@ -187,64 +187,69 @@
             <!-- <i class="fa-solid fa-square-xmark"></i><i class="fa-solid fa-square-check"></i> -->
         </div>
         <div class="tab" data-group="principal" data-tab="escrime">
-            <div class="grid-escrime">
-                <div class="col-all titre-noir centre separateur10">{{localize "LdC.escrime"}}</div>
-                <div class="titre-align">{{localize "LdC.ecole"}}</div>
-                <select name="system.ecole">
-                    {{#select data.system.ecole}}
-                    <option value="aucun"></option>
-                    {{#each ecoles as |ecole id|}}
-                        <option value="{{_id}}">{{ecole.name}}</option>
-                    {{/each}}
-                    {{/select}}
-                </select>
-                {{#if data.system.ecoleSigne}}
-                    <div class="titre-align">{{localize "LdC.signe"}}</div>
-                    <div class="titre-align"><img src="systems/lames-du-cardinal/images/signes/{{data.system.ecoleSigne}}.png"></div>
-                    <div class="titre-align">{{configLocalize "signes" data.system.ecoleSigne}}</div>
+            <div class="titre-noir centre separateur10">{{localize "LdC.ecole"}}</div>
+            <div class="grid-ecole">
+                {{#each ecoles as |ecole id|}}
+                    <div><img title="{{configLocalize 'signes' ecole.system.signe}}" src="systems/lames-du-cardinal/images/signes/{{ecole.system.signe}}.png"></div>   
+                    <div class="titre-align nom-ecole item-options {{ecole.system.couleur}}" data-item-id="{{ecole._id}}">{{ecole.name}}</div>
                     <details class="col-all">
                         <summary class="center titre-rouge"><label>{{localize "LdC.descEcole"}}</label></summary>
-                        <div class="col-all">
-                            {{editor data.system.ecoleDesc target="system.ecoleDesc" button=false owner=true editable=false}}
+                        <div class="col-all edit-box">
+                            {{editor ecole.system.description target="system.description" button=false owner=true editable=false}}
                         </div>
                     </details>
-                {{/if}}
+                {{/each}}
+            </div>
+            <div class="grid-escrime-items">
                 <div class="col1 titre-noir centre separateur10">{{localize "LdC.feintes"}}</div>
                 <div class="col2 titre-noir centre separateur10">{{localize "LdC.bottes"}}</div>
                 <div class="feintes col1">
                     {{#each feintes as |feinte id|}}
                         <div class="feinte-item item-box">
-                            <label class="item-options" data-item-id="{{feinte._id}}">{{feinte.name}}</label>
-                            <div>{{editor feinte.system.description target="feinte.system.description" button=false owner=true editable=false}}</div>
+                            <div class="entete">
+                                <label class="item-options item-nom titre" data-item-id="{{feinte._id}}">{{feinte.name}}</label>
+                                <img title="{{feinte.system.ecoleNom}} {{#if (ne feinte.system.ecoleSigne 'epee')}} - {{configLocalize 'signes' feinte.system.ecoleSigne}}{{/if}}" src="systems/lames-du-cardinal/images/signes/{{feinte.system.ecoleSigne}}.png">
+                            </div>
+                            <div class="edit-box">{{editor feinte.system.description target="feinte.system.description" button=false owner=true editable=false}}</div>
                         </div>
                     {{/each}}
                 </div>
                 <div class="bottes col2">
                     {{#each bottes as |botte id|}}
                         <div class="botte-item item-box">
-                            <div class="botte-entete">
-                                <div class="item-options botte-nom" data-item-id="{{botte._id}}">{{botte.name}}</div>
-                                <label>Figures : {{botte.system.figure}}</label>
+                            <div class="entete">
+                                <div class="item-options item-nom titre" data-item-id="{{botte._id}}">{{botte.name}}</div>
+                                <img title="{{botte.system.ecoleNom}} - {{configLocalize 'signes' botte.system.ecoleSigne}}" src="systems/lames-du-cardinal/images/signes/{{botte.system.ecoleSigne}}.png">
+                                <label class="titre"><i class="fas fa-cards" title="{{localize 'LdC.tooltipNbFigures'}}"></i> {{botte.system.figure}}</label>
                             </div>
-                            <div>{{editor botte.system.description target="botte.system.description" button=false owner=true editable=false}}</div>
+                            <div class="edit-box">{{editor botte.system.description target="botte.system.description" button=false owner=true editable=false}}</div>
                         </div>
                     {{/each}}
                 </div>
             </div>
-            <div class="titre-rouge centre separateur10">{{localize "LdC.epees"}}</div>
+            <div class="titre-rouge centre separateur10">{{localize "LdC.epee"}}</div>
                 {{#each epees as |epee id|}}
                     <div class="epee-item item-box">
-                        <div class="grid-epees">
-                            <label class="col-all item-options titre-epee" data-item-id="{{epee._id}}">{{epee.name}}</label>
-                            <div class="col-all">{{editor epee.system.description target="epee.system.description" button=false owner=true editable=false}}</div>
-                            {{#if epee.system.feinte1Nom}}
-                                <div class="col-1 row-titre">{{epee.system.feinte1Nom}}</div>
-                                <div class="col-1 row-desc">{{editor epee.system.feinte1Desc target="epee.system.feinte1Desc" button=false owner=true editable=false}}</div>
-                            {{/if}}
-                            {{#if epee.system.feinte2Nom}}
-                                <div class="col-2 row-titre">{{epee.system.feinte2Nom}}</div>
-                                <div class="col-2 row-desc">{{editor epee.system.feinte2Desc target="epee.system.feinte2Desc" button=false owner=true editable=false}}</div>
-                            {{/if}}
+                        <div class="grid-epee">
+                            <div class="col-all entete">
+                                <label class="item-options titre" data-item-id="{{epee._id}}">{{epee.name}}</label>
+                            </div>
+                            <div class="col-all edit-box">{{editor epee.system.description target="epee.system.description" button=false owner=true editable=false}}</div>
+                            {{#if (or epee.system.feinte1Nom epee.system.feinte2Nom)}}
+                            <div class="col-all centre titre">Feintes disponibles</div> 
+                                {{#if epee.system.feinte1Nom}}
+                                <div class="col-1 item-box">
+                                    <div class="entete">{{epee.system.feinte1Nom}}</div>
+                                    <div class="edit-box">{{editor epee.system.feinte1Desc target="epee.system.feinte1Desc" button=false owner=true editable=false}}</div>
+                                </div>
+                                {{/if}}
+                                {{#if epee.system.feinte2Nom}}
+                                <div class="col-2 item-box">
+                                    <div class="entete">{{epee.system.feinte2Nom}}</div>
+                                    <div class="edit-box">{{editor epee.system.feinte2Desc target="epee.system.feinte2Desc" button=false owner=true editable=false}}</div>
+                                </div>
+                                {{/if}}
+                            {{/if}}    
                         </div>
                     </div>
                 {{/each}}
@@ -265,7 +270,7 @@
                         <div class="centre titre-align">{{arcane.system.arcaneOppose.system.numero}}</div>
                     {{/if}}
                     <div class="item-box col-all">
-                        <div>{{localize "LdC.marque"}}</div>
+                        <div class="entete">{{localize "LdC.marque"}}</div>
                         <div>{{editor arcane.system.marqueDraconique target="arcane.system.marqueDraconique" button=false owner=true editable=false}}</div>
                     </div>
                 </div>

@@ -30,8 +30,43 @@ export default class  LdCItem extends Item {
             }
         }
 
+        if(this.type == "Feinte") {
+            if(game.items.get(data.ecole)) {
+                data.ecoleSigne = game.items.get(data.ecole).system.signe;
+                data.ecoleNom = game.items.get(data.ecole).name;
+            }
+            else if (data.ecole == "epee") {
+                data.ecoleSigne = "epee";
+                data.ecoleNom = "Feinte d'épee";
+            }
+            else {
+                data.ecoleSigne = "";
+                data.ecoleNom = "";
+            }
+        }
+
+        if(this.type == "Botte") {
+            if(game.items.get(data.ecole)) {
+                data.ecoleSigne = game.items.get(data.ecole).system.signe;
+                data.ecoleNom = game.items.get(data.ecole).name;
+            }
+            else {
+                data.ecoleSigne = "";
+                data.ecoleNom = "";
+            }
+        }
+
         if(this.type == "Arcane") {
              data.arcaneOppose = game.items.find(function (item) { return item.system.numero == 21 - data.numero});
+        }
+
+        if(this.type == "Ecole") {
+            if(data.signe == "griffe" || data.signe == "souffle") {
+                data.couleur = "noir"
+            }
+            else if(data.signe == "ecaille" || data.signe == "sang") {
+                data.couleur = "rouge"
+            }
         }
     }
 
