@@ -51,7 +51,7 @@
                     <input name="system.caracteritiques.puissance.valeur" type="number" value="{{data.system.caracteritiques.puissance.valeur}}" min="0" max="4">
                     <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.puissance.valeur}}
-                            <a class="case-carac" title="{{@index}}" data-carac="puissance" data-index="{{@index}}">
+                            <a class="case-carac {{data.system.caracteritiques.puissance.couleur}}" title="{{@index}}" data-carac="puissance" data-index="{{@index}}">
                                 {{#if (gte data.system.caracteritiques.puissance.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
                             </a>
                         {{/times}}
@@ -61,7 +61,7 @@
                     <input name="system.caracteritiques.vivacite.valeur" type="number" value="{{data.system.caracteritiques.vivacite.valeur}}" min="0" max="4">
                     <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.vivacite.valeur}}
-                            <a class="case-carac" title="{{@index}}" data-carac="vivacite" data-index="{{@index}}">
+                            <a class="case-carac {{data.system.caracteritiques.vivacite.couleur}}" title="{{@index}}" data-carac="vivacite" data-index="{{@index}}">
                                 {{#if (gte data.system.caracteritiques.vivacite.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
                             </a>
                         {{/times}}
@@ -119,7 +119,7 @@
                     <input name="system.caracteritiques.galanterie.valeur" type="number" value="{{data.system.caracteritiques.galanterie.valeur}}" min="0" max="4">
                     <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.galanterie.valeur}}
-                            <a class="case-carac" title="{{@index}}" data-carac="galanterie" data-index="{{@index}}">
+                            <a class="case-carac {{data.system.caracteritiques.galanterie.couleur}}" title="{{@index}}" data-carac="galanterie" data-index="{{@index}}">
                                 {{#if (gte data.system.caracteritiques.galanterie.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
                             </a>
                         {{/times}}
@@ -129,7 +129,7 @@
                     <input name="system.caracteritiques.finesse.valeur" type="number" value="{{data.system.caracteritiques.finesse.valeur}}" min="0" max="4">
                     <div class="ligne-case-carac">
                         {{#times data.system.caracteritiques.finesse.valeur}}
-                            <a class="case-carac" title="{{@index}}" data-carac="finesse" data-index="{{@index}}">
+                            <a class="case-carac {{data.system.caracteritiques.finesse.couleur}}" title="{{@index}}" data-carac="finesse" data-index="{{@index}}">
                                 {{#if (gte data.system.caracteritiques.finesse.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
                             </a>
                         {{/times}}
@@ -239,13 +239,13 @@
                             <div class="col-all centre titre">Feintes disponibles</div> 
                                 {{#if epee.system.feinte1Nom}}
                                 <div class="col-1 item-box">
-                                    <div class="entete">{{epee.system.feinte1Nom}}</div>
+                                    <div class="entete titre">{{epee.system.feinte1Nom}}</div>
                                     <div class="edit-box">{{editor epee.system.feinte1Desc target="epee.system.feinte1Desc" button=false owner=true editable=false}}</div>
                                 </div>
                                 {{/if}}
                                 {{#if epee.system.feinte2Nom}}
                                 <div class="col-2 item-box">
-                                    <div class="entete">{{epee.system.feinte2Nom}}</div>
+                                    <div class="entete titre">{{epee.system.feinte2Nom}}</div>
                                     <div class="edit-box">{{editor epee.system.feinte2Desc target="epee.system.feinte2Desc" button=false owner=true editable=false}}</div>
                                 </div>
                                 {{/if}}
@@ -258,19 +258,17 @@
         <div class="tab" data-group="principal" data-tab="arcanes">
             {{#each arcanes as |arcane id|}}
                 <div class="grid-arcanes separateur15">
-                    <div class="titre-noir">{{localize "LdC.arcaneBeni"}}</div>
-                    <div class="centre titre-align">{{localize "LdC.numero"}}</div>
-                    <div class="titre-rouge">{{localize "LdC.arcaneOppose"}}</div>
-                    <div class="centre titre-align">{{localize "LdC.numero"}}</div>
-                    <div class="centre titre-align"><a class="arcane-suppr" title="{{localize 'LdC.supprArcane'}}" data-item-id="{{arcane._id}}"><i class="fa-solid fa-xmark"></i></a></div>
-                    <div class="titre-align">{{arcane.name}}</div>
-                    <div class="centre titre-align">{{arcane.system.numero}}</div>
+                    <div class="titre-noir col-arcane-beni">{{localize "LdC.arcaneBeni"}}</div>
+                    <div class="titre-rouge col-arcane-oppose">{{localize "LdC.arcaneOppose"}}</div>
+                    <div class="centre titre-align case-arcane-suppr"><a class="arcane-suppr" title="{{localize 'LdC.supprArcane'}}" data-item-id="{{arcane._id}}"><i class="fa-solid fa-xmark"></i></a></div>
+                    <div class="titre-align text-arcane">{{arcane.name}}</div>
+                    <div class="centre titre-align text-arcane">N° {{arcane.system.numero}}</div>
                     {{#if arcane.system.arcaneOppose}}    
-                        <div class="titre-align">{{arcane.system.arcaneOppose.name}}</div>
-                        <div class="centre titre-align">{{arcane.system.arcaneOppose.system.numero}}</div>
+                        <div class="titre-align text-arcane">{{arcane.system.arcaneOppose.name}}</div>
+                        <div class="centre titre-align text-arcane">N° {{arcane.system.arcaneOppose.system.numero}}</div>
                     {{/if}}
                     <div class="item-box col-all">
-                        <div class="entete">{{localize "LdC.marque"}}</div>
+                        <div class="entete text-arcane">{{localize "LdC.marque"}}</div>
                         <div>{{editor arcane.system.marqueDraconique target="arcane.system.marqueDraconique" button=false owner=true editable=false}}</div>
                     </div>
                 </div>

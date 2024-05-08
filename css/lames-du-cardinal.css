@@ -2,6 +2,14 @@
   --color-tarot-noir: #385B63;
   --color-tarot-rouge: #662318;
 }
+@font-face {
+  font-family: "CaslonPro";
+  src: url("../fonts/ACaslonPro-Bold.otf") format("opentype");
+}
+@font-face {
+  font-family: "GaramondPro";
+  src: url("../fonts/AGaramondPro-BoldItalic.otf") format("opentype");
+}
 .ldc.sheet.actor form {
   display: flex;
   flex-direction: column;
@@ -15,6 +23,7 @@
 }
 .ldc.sheet.actor form .titre-rouge {
   color: var(--color-tarot-rouge);
+  font-family: "CaslonPro";
   font-size: 1.5em;
 }
 .ldc.sheet.actor form .rouge {
@@ -22,6 +31,7 @@
 }
 .ldc.sheet.actor form .titre-noir {
   color: var(--color-tarot-noir);
+  font-family: "CaslonPro";
   font-size: 1.5em;
 }
 .ldc.sheet.actor form .noir {
@@ -44,6 +54,7 @@
 .ldc.sheet.actor form .item-box .titre {
   font-size: 1.2em;
   margin: 0 3px;
+  font-family: "GaramondPro";
   align-self: center;
 }
 .ldc.sheet.actor form .item-box .box {
@@ -70,6 +81,12 @@
   height: 30px;
   margin-left: auto;
   margin-right: auto;
+}
+.ldc.sheet.actor .sheet-fixed-content {
+  font-family: "GaramondPro";
+}
+.ldc.sheet.actor .sheet-header {
+  font-family: "GaramondPro";
 }
 .ldc.sheet.actor .sheet-header img {
   flex: 0 0 128px;
@@ -104,6 +121,7 @@
 }
 .grid-comp input[type="number"] {
   width: 2.5em;
+  font-family: "GaramondPro";
   text-align: center;
   margin: 2px 0;
 }
@@ -140,6 +158,7 @@
 }
 .grid-comp .titre-comp {
   align-self: center;
+  font-family: "GaramondPro";
   margin: 0 10px;
 }
 .grid-comp .valeur-comp {
@@ -147,6 +166,7 @@
 }
 .grid-comp .reus-auto {
   align-self: center;
+  font-family: "GaramondPro";
   justify-self: center;
 }
 .grid-ecole {
@@ -166,6 +186,7 @@
 }
 .grid-ecole .nom-ecole {
   font-size: 1.3em;
+  font-family: "CaslonPro";
 }
 .grid-ecole .editor {
   background-color: rgba(82, 77, 77, 0.075);
@@ -204,8 +225,21 @@
 .grid-arcanes .col-all {
   grid-column: 1 / 6;
 }
+.grid-arcanes .col-arcane-beni {
+  grid-column: 1 / 3;
+}
+.grid-arcanes .col-arcane-oppose {
+  grid-column: 3 / 5;
+}
+.grid-arcanes .case-arcane-suppr {
+  grid-column: 5 / 6;
+  grid-row: 1 / 3;
+}
 .grid-arcanes .arcane-suppr {
   font-size: 1.2em;
+}
+.grid-arcanes .text-arcane {
+  font-family: "GaramondPro";
 }
 .grid-arcanes .editor {
   background-color: rgba(82, 77, 77, 0.075);
@@ -234,16 +268,21 @@
 }
 .grid-ressContacts input[type="number"] {
   width: 2.5em;
+  font-family: "GaramondPro";
   text-align: center;
   margin: 2px 0;
 }
 .equip-item .equip-entete {
   display: flex;
   align-items: center;
+  font-family: "GaramondPro";
 }
 .equip-item .equip-nom {
   font-size: 1.2em;
   flex-grow: 3;
+}
+.equip-item .row-titre {
+  font-family: "GaramondPro";
 }
 .equip-item .editor {
   background-color: rgba(82, 77, 77, 0.075);
@@ -252,10 +291,14 @@
 .contact-item .contact-entete {
   display: flex;
   align-items: center;
+  font-family: "GaramondPro";
 }
 .contact-item .contact-nom {
   font-size: 1.2em;
   flex-grow: 3;
+}
+.contact-item .row-titre {
+  font-family: "GaramondPro";
 }
 .contact-item .editor {
   background-color: rgba(82, 77, 77, 0.075);
