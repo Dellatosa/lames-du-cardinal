@@ -16,24 +16,28 @@
                 "puissance": {
                     "valeur": 0,
                     "signe": "griffe",
+                    "couleur": "noir",
                     "max": 4,
                     "utilisee": 0
                 },
                 "vivacite": {
                     "valeur": 0,
                     "signe": "souffle",
+                    "couleur": "noir",
                     "max": 4,
                     "utilisee": 0
                 },
                 "galanterie": {
                     "valeur": 0,
                     "signe": "sang",
+                    "couleur": "rouge",
                     "max": 4,
                     "utilisee": 0
                 },
                 "finesse": {
                     "valeur": 0,
                     "signe": "ecaille",
+                    "couleur": "rouge",
                     "max": 4,
                     "utilisee": 0
                 }

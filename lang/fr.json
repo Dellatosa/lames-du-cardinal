@@ -36,6 +36,8 @@
         "tir": "Tir",
         "occultisme": "Occultisme",
         "escrime": "Escrime",
+        "vitalite": "Vitalité",
+        "tenacite":" Ténacité",
         "griffe": "Griffe",
         "souffle": "Souffle",
         "ecaille": "Ecaille",
@@ -84,7 +86,6 @@
         "emblematique": "Emblématique",
 
         "placeHolderEffet": "Ex : +1 en Résistance",
-        "tooltipNbFigures": "Nombre de figures nécessaires pour réaliser la Botte",
         
         "nom": "Nom",
         "age": "Age",
@@ -95,7 +96,22 @@
         "numero": "Numéro",
         "majActiveEffects": "Mettre à jour les 'Active effects'",
         "supprProfil": "Supprimer le profil",
-        "supprArcane": "Supprimer l'Arcane béni"
+        "supprArcane": "Supprimer l'Arcane béni",
+
+        "notification": {
+            "deuxArcanes": "Le personnage dispose déjà de deux arcanes béni. Veuillez supprimer l'un des deux pour ajouter cet arcane au personnage.",
+            "memeArcane": "Le personnage dispose déjà de cet arcane béni. Vous ne pouvez pas ajouter cet arcane au personnage.",
+            "arcaneOppose": "Le personnage dispose déjà de l'arcane béni opposé. Vous ne pouvez pas ajouter cet arcane au personnage.",
+            "deuxProfils": "Le personnage dispose déjà de deux profils. Veuillez supprimer l'un des deux pour ajouter ce profil au personnage.",
+            "memeProfil": "Le personnage dispose déjà de ce profil. Vous ne pouvez pas ajouter ce profil au personnage."
+        },
+        "tooltip": {
+            "nbFigures": "Nombre de figures nécessaires pour réaliser la Botte",
+            "cocherVitalite": "Cocher une case de Vitalité",
+            "decocherVitalite": "Décocher une case de Vitalité",
+            "cocherTenacite": "Cocher une case de Ténacité",
+            "decocherTenacite": "Décocher une case de Ténacité"
+        }
     },
     "CARDHANDSLIST": {
         "Heading": "Mains de cartes",
