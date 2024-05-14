@@ -92,6 +92,7 @@
         "sexe": "Sexe",
         "origine": "Origine",
         "description" : "Description",
+        "habillement": "Habillement",
         "aucun": "Aucun",
         "numero": "Numéro",
         "majActiveEffects": "Mettre à jour les 'Active effects'",
@@ -110,7 +111,9 @@
             "cocherVitalite": "Cocher une case de Vitalité",
             "decocherVitalite": "Décocher une case de Vitalité",
             "cocherTenacite": "Cocher une case de Ténacité",
-            "decocherTenacite": "Décocher une case de Ténacité"
+            "decocherTenacite": "Décocher une case de Ténacité",
+            "importanceContact": "Importance du contact",
+            "qualiteEquip": "Qualité de l'équipement"
         }
     },
     "CARDHANDSLIST": {

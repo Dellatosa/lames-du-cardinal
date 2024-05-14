@@ -34,15 +34,13 @@
             <a class="item" data-tab="escrime">{{localize "LdC.escrime"}}</a>
             <a class="item" data-tab="arcanes">{{localize "LdC.arcanes"}}</a>
             <a class="item" data-tab="ressContacts">{{localize "LdC.ressContacts"}}</a>
+            <a class="item" data-tab="description">{{localize "LdC.description"}}</a>
         </nav>
     </div>
     <section class="sheet-body">
         <div class="tab" data-group="principal" data-tab="caracteristiques">
             <div class="grid-caracs">
                 <div class="col-sante grid-sante">
-                    <!--<i class="fa-solid fa-circle-minus"></i><div>Vitalité</div><i class="fa-solid fa-circle-plus"></i>
-                    <i class="fa-regular fa-circle-minus"></i><div>Ténacité</div><i class="fa-regular fa-circle-plus"></i> -->
-                    <!-- <i class="fa-solid fa-square-xmark"></i><i class="fa-solid fa-square-check"></i> -->
                     {{#times data.system.secondaires.vitalite.max}}
                         {{#if (eq @index 1)}}
                             <div class="row1 col-min">
@@ -344,7 +342,7 @@
                         <div class="equip-item item-box">
                             <div class="equip-entete">
                                 <div class="item-options equip-nom" data-item-id="{{equip._id}}">{{equip.name}}</div>
-                                <label>Qualité : {{equip.system.qualite}}</label>
+                                <label><i class="fa-solid fa-shield" title="{{localize 'LdC.tooltip.qualiteEquip'}}"></i> : {{configLocalize "qualiteEquip" equip.system.qualite}}</label>
                             </div>
                             {{#if equip.system.effet}}
                                 <div class="row-titre"> Effet : {{equip.system.effet}}</div>
@@ -358,7 +356,7 @@
                         <div class="contact-item item-box">
                             <div class="contact-entete">
                                 <div class="item-options contact-nom" data-item-id="{{contact._id}}">{{contact.name}}</div>
-                                <label>Importance : {{configLocalize "importance" contact.system.importance}}</label>
+                                <label><i class="fa-solid fa-medal" title="{{localize 'LdC.tooltip.importanceContact'}}"></i> : {{configLocalize "importance" contact.system.importance}}</label>
                             </div>
                                 <div class="row-titre"> Catégorie : {{configLocalize "categorie" contact.system.categorie}}</div>
                             <div>{{editor contact.system.description target="contact.system.description" button=false owner=true editable=false}}</div>
@@ -366,6 +364,12 @@
                     {{/each}}
                 </div>
             </div>
+        </div>
+        <div class="tab desc" data-group="principal" data-tab="description">
+            <div class="titre-noir">{{localize "LdC.description"}}</div>
+            <div>{{editor data.system.description target="system.description" button=true owner=true editable=true}}</div>
+            <div class="titre-rouge">{{localize "LdC.habillement"}}</div>
+            <div>{{editor data.system.habillement target="system.habillement" button=true owner=true editable=true}}</div>
         </div>
     </section>
 </form>
