@@ -11,8 +11,8 @@ export default class LdCItemSheet extends ItemSheet {
 
     get template() {
 
-        console.log(`Les Lames du Cardinal | Chargement du template systems/lames-du-cardinal/templates/sheets/items/${this.item.type.toLowerCase()}-sheet.html`);
-        return `systems/lames-du-cardinal/templates/sheets/items/${this.item.type.toLowerCase()}-sheet.html`
+        console.log(`Les Lames du Cardinal | Chargement du template systems/${game.system.id}/templates/sheets/items/${this.item.type.toLowerCase()}-sheet.html`);
+        return `systems/${game.system.id}/templates/sheets/items/${this.item.type.toLowerCase()}-sheet.html`
     }
 
     getData() {

@@ -1,0 +1,27 @@
+<img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="128" width="128">
+<div class="actor-infos">
+    <div class="titre-nom"><input name="name" type="text" value="{{actor.name}}" placeholder="{{localize 'LdC.nom'}}"/></div>
+    <div class="grid-identite">
+        <label>{{localize "LdC.age"}}</label>
+        <input name="system.age" type="text" value="{{data.system.age}}" placeholder="{{localize 'LdC.age'}}">
+        <label>{{localize "LdC.sexe"}}</label>
+        <select name="system.sexe">
+            {{#select data.system.sexe}}
+                {{#each config.sexe as |sexe keySexe|}}
+                    <option value="{{keySexe}}">{{sexe}}</option>
+                {{/each}}
+            {{/select}} 
+        </select>
+        <label>{{localize "LdC.origine"}}</label>
+        <input name="system.origine" type="text" value="{{data.system.origine}}" placeholder="{{localize 'LdC.origine'}}">
+        <label>{{localize "LdC.profils"}}</label>
+        <div class="profils">
+            {{#each profils as |profil id|}}
+                <div class="profil-item item-box">
+                    <label>{{profil.name}}</label>
+                    <a class="profil-suppr" title="{{localize 'LdC.supprProfil'}}" data-item-id="{{profil._id}}"><i class="fa-solid fa-xmark"></i></a>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>

@@ -45,7 +45,7 @@ export class CardHandsList extends Application {
     /** @override */
     getData(options = {}) {
         // Process hand data by adding extra characteristics
-        const ownershipLevel = game.settings.get("lames-du-cardinal", "observerLevel") ? 'OBSERVER' : 'OWNER';
+        const ownershipLevel = game.settings.get(game.system.id, "observerLevel") ? 'OBSERVER' : 'OWNER';
         const hands = game?.cards?.filter((c) => c.type === 'hand' && c.testUserPermission(game.user, ownershipLevel)).sort((a, b) => {
             if (a.ownership[game.userId] === CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER) return 1;
             return -1;
@@ -59,10 +59,10 @@ export class CardHandsList extends Application {
             isGM: game?.user?.isGM,
             moduleId: handsModule.id,
             translationPrefix: handsModule.translationPrefix,
-            pinned: game?.user?.getFlag("lames-du-cardinal", 'pinned-hands'),
+            pinned: game?.user?.getFlag(game.system.id, 'pinned-hands'),
             system: game.system.id,
             favorite: '',
-            cardViewActive: game?.user?.getFlag("lames-du-cardinal", 'card-viewer-active')
+            cardViewActive: game?.user?.getFlag(game.system.id, 'card-viewer-active')
         };
 
         if (game.system.id === 'swade') {
@@ -72,7 +72,7 @@ export class CardHandsList extends Application {
         data.minimalUi = { active: game.modules.get('minimal-ui')?.active };
 
         if (data.minimalUi.active) {
-            data.minimalUi.listBehavior = game.settings.get("lames-du-cardinal", 'minimal-ui-behavior');
+            data.minimalUi.listBehavior = game.settings.get(game.system.id, 'minimal-ui-behavior');
         }
 
         return data;
@@ -132,7 +132,7 @@ export class CardHandsList extends Application {
         e.preventDefault();
         const card = await fromUuid(e.target.dataset.uuid);
 
-        if (game.user.getFlag("lames-du-cardinal", 'card-viewer-active')) {
+        if (game.user.getFlag(game.system.id, 'card-viewer-active')) {
             const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
             game.modules.get('orcnog-card-viewer').api.view(hand.name, card.name, false, false, false);
         } 
@@ -171,7 +171,7 @@ export class CardHandsList extends Application {
         // Set the user flag key
         const flagKey = 'pinned-hands';
         // Get the current list of favorited Card Hand IDs from the user flag
-        let pinned = game?.user?.getFlag("lames-du-cardinal", flagKey);
+        let pinned = game?.user?.getFlag(game.system.id, flagKey);
 
         // A quick catch for an empty pinned flag
         if (!pinned) {
@@ -187,15 +187,15 @@ export class CardHandsList extends Application {
             pinned.push(handId);
         }
 
-        await game?.user?.setFlag("lames-du-cardinal", flagKey, pinned);
+        await game?.user?.setFlag(game.system.id, flagKey, pinned);
     }
 
     // Draw a Card from a Cards Stack
     async _onDrawCard(e) {
         e.stopImmediatePropagation();
         const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
-        const defaultDeck = hand.getFlag("lames-du-cardinal", 'default-deck');
-        const defaultMode = hand.getFlag("lames-du-cardinal", 'default-draw-mode');
+        const defaultDeck = hand.getFlag(game.system.id, 'default-deck');
+        const defaultMode = hand.getFlag(game.system.id, 'default-draw-mode');
         let cardsDrawn = undefined;
         if (defaultDeck && defaultMode) {
             const deck = game.cards.get(defaultDeck);
@@ -211,7 +211,7 @@ export class CardHandsList extends Application {
 
         console.log(hand);
 
-        if (game.user.getFlag("lames-du-cardinal", 'card-viewer-active')) {
+        if (game.user.getFlag(game.system.id, 'card-viewer-active')) {
             const cards = [];
             cards.push(...hand.cards.map(item => item._id));
 
@@ -310,7 +310,7 @@ export class CardHandsList extends Application {
                 condition: el => {
                     const hand = game?.cards?.get(el[0]?.parentElement?.dataset?.handId);
                     // Check if GM
-                    return game?.user.isGM && !hand?.getFlag("lames-du-cardinal", 'default-deck');
+                    return game?.user.isGM && !hand?.getFlag(game.system.id, 'default-deck');
                 },
                 callback: async el => {
                     const hand = game?.cards?.get(el[0]?.parentElement?.dataset?.handId);
@@ -377,8 +377,8 @@ export class CardHandsList extends Application {
                                 icon: '<i class="fas fa-save"></i>',
                                 label: game.i18n.localize('Save'),
                                 callback: async (html) => {
-                                    await hand.setFlag("lames-du-cardinal", 'default-deck', html.find('#deck-select').val());
-                                    await hand.setFlag("lames-du-cardinal", 'default-draw-mode', html.find('#draw-mode').val());
+                                    await hand.setFlag(game.system.id, 'default-deck', html.find('#deck-select').val());
+                                    await hand.setFlag(game.system.id, 'default-draw-mode', html.find('#draw-mode').val());
                                 }
                             }
                         },
@@ -392,12 +392,12 @@ export class CardHandsList extends Application {
                 condition: el => {
                     const hand = game?.cards?.get(el[0]?.parentElement?.dataset?.handId);
                     // Check if GM
-                    return game?.user.isGM && hand?.getFlag("lames-du-cardinal", 'default-deck');
+                    return game?.user.isGM && hand?.getFlag(game.system.id, 'default-deck');
                 },
                 callback: async el => {
                     const hand = game?.cards?.get(el[0]?.parentElement?.dataset?.handId);
-                    await hand.unsetFlag("lames-du-cardinal", 'default-deck');
-                    await hand.unsetFlag("lames-du-cardinal", 'default-draw-mode');
+                    await hand.unsetFlag(game.system.id, 'default-deck');
+                    await hand.unsetFlag(game.system.id, 'default-draw-mode');
                 }
             },
             {

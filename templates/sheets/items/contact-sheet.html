@@ -17,7 +17,7 @@
             <select name="system.importance">
                 {{#select data.system.importance}}
                     {{#each config.importance as |imp keyImp|}}
-                        <option value="{{keyImp}}">{{imp}}</option>
+                        <option value="{{keyImp}}">{{localize imp}}</option>
                     {{/each}}
                 {{/select}}
             </select>

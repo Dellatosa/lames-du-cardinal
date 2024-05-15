@@ -1,0 +1,52 @@
+<div class="grid-ressContacts separateur10">
+    <div class="centre titre-rouge">{{localize "LdC.ressources"}}</div>
+    <div class="centre titre-rouge">{{localize "LdC.contacts"}}</div>
+    <div class="valeur-ress">
+        <input name="system.secondaires.ressources.valeur" type="number" value="{{data.system.secondaires.ressources.valeur}}" min="0" max="8">
+        <div class="ligne-case-ress">
+            {{#times data.system.secondaires.ressources.valeur}}
+                <a class="case-ress" title="{{@index}}" data-index="{{@index}}">
+                    {{#if (gte data.system.secondaires.ressources.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                </a>
+            {{/times}}
+        </div>
+    </div>
+    <div class="valeur-contact">
+        <input name="system.secondaires.contacts.valeur" type="number" value="{{data.system.secondaires.contacts.valeur}}" min="0" max="8">
+        <div class="ligne-case-contact">
+            {{#times data.system.secondaires.contacts.valeur}}
+                <a class="case-contact" title="{{@index}}" data-index="{{@index}}">
+                    {{#if (gte data.system.secondaires.contacts.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                </a>
+            {{/times}}
+        </div>
+    </div>
+    <div class="centre titre-noir separateur10">{{localize "LdC.possessions"}}</div>
+    <div class="centre titre-noir separateur10">{{localize "LdC.relations"}}</div>
+    <div class="equip">
+        {{#each equipements as |equip id|}}
+            <div class="equip-item item-box">
+                <div class="equip-entete">
+                    <div class="item-options equip-nom" data-item-id="{{equip._id}}">{{equip.name}}</div>
+                    <label><i class="fa-solid fa-shield" title="{{localize 'LdC.tooltip.qualiteEquip'}}"></i> : {{configLocalize "qualiteEquip" equip.system.qualite}}</label>
+                </div>
+                {{#if equip.system.effet}}
+                    <div class="row-titre"> {{localize "LdC.effet"}} : {{equip.system.effet}}</div>
+                {{/if}}
+                <div>{{editor equip.system.description target="equip.system.description" button=false owner=true editable=false}}</div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="contact">
+        {{#each contacts as |contact id|}}
+            <div class="contact-item item-box">
+                <div class="contact-entete">
+                    <div class="item-options contact-nom" data-item-id="{{contact._id}}">{{contact.name}}</div>
+                    <label><i class="fa-solid fa-medal" title="{{localize 'LdC.tooltip.importanceContact'}}"></i> : {{configLocalize "importance" contact.system.importance}}</label>
+                </div>
+                    <div class="row-titre"> {{localize "LdC.categorie"}} : {{configLocalize "categorie" contact.system.categorie}}</div>
+                <div>{{editor contact.system.description target="contact.system.description" button=false owner=true editable=false}}</div>
+            </div>
+        {{/each}}
+    </div>
+</div>

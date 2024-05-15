@@ -10,8 +10,8 @@ export default class LdCActorSheet extends ActorSheet {
     }
 
     get template() {
-        console.log(`Les Lames du Cardinal | chargement du template systems/lames-du-cardinal/templates/sheets/actors/${this.actor.type.toLowerCase()}-sheet.html`);
-        return `systems/lames-du-cardinal/templates/sheets/actors/${this.actor.type.toLowerCase()}-sheet.html`
+        console.log(`Les Lames du Cardinal | chargement du template systems/${game.system.id}/templates/sheets/actors/${this.actor.type.toLowerCase()}-sheet.html`);
+        return `systems/${game.system.id}/templates/sheets/actors/${this.actor.type.toLowerCase()}-sheet.html`
     }
 
     getData() {
@@ -108,6 +108,15 @@ export default class LdCActorSheet extends ActorSheet {
     
             return super._onDropItem(event, data);
         }
+
+    async _onSheetChangelock(event) {
+        event.preventDefault();
+        
+        let flagData = await this.actor.getFlag(game.system.id, "SheetUnlocked");
+        if (flagData) await this.actor.unsetFlag(game.system.id, "SheetUnlocked");
+        else await this.actor.setFlag(game.system.id, "SheetUnlocked", "SheetUnlocked");
+        this.actor.sheet.render(true);
+    }
 
     activateListeners(html) {
         super.activateListeners(html);

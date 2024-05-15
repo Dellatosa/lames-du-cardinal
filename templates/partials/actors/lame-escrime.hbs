@@ -1,0 +1,67 @@
+<div class="titre-noir centre separateur10">{{localize "LdC.ecole"}}</div>
+<div class="grid-ecole">
+    {{#each ecoles as |ecole id|}}
+        <div><img title="{{configLocalize 'signes' ecole.system.signe}}" src="systems/lames-du-cardinal/images/signes/{{ecole.system.signe}}.png"></div>   
+        <div class="titre-align nom-ecole item-options {{ecole.system.couleur}}" data-item-id="{{ecole._id}}">{{ecole.name}}</div>
+        <details class="col-all">
+            <summary class="center titre-rouge"><label>{{localize "LdC.descEcole"}}</label></summary>
+            <div class="col-all edit-box">
+                {{editor ecole.system.description target="system.description" button=false owner=true editable=false}}
+            </div>
+        </details>
+    {{/each}}
+</div>
+<div class="grid-escrime-items">
+    <div class="col1 titre-noir centre separateur10">{{localize "LdC.feintes"}}</div>
+    <div class="col2 titre-noir centre separateur10">{{localize "LdC.bottes"}}</div>
+    <div class="feintes col1">
+        {{#each feintes as |feinte id|}}
+            <div class="feinte-item item-box">
+                <div class="entete">
+                    <label class="item-options item-nom titre" data-item-id="{{feinte._id}}">{{feinte.name}}</label>
+                    <img title="{{feinte.system.ecoleNom}} {{#if (ne feinte.system.ecoleSigne 'epee')}} - {{configLocalize 'signes' feinte.system.ecoleSigne}}{{/if}}" src="systems/lames-du-cardinal/images/signes/{{feinte.system.ecoleSigne}}.png">
+                </div>
+                <div class="edit-box">{{editor feinte.system.description target="feinte.system.description" button=false owner=true editable=false}}</div>
+            </div>
+        {{/each}}
+    </div>
+    <div class="bottes col2">
+        {{#each bottes as |botte id|}}
+            <div class="botte-item item-box">
+                <div class="entete">
+                    <div class="item-options item-nom titre" data-item-id="{{botte._id}}">{{botte.name}}</div>
+                    <img title="{{botte.system.ecoleNom}} - {{configLocalize 'signes' botte.system.ecoleSigne}}" src="systems/lames-du-cardinal/images/signes/{{botte.system.ecoleSigne}}.png">
+                    <label class="titre"><i class="fas fa-cards" title="{{localize 'LdC.tooltip.nbFigures'}}"></i> {{botte.system.figure}}</label>
+                </div>
+                <div class="edit-box">{{editor botte.system.description target="botte.system.description" button=false owner=true editable=false}}</div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+<div class="titre-rouge centre separateur10">{{localize "LdC.epee"}}</div>
+    {{#each epees as |epee id|}}
+        <div class="epee-item item-box">
+            <div class="grid-epee">
+                <div class="col-all entete">
+                    <label class="item-options titre" data-item-id="{{epee._id}}">{{epee.name}}</label>
+                </div>
+                <div class="col-all edit-box">{{editor epee.system.description target="epee.system.description" button=false owner=true editable=false}}</div>
+                {{#if (or epee.system.feinte1Nom epee.system.feinte2Nom)}}
+                <div class="col-all centre titre">{{localize "LdC.feintesDispo"}}</div> 
+                    {{#if epee.system.feinte1Nom}}
+                    <div class="col-1 item-box">
+                        <div class="entete titre">{{epee.system.feinte1Nom}}</div>
+                        <div class="edit-box">{{editor epee.system.feinte1Desc target="epee.system.feinte1Desc" button=false owner=true editable=false}}</div>
+                    </div>
+                    {{/if}}
+                    {{#if epee.system.feinte2Nom}}
+                    <div class="col-2 item-box">
+                        <div class="entete titre">{{epee.system.feinte2Nom}}</div>
+                        <div class="edit-box">{{editor epee.system.feinte2Desc target="epee.system.feinte2Desc" button=false owner=true editable=false}}</div>
+                    </div>
+                    {{/if}}
+                {{/if}}    
+            </div>
+        </div>
+    {{/each}}
+</div>

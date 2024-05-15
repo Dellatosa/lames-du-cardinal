@@ -17,6 +17,18 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     console.log(cards);
   }
 
+  async function preloadHandlebarsTemplates() {
+    const templatePaths = [
+      "systems/lames-du-cardinal/templates/partials/actors/lame-infos-unlocked.hbs",
+      "systems/lames-du-cardinal/templates/partials/actors/lame-caracs-unlocked.hbs",
+      "systems/lames-du-cardinal/templates/partials/actors/lame-escrime.hbs",
+      "systems/lames-du-cardinal/templates/partials/actors/lame-arcanes.hbs",
+      "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-unlocked.hbs"
+    ]
+
+    return loadTemplates(templatePaths);
+  };
+
   Hooks.once("init", function() {
     console.log("Les Lames du Cardinal | Initialisation du système Les Lames du Cardinal, le JDR");
 
@@ -32,10 +44,12 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     CONFIG.Item.documentClass = LdCItem;
 
     Actors.unregisterSheet("core", ActorSheet);
-    Actors.registerSheet("lames-du-cardinal", LdCActorSheet, {makeDefault: true});
+    Actors.registerSheet(game.system.id, LdCActorSheet, {makeDefault: true});
 
     Items.unregisterSheet("core", ItemSheet);
-    Items.registerSheet("lames-du-cardinal", LdCItemSheet, {makeDefault: true});
+    Items.registerSheet(game.system.id, LdCItemSheet, {makeDefault: true});
+
+    preloadHandlebarsTemplates();
 
     registerSystemSettings();
 
@@ -59,18 +73,18 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     if (game.ready) ui.cardHands.render(true);
   
     // Migrate favorites flag to pinned flag.
-    const favoritedHands = game.user.getFlag("lames-du-cardinal", 'favorite-hands');
+    const favoritedHands = game.user.getFlag(game.system.id, 'favorite-hands');
   
     if (favoritedHands?.length) {
-      await game.user.setFlag("lames-du-cardinal", 'pinned-hands', favoritedHands);
-      await game.user.unsetFlag("lames-du-cardinal", 'favorite-hands');
+      await game.user.setFlag(game.system.id, 'pinned-hands', favoritedHands);
+      await game.user.unsetFlag(game.system.id, 'favorite-hands');
     }
 
     if (game.modules.get('orcnog-card-viewer')?.active) {
-      await game.user.setFlag("lames-du-cardinal", "card-viewer-active", true);
+      await game.user.setFlag(game.system.id, "card-viewer-active", true);
     }
     else {
-      await game.user.setFlag("lames-du-cardinal", "card-viewer-active", false);
+      await game.user.setFlag(game.system.id, "card-viewer-active", false);
     }
     
   });
@@ -84,7 +98,7 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
 
     /* Module Settings - card-hand-list */
     // Register the ownership level option
-    game.settings.register("lames-du-cardinal", 'observerLevel', {
+    game.settings.register(game.system.id, 'observerLevel', {
         name: `${handsModule.translationPrefix}.ObserverLevel.Name`,
         hint: `${handsModule.translationPrefix}.ObserverLevel.Hint`,
         scope: 'world',
@@ -95,7 +109,7 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     });
 
     if (game.modules.get('minimal-ui')?.active) {
-        game.settings.register("lames-du-cardinal", 'minimal-ui-behavior', {
+        game.settings.register(game.system.id, 'minimal-ui-behavior', {
         name: `${handsModule.translationPrefix}.MinimalUIBehavior.Name`,
         hint: `${handsModule.translationPrefix}.MinimalUIBehavior.Hint`,
         scope: 'world',

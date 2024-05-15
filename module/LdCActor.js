@@ -23,6 +23,11 @@ export default class LdCActor extends Actor {
         }
     }
 
+    get isUnlocked() {
+        if (this.getFlag(game.system.id, "SheetUnlocked")) return true;
+        return false;
+    }
+
     get hasTwoArcanes() {
         return (this.items.filter(function (item) { return item.type == "Arcane"}).length == 2);
     }
