@@ -108,9 +108,17 @@
 }
 .grid-identite {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr 3.5em;
   margin: 2px;
   margin-top: 5px;
+}
+.grid-identite .origin-val {
+  grid-column: 6 / 8;
+}
+.grid-identite .padlock {
+  grid-column: 7 / 8;
+  align-self: center;
+  text-align: center;
 }
 .grid-identite .profils {
   display: flex;

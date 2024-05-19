@@ -114,7 +114,9 @@
             "cocherTenacite": "Cocher une case de Ténacité",
             "decocherTenacite": "Décocher une case de Ténacité",
             "importanceContact": "Importance du contact",
-            "qualiteEquip": "Qualité de l'équipement"
+            "qualiteEquip": "Qualité de l'équipement",
+            "verrou": "Verrouiller la fiche",
+            "deverrou": "Déverouiller la fiche"
         }
     },
     "CARDHANDSLIST": {

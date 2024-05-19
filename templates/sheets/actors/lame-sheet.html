@@ -1,6 +1,6 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        {{> "systems/lames-du-cardinal/templates/partials/actors/lame-infos-unlocked.hbs"}}
+        {{> "systems/lames-du-cardinal/templates/partials/actors/lame-infos.hbs"}}
     </header>
     <div class="sheet-fixed-content">
         <nav class="sheet-tabs tabs" data-group="principal">
@@ -26,9 +26,17 @@
         </div>
         <div class="tab desc" data-group="principal" data-tab="description">
             <div class="titre-noir">{{localize "LdC.description"}}</div>
-            <div>{{editor data.system.description target="system.description" button=true owner=true editable=true}}</div>
+            {{#if unlocked}}
+                <div>{{editor data.system.description target="system.description" button=true owner=true editable=true}}</div>
+            {{else}}
+            <div>{{editor data.system.description target="system.description" button=true owner=true editable=false}}</div>
+            {{/if}}
             <div class="titre-rouge">{{localize "LdC.habillement"}}</div>
-            <div>{{editor data.system.habillement target="system.habillement" button=true owner=true editable=true}}</div>
+            {{#if unlocked}}
+                <div>{{editor data.system.habillement target="system.habillement" button=true owner=true editable=true}}</div>
+            {{else}}
+                <div>{editor data.system.habillement target="system.habillement" button=true owner=true editable=false}}</div>
+            {{/if}}
         </div>
     </section>
 </form>

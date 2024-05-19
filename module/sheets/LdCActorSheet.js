@@ -28,6 +28,8 @@ export default class LdCActorSheet extends ActorSheet {
         data.equipements = data.items.filter(function (item) { return item.type == "Equipement"});
         data.contacts = data.items.filter(function (item) { return item.type == "Contact"});
 
+        data.unlocked = this.actor.isUnlocked;
+
         return data;
     }
 
@@ -41,6 +43,9 @@ export default class LdCActorSheet extends ActorSheet {
    * @override
    */
     async _onDropItem(event, data) {
+
+        if (!this.actor.isUnlocked) return;
+        
         Item.fromDropData(data).then((item) => {
             const itemData = duplicate(item);
             switch (itemData.type) {
@@ -54,13 +59,6 @@ export default class LdCActorSheet extends ActorSheet {
         });
     }
 
-    /**
-    * Handle the drop of an Arcane item on the actor sheet
-    *
-    * @name _onDropMetierItem
-    * @param {*} event
-    * @param {*} itemData
-    */
     async _onDropArcaneItem(event, itemData, data) {
         event.preventDefault();
 
@@ -84,13 +82,6 @@ export default class LdCActorSheet extends ActorSheet {
         return super._onDropItem(event, data);
     }
 
-        /**
-    * Handle the drop of a Profil item on the actor sheet
-    *
-    * @name _onDropMetierItem
-    * @param {*} event
-    * @param {*} itemData
-    */
         async _onDropProfilItem(event, itemData, data) {
             event.preventDefault();
     
@@ -123,6 +114,9 @@ export default class LdCActorSheet extends ActorSheet {
 
         if (this.actor.isOwner) {
             new ContextMenu(html, ".item-options", this.profilContextMenu);
+
+            // Vérouiller / dévérouiller la fiche
+            html.find(".sheet-change-lock").click(this._onSheetChangelock.bind(this));
 
             // Supprimer un profil
             html.find(".profil-suppr").click(this._onSupprimerProfil.bind(this));
@@ -173,6 +167,15 @@ export default class LdCActorSheet extends ActorSheet {
             }
         }
     ];
+
+    async _onSheetChangelock(event) {
+        event.preventDefault();
+    
+        let flagData = await this.actor.getFlag(game.system.id, "SheetUnlocked");
+        if (flagData) await this.actor.unsetFlag(game.system.id, "SheetUnlocked");
+        else await this.actor.setFlag(game.system.id, "SheetUnlocked", "SheetUnlocked");
+        this.actor.sheet.render(true);
+    }
 
     _onSupprimerProfil(event) {
         event.preventDefault();
