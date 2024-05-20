@@ -21,6 +21,8 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     const templatePaths = [
       "systems/lames-du-cardinal/templates/partials/actors/lame-infos.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-caracs-unlocked.hbs",
+      "systems/lames-du-cardinal/templates/partials/actors/lame-caracs-locked.hbs",
+      "systems/lames-du-cardinal/templates/partials/actors/lame-sante.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-escrime.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-arcanes.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-unlocked.hbs"

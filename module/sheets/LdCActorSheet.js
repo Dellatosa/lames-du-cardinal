@@ -62,8 +62,6 @@ export default class LdCActorSheet extends ActorSheet {
     async _onDropArcaneItem(event, itemData, data) {
         event.preventDefault();
 
-        //if (!this.actor.isUnlocked) return;
-
         if (this.actor.hasTwoArcanes) {
             ui.notifications.warn(game.i18n.localize("LdC.notification.deuxArcanes"));
             return;
@@ -84,8 +82,6 @@ export default class LdCActorSheet extends ActorSheet {
 
         async _onDropProfilItem(event, itemData, data) {
             event.preventDefault();
-    
-            //if (!this.actor.isUnlocked) return;
     
             if (this.actor.hasTwoProfils) {
                 ui.notifications.warn(game.i18n.localize("LdC.notification.deuxProfils"));
@@ -132,6 +128,9 @@ export default class LdCActorSheet extends ActorSheet {
 
             // Cocher une case de Contacts
             html.find(".case-contact").click(this._onCocherContacts.bind(this));
+
+            // Modifier la valeur d'une caractéristique
+            html.find(".mod-carac").click(this._onModifCarac.bind(this));
 
             // Modifier la valeur de Vitalité ou de Ténacité
             html.find(".mod-car-sec").click(this._onModifCaracSec.bind(this));
@@ -260,6 +259,37 @@ export default class LdCActorSheet extends ActorSheet {
             let currentVal = parseInt(this.actor.system.secondaires[carac].value);
             if(currentVal < parseInt(this.actor.system.secondaires[carac].max)) {
                 await this.actor.update({ [`system.secondaires.${carac}.value`] : currentVal + 1 });
+            }
+        }
+    }
+
+    async _onModifCarac(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+
+        let carac = element.dataset.carac;
+        let action = element.dataset.action;
+
+        let currentVal = parseInt(this.actor.system.caracteritiques[carac].valeur);
+        let currentPcCarac = parseInt(this.actor.system.pcCaracs);
+
+        if(action == "minus") {
+            
+            if(currentVal > 0) {
+                await this.actor.update({ [`system.caracteritiques.${carac}.valeur`] : currentVal - 1 });
+                await this.actor.update({ [`system.pcCaracs`] : currentPcCarac + 1 });
+            }
+        }
+        else if(action == "plus") {
+
+            if (currentPcCarac == 0) {
+                ui.notifications.warn(game.i18n.localize("LdC.notification.pcCaracVide"));
+                return;
+            }
+
+            if(currentVal < parseInt(this.actor.system.caracteritiques[carac].max)) {
+                await this.actor.update({ [`system.caracteritiques.${carac}.valeur`] : currentVal + 1 });
+                await this.actor.update({ [`system.pcCaracs`] : currentPcCarac - 1 });
             }
         }
     }

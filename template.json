@@ -17,28 +17,28 @@
                     "valeur": 0,
                     "signe": "griffe",
                     "couleur": "noir",
-                    "max": 4,
+                    "max": 3,
                     "utilisee": 0
                 },
                 "vivacite": {
                     "valeur": 0,
                     "signe": "souffle",
                     "couleur": "noir",
-                    "max": 4,
+                    "max": 3,
                     "utilisee": 0
                 },
                 "galanterie": {
                     "valeur": 0,
                     "signe": "sang",
                     "couleur": "rouge",
-                    "max": 4,
+                    "max": 3,
                     "utilisee": 0
                 },
                 "finesse": {
                     "valeur": 0,
                     "signe": "ecaille",
                     "couleur": "rouge",
-                    "max": 4,
+                    "max": 3,
                     "utilisee": 0
                 }
             },
@@ -70,6 +70,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 4,
+                    "pc": 0,
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -78,6 +79,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 10,
+                    "pc": 0,
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -86,6 +88,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 6,
+                    "pc": 0,
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -94,6 +97,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 21,
+                    "pc": 0,
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -102,6 +106,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 8,
+                    "pc": 0,
                     "carac": "puissance",
                     "signe": "griffe"
                 },
@@ -110,6 +115,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 12,
+                    "pc": 0,
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -118,6 +124,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 20,
+                    "pc": 0,
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -126,6 +133,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 17,
+                    "pc": 0,
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -134,6 +142,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 14,
+                    "pc": 0,
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -142,6 +151,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 5,
+                    "pc": 0,
                     "carac": "vivacite",
                     "signe": "souffle"
                 },
@@ -150,6 +160,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 15,
+                    "pc": 0,
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -158,6 +169,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 2,
+                    "pc": 0,
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -166,6 +178,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 16,
+                    "pc": 0,
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -174,6 +187,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 13,
+                    "pc": 0,
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -182,6 +196,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 3,
+                    "pc": 0,
                     "carac": "galanterie",
                     "signe": "sang"
                 },
@@ -190,6 +205,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 19,
+                    "pc": 0,
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -198,6 +214,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 18,
+                    "pc": 0,
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -206,6 +223,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 1,
+                    "pc": 0,
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -214,6 +232,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 11,
+                    "pc": 0,
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -222,6 +241,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 9,
+                    "pc": 0,
                     "carac": "finesse",
                     "signe": "ecaille"
                 },
@@ -230,6 +250,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 0,
+                    "pc": 0,
                     "carac": "",
                     "signe": ""
                 },
@@ -238,6 +259,7 @@
                     "reussiteAuto": 0,
                     "max": 8,
                     "arcane": 7,
+                    "pc": 0,
                     "carac": "",
                     "signe": ""
                 }
@@ -245,7 +267,9 @@
             "experience": {
                 "acquise": 0,
                 "depensee": 0
-            }
+            },
+            "pcCompetences": 4,
+            "pcCaracs": 8
         },
         "Figurant": {
             "templates": ["informations"],

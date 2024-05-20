@@ -10,70 +10,74 @@
             <div>{{localize "LdC.vivacite"}}</div>
         </div>
         <div class="col1 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.puissance.couleur}}" title="" data-carac="puissance" data-action="minus">
-                    <i class="fa-solid fa-circle-minus"></i>
-                </a>
-            </div>
             <div class="valeur-carac {{data.system.caracteritiques.puissance.couleur}}">{{data.system.caracteritiques.puissance.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.puissance.couleur}}" title="" data-carac="puissance" data-action="plus">
-                    <i class="fa-solid fa-circle-plus"></i>
-                </a>
+            <div class="ligne-case-carac">
+                {{#times data.system.caracteritiques.puissance.valeur}}
+                    <a class="case-carac {{data.system.caracteritiques.puissance.couleur}}" title="{{@index}}" data-carac="puissance" data-index="{{@index}}">
+                        {{#if (gte data.system.caracteritiques.puissance.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                    </a>
+                {{/times}}
             </div>
         </div>
         <div class="col2 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.vivacite.couleur}}" title="" data-carac="vivacite" data-action="minus">
-                    <i class="fa-solid fa-circle-minus"></i>
-                </a>
-            </div>
             <div class="valeur-carac {{data.system.caracteritiques.vivacite.couleur}}">{{data.system.caracteritiques.vivacite.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.vivacite.couleur}}" title="" data-carac="vivacite" data-action="plus">
-                    <i class="fa-solid fa-circle-plus"></i>
-                </a>
+            <div class="ligne-case-carac">
+                {{#times data.system.caracteritiques.vivacite.valeur}}
+                    <a class="case-carac {{data.system.caracteritiques.vivacite.couleur}}" title="{{@index}}" data-carac="vivacite" data-index="{{@index}}">
+                        {{#if (gte data.system.caracteritiques.vivacite.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                    </a>
+                {{/times}}
             </div>
         </div>
         <div class="titre-comp">{{localize "LdC.athletisme"}}</div>
         <div class="valeur-comp"><input name="system.competences.athletisme.valeur" type="number" value="{{data.system.competences.athletisme.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.athletisme.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="athletisme"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.creation"}}</div>
         <div class="valeur-comp"><input name="system.competences.creation.valeur" type="number" value="{{data.system.competences.creation.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.creation.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="creation"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.autorite"}}</div>
         <div class="valeur-comp"><input name="system.competences.autorite.valeur" type="number" value="{{data.system.competences.autorite.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.autorite.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="autorite"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.debrouille"}}</div>
         <div class="valeur-comp"><input name="system.competences.debrouille.valeur" type="number" value="{{data.system.competences.debrouille.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.debrouille.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="debrouille"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.bagarre"}}</div>
         <div class="valeur-comp"><input name="system.competences.bagarre.valeur" type="number" value="{{data.system.competences.bagarre.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.bagarre.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="bagarre"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.duperie"}}</div>
         <div class="valeur-comp"><input name="system.competences.duperie.valeur" type="number" value="{{data.system.competences.duperie.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.duperie.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="duperie"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.equitation"}}</div>
         <div class="valeur-comp"><input name="system.competences.equitation.valeur" type="number" value="{{data.system.competences.equitation.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.equitation.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="equitation"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.furtivite"}}</div>
         <div class="valeur-comp"><input name="system.competences.furtivite.valeur" type="number" value="{{data.system.competences.furtivite.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.furtivite.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="furtivite"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.volonte"}}</div>
         <div class="valeur-comp"><input name="system.competences.volonte.valeur" type="number" value="{{data.system.competences.volonte.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.volonte.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="volonte"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.vigilance"}}</div>
         <div class="valeur-comp"><input name="system.competences.vigilance.valeur" type="number" value="{{data.system.competences.vigilance.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.vigilance.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="vigilance"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="col1 titre-rouge centre signe separateur10">
             <div><img src="systems/lames-du-cardinal/images/signes/sang.png"></div>
@@ -84,78 +88,84 @@
             <div>{{localize "LdC.finesse"}}</div>
         </div>
         <div class="col1 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.galanterie.couleur}}" title="" data-carac="galanterie" data-action="minus">
-                    <i class="fa-solid fa-circle-minus"></i>
-                </a>
-            </div>
             <div class="valeur-carac {{data.system.caracteritiques.galanterie.couleur}}">{{data.system.caracteritiques.galanterie.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.galanterie.couleur}}" title="" data-carac="galanterie" data-action="plus">
-                    <i class="fa-solid fa-circle-plus"></i>
-                </a>
+            <div class="ligne-case-carac">
+                {{#times data.system.caracteritiques.galanterie.valeur}}
+                    <a class="case-carac {{data.system.caracteritiques.galanterie.couleur}}" title="{{@index}}" data-carac="galanterie" data-index="{{@index}}">
+                        {{#if (gte data.system.caracteritiques.galanterie.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                    </a>
+                {{/times}}
             </div>
         </div>
         <div class="col2 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.finesse.couleur}}" title="" data-carac="finesse" data-action="minus">
-                    <i class="fa-solid fa-circle-minus"></i>
-                </a>
-            </div>
             <div class="valeur-carac {{data.system.caracteritiques.finesse.couleur}}">{{data.system.caracteritiques.finesse.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.finesse.couleur}}" title="" data-carac="finesse" data-action="plus">
-                    <i class="fa-solid fa-circle-plus"></i>
-                </a>
+            <div class="ligne-case-carac">
+                {{#times data.system.caracteritiques.finesse.valeur}}
+                    <a class="case-carac {{data.system.caracteritiques.finesse.couleur}}" title="{{@index}}" data-carac="finesse" data-index="{{@index}}">
+                        {{#if (gte data.system.caracteritiques.finesse.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                    </a>
+                {{/times}}
             </div>
         </div>
         <div class="titre-comp">{{localize "LdC.intrigue"}}</div>
         <div class="valeur-comp"><input name="system.competences.intrigue.valeur" type="number" value="{{data.system.competences.intrigue.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.intrigue.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="intrigue"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.erudition"}}</div>
         <div class="valeur-comp"><input name="system.competences.erudition.valeur" type="number" value="{{data.system.competences.erudition.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.erudition.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="erudition"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.negoce"}}</div>
         <div class="valeur-comp"><input name="system.competences.negoce.valeur" type="number" value="{{data.system.competences.negoce.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.negoce.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="negoce"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.investigation"}}</div>
         <div class="valeur-comp"><input name="system.competences.investigation.valeur" type="number" value="{{data.system.competences.investigation.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.investigation.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="investigation"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.persuasion"}}</div>
         <div class="valeur-comp"><input name="system.competences.persuasion.valeur" type="number" value="{{data.system.competences.persuasion.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.persuasion.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="persuasion"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.medecine"}}</div>
         <div class="valeur-comp"><input name="system.competences.medecine.valeur" type="number" value="{{data.system.competences.medecine.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.medecine.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="medecine"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.seduction"}}</div>
         <div class="valeur-comp"><input name="system.competences.seduction.valeur" type="number" value="{{data.system.competences.seduction.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.seduction.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="seduction"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.technique"}}</div>
         <div class="valeur-comp"><input name="system.competences.technique.valeur" type="number" value="{{data.system.competences.technique.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.technique.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="technique"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.strategie"}}</div>
         <div class="valeur-comp"><input name="system.competences.strategie.valeur" type="number" value="{{data.system.competences.strategie.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.strategie.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="strategie"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp">{{localize "LdC.tir"}}</div>
         <div class="valeur-comp"><input name="system.competences.tir.valeur" type="number" value="{{data.system.competences.tir.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.tir.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="tir"><i class="fa-regular fa-cards-blank"></i></a></div>
     </div>
     <div class="grid-comp separateur15">
         <div class="titre-comp titre-rouge ">{{localize "LdC.occultisme"}}</div>
         <div class="valeur-comp"><input name="system.competences.occultisme.valeur" type="number" value="{{data.system.competences.occultisme.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.occultisme.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="occultisme"><i class="fa-regular fa-cards-blank"></i></a></div>
 
         <div class="titre-comp titre-noir">{{localize "LdC.escrime"}}</div>
         <div class="valeur-comp"><input name="system.competences.escrime.valeur" type="number" value="{{data.system.competences.escrime.valeur}}" min="0" max="8"></div>
         <div class="reus-auto">( {{data.system.competences.escrime.reussiteAuto}} )</div>
+        <div class="btn-comp"><a class="draw-cards" title="LdC.tooltip.testComp" data-comp="escrime"><i class="fa-regular fa-cards-blank"></i></a></div>
     </div>
 </div>

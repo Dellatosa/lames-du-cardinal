@@ -1,0 +1,35 @@
+<div class="col-sante grid-sante">
+    {{#times data.system.secondaires.vitalite.max}}
+        {{#if (eq @index 1)}}
+            <div class="row1 col-min">
+                <a class="mod-car-sec" title="{{localize 'LdC.tooltip.decocherVitalite'}}" data-carac="vitalite" data-action="minus">
+                    <i class="fa-solid fa-heart-circle-minus"></i>
+                </a>
+            </div>
+            <div class="row1 col-plus">
+                <a class="mod-car-sec" title="{{localize 'LdC.tooltip.cocherVitalite'}}" data-carac="vitalite" data-action="plus">
+                    <i class="fa-solid fa-heart-circle-plus"></i>
+                </a>
+            </div>
+        {{/if}}
+        {{#if (gte data.system.secondaires.vitalite.value @index)}}
+            <div class="row{{@index}} col-check"><i class="fa-solid fa-xmark"></i></i></div> 
+        {{else if (gt @index data.system.secondaires.tenacite.valueInv)}}
+            <div class="row{{@index}} col-check"><i class="fa-solid fa-check"></i></div>
+        {{else}}
+            <div class="row{{@index}} col-check"></div>
+        {{/if}}
+        {{#if (eq @index 8)}}
+            <div class="row8 col-min">
+                <a class="mod-car-sec" title="{{localize 'LdC.tooltip.decocherTenacite'}}" data-carac="tenacite" data-action="minus">
+                    <i class="fa-regular fa-heart-circle-minus"></i>
+                </a>
+            </div>
+            <div class="row8 col-plus">
+                <a class="mod-car-sec" title="{{localize 'LdC.tooltip.cocherTenacite'}}" data-carac="tenacite" data-action="plus">
+                    <i class="fa-regular fa-heart-circle-plus"></i>
+                </a>
+            </div>
+        {{/if}}
+    {{/times}}             
+</div>

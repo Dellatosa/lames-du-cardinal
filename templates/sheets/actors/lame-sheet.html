@@ -13,7 +13,11 @@
     </div>
     <section class="sheet-body">
         <div class="tab" data-group="principal" data-tab="caracteristiques">
-            {{> "systems/lames-du-cardinal/templates/partials/actors/lame-caracs-unlocked.hbs"}}
+            {{#if unlocked}}
+                {{> "systems/lames-du-cardinal/templates/partials/actors/lame-caracs-unlocked.hbs"}}
+            {{else}}
+                {{> "systems/lames-du-cardinal/templates/partials/actors/lame-caracs-locked.hbs"}}
+            {{/if}}
         </div>
         <div class="tab" data-group="principal" data-tab="escrime">
             {{> "systems/lames-du-cardinal/templates/partials/actors/lame-escrime.hbs"}}
@@ -29,7 +33,7 @@
             {{#if unlocked}}
                 <div>{{editor data.system.description target="system.description" button=true owner=true editable=true}}</div>
             {{else}}
-            <div>{{editor data.system.description target="system.description" button=true owner=true editable=false}}</div>
+                <div>{{editor data.system.description target="system.description" button=true owner=true editable=false}}</div>
             {{/if}}
             <div class="titre-rouge">{{localize "LdC.habillement"}}</div>
             {{#if unlocked}}

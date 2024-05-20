@@ -96,11 +96,20 @@
   align-self: center;
   padding: 0 3px;
 }
-.ldc.sheet.actor .sheet-header .titre-nom {
-  font-size: 2em;
+.ldc.sheet.actor .sheet-header .ligne-nom {
+  display: flex;
 }
-.ldc.sheet.actor .sheet-header .titre-nom input[type="text"] {
+.ldc.sheet.actor .sheet-header .ligne-nom .nom-lame {
+  font-size: 2em;
+  flex: 1 0;
+}
+.ldc.sheet.actor .sheet-header .ligne-nom .nom-lame input[type="text"] {
   height: max-content;
+}
+.ldc.sheet.actor .sheet-header .ligne-nom .padlock {
+  align-self: center;
+  text-align: center;
+  margin: 3px;
 }
 .ldc.sheet.actor .sheet-header .profil-item {
   display: flex;
@@ -108,19 +117,12 @@
 }
 .grid-identite {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr 3.5em;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
   margin: 2px;
   margin-top: 5px;
 }
-.grid-identite .origin-val {
-  grid-column: 6 / 8;
-}
-.grid-identite .padlock {
-  grid-column: 7 / 8;
-  align-self: center;
-  text-align: center;
-}
 .grid-identite .profils {
+  grid-column: 2 / 7;
   display: flex;
 }
 .grid-caracs {
@@ -181,7 +183,7 @@
 }
 .grid-comp {
   display: grid;
-  grid-template-columns: 1fr 3em 3em 1fr 3em 3em ;
+  grid-template-columns: 1fr 3em 3em 3em 1fr 3em 3em 3em;
 }
 .grid-comp input[type="number"] {
   width: 2.5em;
@@ -190,10 +192,10 @@
   margin: 2px 0;
 }
 .grid-comp .col1 {
-  grid-column: 1 / 4;
+  grid-column: 1 / 5;
 }
 .grid-comp .col2 {
-  grid-column: 4 / 7;
+  grid-column: 5 / 9;
 }
 .grid-comp .signe {
   display: flex;
@@ -208,14 +210,23 @@
   margin-left: auto;
   margin-right: auto;
 }
-.grid-comp .valeur-carac {
+.grid-comp .ligne-valeur-carac {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.grid-comp .ligne-case-carac {
+.grid-comp .valeur-carac {
+  font-size: 2.2em;
+  font-family: "GaramondPro";
   margin: 0 5px;
+}
+.grid-comp .carac-btn {
+  font-size: 1.5em;
+  margin: 0 5px;
+}
+.grid-comp .ligne-case-carac {
+  margin: 0 10px;
 }
 .grid-comp .ligne-case-carac .case-carac {
   font-size: 1.2em;
@@ -223,9 +234,13 @@
 .grid-comp .titre-comp {
   align-self: center;
   font-family: "GaramondPro";
-  margin: 0 10px;
+  margin: 0 20px;
 }
 .grid-comp .valeur-comp {
+  justify-self: center;
+}
+.grid-comp .btn-comp {
+  align-self: center;
   justify-self: center;
 }
 .grid-comp .reus-auto {

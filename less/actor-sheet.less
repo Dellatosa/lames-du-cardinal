@@ -104,14 +104,26 @@
         padding: 0 3px;
     }
 
-    .titre-nom {
-        font-size: 2em;
 
-        input[type="text"] {
-            height: max-content;
+    .ligne-nom {
+        display: flex;
+
+        .nom-lame {
+            font-size: 2em;
+            flex: 1 0;
+    
+            input[type="text"] {
+                height: max-content;
+            }
+        }
+
+        .padlock {
+            align-self: center;
+            text-align: center;
+            margin: 3px;
         }
     }
-
+    
     .profil-item {
         display: flex;
         align-items: center;
@@ -120,22 +132,13 @@
 
 .grid-identite {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr 3.5em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 4fr;
 
     margin: 2px;
     margin-top: 5px;
 
-    .origin-val {
-        grid-column: 6 / 8;
-    }
-
-    .padlock {
-        grid-column: 7 / 8;
-        align-self: center;
-        text-align: center;
-    }
-
     .profils {
+        grid-column: 2 / 7;
         display: flex;
     }
 }
@@ -215,7 +218,7 @@
 
 .grid-comp {
     display: grid;
-    grid-template-columns: 1fr 3em 3em 1fr 3em 3em ;
+    grid-template-columns: 1fr 3em 3em 3em 1fr 3em 3em 3em;
 
     input[type="number"] {
         width: 2.5em;
@@ -225,11 +228,11 @@
     }
 
     .col1 {
-        grid-column: 1 / 4;
+        grid-column: 1 / 5;
     }
 
     .col2 {
-        grid-column: 4 / 7;
+        grid-column: 5 / 9;
     }
 
     .signe {
@@ -247,15 +250,26 @@
         }
     }
 
-    .valeur-carac {
+    .ligne-valeur-carac {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
     }
 
-    .ligne-case-carac {
+    .valeur-carac {
+        font-size: 2.2em;
+        font-family: "GaramondPro";
         margin: 0 5px;
+    }
+
+    .carac-btn {
+        font-size: 1.5em;
+        margin: 0 5px;
+    }
+
+    .ligne-case-carac {
+        margin: 0 10px;
 
         .case-carac {
             font-size: 1.2em;
@@ -265,10 +279,15 @@
     .titre-comp {
         align-self: center;
         font-family: "GaramondPro";
-        margin: 0 10px;
+        margin: 0 20px;
     }
 
     .valeur-comp {
+        justify-self: center;
+    }
+
+    .btn-comp {
+        align-self: center;
         justify-self: center;
     }
 

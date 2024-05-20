@@ -105,7 +105,8 @@
             "memeArcane": "Le personnage dispose déjà de cet arcane béni. Vous ne pouvez pas ajouter cet arcane au personnage.",
             "arcaneOppose": "Le personnage dispose déjà de l'arcane béni opposé. Vous ne pouvez pas ajouter cet arcane au personnage.",
             "deuxProfils": "Le personnage dispose déjà de deux profils. Veuillez supprimer l'un des deux pour ajouter ce profil au personnage.",
-            "memeProfil": "Le personnage dispose déjà de ce profil. Vous ne pouvez pas ajouter ce profil au personnage."
+            "memeProfil": "Le personnage dispose déjà de ce profil. Vous ne pouvez pas ajouter ce profil au personnage.",
+            "pcCaracVide": "Vous n'avez plus de points de création disponibles pour vos caractéristiques."
         },
         "tooltip": {
             "nbFigures": "Nombre de figures nécessaires pour réaliser la Botte",
