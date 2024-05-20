@@ -84,7 +84,7 @@ export default class  LdCItem extends Item {
                     label: key,
                     icon: "icons/svg/combat.svg",
                     changes: [{
-                        key: `system.competences.${key}.valeur`,
+                        key: `system.competences.${key}.profil`,
                         mode: 2,
                         value: this.system[key]
                     }],
@@ -109,7 +109,7 @@ export default class  LdCItem extends Item {
             label: comp,
             icon: "icons/svg/combat.svg",
             changes: [{
-                key: `system.competences.${comp}.valeur`,
+                key: `system.competences.${comp}.arcane`,
                 mode: 2,
                 value: "1"
             }],

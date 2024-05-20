@@ -15,7 +15,7 @@ export default class LdCActor extends Actor {
             }
 
             for (let [key, comp] of Object.entries(data.competences)) {
-                if(comp.valeur > comp.max) { comp.valeur = comp.max; }
+                comp.valeur = comp.profil + comp.arcane + comp.pc + comp.exp;
                 comp.reussiteAuto = Math.floor(comp.valeur / 2); 
             }
 
@@ -49,5 +49,9 @@ export default class LdCActor extends Actor {
     hasThisProfil(item) {
         let profils = this.items.filter(function (item) { return item.type == "Profil"});
         return (profils.length == 1 && profils[0].name == item.name);
+    }
+
+    getCompValForProfils(comp) {
+        return this.system.competences[comp].profil;
     }
 }

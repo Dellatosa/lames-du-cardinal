@@ -263,7 +263,7 @@
         margin: 0 5px;
     }
 
-    .carac-btn {
+    .btn-carac {
         font-size: 1.5em;
         margin: 0 5px;
     }
@@ -276,13 +276,105 @@
         }
     }
 
+    .legende {
+        font-family: "GaramondPro";
+        font-size: 0.8em;
+        justify-self: center;
+    }
+
     .titre-comp {
         align-self: center;
         font-family: "GaramondPro";
-        margin: 0 20px;
+        margin: 7px 20px;
     }
 
-    .valeur-comp {
+    .valeur-comp, .reus-auto {
+        align-self: center;
+        font-family: "GaramondPro";
+        justify-self: center;
+    }
+
+    .btn-comp {
+        align-self: center;
+        justify-self: center;
+    }
+}
+
+.grid-comp-unlocked {
+    display: grid;
+    grid-template-columns: 1fr 3em 1em 3em 3em 1em 1fr 3em 1em 3em 3em 1em;
+
+    input[type="number"] {
+        width: 2.5em;
+        font-family: "GaramondPro";
+        text-align: center;
+        margin: 2px 0;
+    }
+
+    .col1 {
+        grid-column: 1 / 7;
+    }
+
+    .col2 {
+        grid-column: 7 / 13;
+    }
+
+    .signe {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            display: block;
+            border: none;
+            width : 50px;
+            height : 50px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .ligne-valeur-carac {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .valeur-carac {
+        font-size: 2.2em;
+        font-family: "GaramondPro";
+        margin: 0 5px;
+    }
+
+    .btn-carac {
+        font-size: 1.5em;
+        margin: 0 5px;
+    }
+
+    .ligne-case-carac {
+        margin: 0 10px;
+
+        .case-carac {
+            font-size: 1.2em;
+        }
+    }
+
+    .legende {
+        font-family: "GaramondPro";
+        font-size: 0.8em;
+        justify-self: center;
+    }
+
+    .titre-comp {
+        align-self: center;
+        font-family: "GaramondPro";
+        margin: 7px 20px;
+    }
+
+    .valeur-comp, .reus-auto {
+        align-self: center;
+        font-family: "GaramondPro";
         justify-self: center;
     }
 
@@ -291,10 +383,11 @@
         justify-self: center;
     }
 
-    .reus-auto {
-        align-self: center;
-        font-family: "GaramondPro";
-        justify-self: center;
+    .btn-pc, .btn-exp {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 0.8em;
     }
 }
 

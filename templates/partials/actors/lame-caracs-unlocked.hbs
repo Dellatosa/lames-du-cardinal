@@ -1,6 +1,6 @@
 <div class="grid-caracs">
     {{> "systems/lames-du-cardinal/templates/partials/actors/lame-sante.hbs"}}
-    <div class="grid-comp">
+    <div class="grid-comp-unlocked">
         <div class="col1 titre-noir centre signe separateur10">
             <div><img src="systems/lames-du-cardinal/images/signes/griffe.png"></div>
             <div>{{localize "LdC.puissance"}}</div>
@@ -10,70 +10,255 @@
             <div>{{localize "LdC.vivacite"}}</div>
         </div>
         <div class="col1 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.puissance.couleur}}" title="" data-carac="puissance" data-action="minus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.puissance.couleur}}" title="{{localize 'LdC.tooltip.dimCarac'}}" data-carac="puissance" data-action="minus">
                     <i class="fa-solid fa-circle-minus"></i>
                 </a>
             </div>
             <div class="valeur-carac {{data.system.caracteritiques.puissance.couleur}}">{{data.system.caracteritiques.puissance.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.puissance.couleur}}" title="" data-carac="puissance" data-action="plus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.puissance.couleur}}" title="{{localize 'LdC.tooltip.augCarac'}}" data-carac="puissance" data-action="plus">
                     <i class="fa-solid fa-circle-plus"></i>
                 </a>
             </div>
         </div>
         <div class="col2 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.vivacite.couleur}}" title="" data-carac="vivacite" data-action="minus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.vivacite.couleur}}" title="{{localize 'LdC.tooltip.dimCarac'}}" data-carac="vivacite" data-action="minus">
                     <i class="fa-solid fa-circle-minus"></i>
                 </a>
             </div>
             <div class="valeur-carac {{data.system.caracteritiques.vivacite.couleur}}">{{data.system.caracteritiques.vivacite.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.vivacite.couleur}}" title="" data-carac="vivacite" data-action="plus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.vivacite.couleur}}" title="{{localize 'LdC.tooltip.augCarac'}}" data-carac="vivacite" data-action="plus">
                     <i class="fa-solid fa-circle-plus"></i>
                 </a>
             </div>
         </div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="legende">{{localize "LdC.pc"}}</div>
+        <div class="legende">{{localize "LdC.exp"}}</div>
+        <div></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="legende">{{localize "LdC.pc"}}</div>
+        <div class="legende">{{localize "LdC.exp"}}</div>
+        <div></div>
+
         <div class="titre-comp">{{localize "LdC.athletisme"}}</div>
-        <div class="valeur-comp"><input name="system.competences.athletisme.valeur" type="number" value="{{data.system.competences.athletisme.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.athletisme.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.athletisme.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="athletisme" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="athletisme" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.athletisme.pc" type="number" value="{{data.system.competences.athletisme.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.athletisme.exp" type="number" value="{{data.system.competences.athletisme.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="athletisme" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="athletisme" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.creation"}}</div>
-        <div class="valeur-comp"><input name="system.competences.creation.valeur" type="number" value="{{data.system.competences.creation.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.creation.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.creation.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="creation" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="creation" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.creation.pc" type="number" value="{{data.system.competences.creation.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.creation.exp" type="number" value="{{data.system.competences.creation.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="creation" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="creation" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.autorite"}}</div>
-        <div class="valeur-comp"><input name="system.competences.autorite.valeur" type="number" value="{{data.system.competences.autorite.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.autorite.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.autorite.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="autorite" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="autorite" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.autorite.pc" type="number" value="{{data.system.competences.autorite.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.autorite.exp" type="number" value="{{data.system.competences.autorite.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="creation" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="creation" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.debrouille"}}</div>
-        <div class="valeur-comp"><input name="system.competences.debrouille.valeur" type="number" value="{{data.system.competences.debrouille.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.debrouille.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.debrouille.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="debrouille" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="debrouille" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.debrouille.pc" type="number" value="{{data.system.competences.debrouille.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.debrouille.exp" type="number" value="{{data.system.competences.debrouille.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="debrouille" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="debrouille" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.bagarre"}}</div>
-        <div class="valeur-comp"><input name="system.competences.bagarre.valeur" type="number" value="{{data.system.competences.bagarre.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.bagarre.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.bagarre.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="bagarre" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="bagarre" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.bagarre.pc" type="number" value="{{data.system.competences.bagarre.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.bagarre.exp" type="number" value="{{data.system.competences.bagarre.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="bagarre" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="bagarre" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.duperie"}}</div>
-        <div class="valeur-comp"><input name="system.competences.duperie.valeur" type="number" value="{{data.system.competences.duperie.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.duperie.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.duperie.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="duperie" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="duperie" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.duperie.pc" type="number" value="{{data.system.competences.duperie.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.duperie.exp" type="number" value="{{data.system.competences.duperie.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="duperie" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="duperie" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.equitation"}}</div>
-        <div class="valeur-comp"><input name="system.competences.equitation.valeur" type="number" value="{{data.system.competences.equitation.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.equitation.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.equitation.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="equitation" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="equitation" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.equitation.pc" type="number" value="{{data.system.competences.equitation.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.equitation.exp" type="number" value="{{data.system.competences.equitation.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="equitation" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="equitation" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.furtivite"}}</div>
-        <div class="valeur-comp"><input name="system.competences.furtivite.valeur" type="number" value="{{data.system.competences.furtivite.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.furtivite.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.furtivite.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="furtivite" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="furtivite" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.furtivite.pc" type="number" value="{{data.system.competences.furtivite.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.furtivite.exp" type="number" value="{{data.system.competences.furtivite.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="furtivite" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="furtivite" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.volonte"}}</div>
-        <div class="valeur-comp"><input name="system.competences.volonte.valeur" type="number" value="{{data.system.competences.volonte.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.volonte.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.volonte.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="volonte" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="volonte" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.volonte.pc" type="number" value="{{data.system.competences.volonte.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.volonte.exp" type="number" value="{{data.system.competences.volonte.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="volonte" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="volonte" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.vigilance"}}</div>
-        <div class="valeur-comp"><input name="system.competences.vigilance.valeur" type="number" value="{{data.system.competences.vigilance.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.vigilance.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.vigilance.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="vigilance" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="vigilance" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.vigilance.pc" type="number" value="{{data.system.competences.vigilance.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.vigilance.exp" type="number" value="{{data.system.competences.vigilance.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="vigilance" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="vigilance" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="col1 titre-rouge centre signe separateur10">
             <div><img src="systems/lames-du-cardinal/images/signes/sang.png"></div>
@@ -84,78 +269,299 @@
             <div>{{localize "LdC.finesse"}}</div>
         </div>
         <div class="col1 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.galanterie.couleur}}" title="" data-carac="galanterie" data-action="minus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.galanterie.couleur}}" title="{{localize 'LdC.tooltip.dimCarac'}}" data-carac="galanterie" data-action="minus">
                     <i class="fa-solid fa-circle-minus"></i>
                 </a>
             </div>
             <div class="valeur-carac {{data.system.caracteritiques.galanterie.couleur}}">{{data.system.caracteritiques.galanterie.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.galanterie.couleur}}" title="" data-carac="galanterie" data-action="plus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.galanterie.couleur}}" title="{{localize 'LdC.tooltip.augCarac'}}" data-carac="galanterie" data-action="plus">
                     <i class="fa-solid fa-circle-plus"></i>
                 </a>
             </div>
         </div>
         <div class="col2 ligne-valeur-carac">
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.finesse.couleur}}" title="" data-carac="finesse" data-action="minus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.finesse.couleur}}" title="{{localize 'LdC.tooltip.dimCarac'}}" data-carac="finesse" data-action="minus">
                     <i class="fa-solid fa-circle-minus"></i>
                 </a>
             </div>
             <div class="valeur-carac {{data.system.caracteritiques.finesse.couleur}}">{{data.system.caracteritiques.finesse.valeur}}</div>
-            <div class="carac-btn">
-                <a class="mod-carac {{data.system.caracteritiques.finesse.couleur}}" title="" data-carac="finesse" data-action="plus">
+            <div class="btn-carac">
+                <a class="mod-carac {{data.system.caracteritiques.finesse.couleur}}" title="{{localize 'LdC.tooltip.augCarac'}}" data-carac="finesse" data-action="plus">
                     <i class="fa-solid fa-circle-plus"></i>
                 </a>
             </div>
         </div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="legende">{{localize "LdC.pc"}}</div>
+        <div class="legende">{{localize "LdC.exp"}}</div>
+        <div></div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <div class="legende">{{localize "LdC.pc"}}</div>
+        <div class="legende">{{localize "LdC.exp"}}</div>
+        <div></div>
+
         <div class="titre-comp">{{localize "LdC.intrigue"}}</div>
-        <div class="valeur-comp"><input name="system.competences.intrigue.valeur" type="number" value="{{data.system.competences.intrigue.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.intrigue.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.intrigue.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="intrigue" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="intrigue" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.intrigue.pc" type="number" value="{{data.system.competences.intrigue.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.intrigue.exp" type="number" value="{{data.system.competences.intrigue.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="intrigue" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="intrigue" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.erudition"}}</div>
-        <div class="valeur-comp"><input name="system.competences.erudition.valeur" type="number" value="{{data.system.competences.erudition.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.erudition.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.erudition.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="erudition" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="erudition" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.erudition.pc" type="number" value="{{data.system.competences.erudition.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.erudition.exp" type="number" value="{{data.system.competences.erudition.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="erudition" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="erudition" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.negoce"}}</div>
-        <div class="valeur-comp"><input name="system.competences.negoce.valeur" type="number" value="{{data.system.competences.negoce.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.negoce.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.negoce.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="negoce" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="negoce" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.negoce.pc" type="number" value="{{data.system.competences.negoce.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.negoce.exp" type="number" value="{{data.system.competences.negoce.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="negoce" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="negoce" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.investigation"}}</div>
-        <div class="valeur-comp"><input name="system.competences.investigation.valeur" type="number" value="{{data.system.competences.investigation.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.investigation.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.investigation.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="investigation" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="investigation" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.investigation.pc" type="number" value="{{data.system.competences.investigation.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.investigation.exp" type="number" value="{{data.system.competences.investigation.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="investigation" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="investigation" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.persuasion"}}</div>
-        <div class="valeur-comp"><input name="system.competences.persuasion.valeur" type="number" value="{{data.system.competences.persuasion.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.persuasion.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.persuasion.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="persuasion" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="persuasion" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.persuasion.pc" type="number" value="{{data.system.competences.persuasion.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.persuasion.exp" type="number" value="{{data.system.competences.persuasion.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="persuasion" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="persuasion" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.medecine"}}</div>
-        <div class="valeur-comp"><input name="system.competences.medecine.valeur" type="number" value="{{data.system.competences.medecine.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.medecine.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.medecine.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="medecine" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="medecine" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.medecine.pc" type="number" value="{{data.system.competences.medecine.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.medecine.exp" type="number" value="{{data.system.competences.medecine.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="medecine" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="medecine" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.seduction"}}</div>
-        <div class="valeur-comp"><input name="system.competences.seduction.valeur" type="number" value="{{data.system.competences.seduction.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.seduction.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.seduction.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="seduction" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="seduction" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.seduction.pc" type="number" value="{{data.system.competences.seduction.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.seduction.exp" type="number" value="{{data.system.competences.seduction.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="seduction" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="seduction" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.technique"}}</div>
-        <div class="valeur-comp"><input name="system.competences.technique.valeur" type="number" value="{{data.system.competences.technique.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.technique.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.technique.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="technique" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="technique" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.technique.pc" type="number" value="{{data.system.competences.technique.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.technique.exp" type="number" value="{{data.system.competences.technique.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="technique" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="technique" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.strategie"}}</div>
-        <div class="valeur-comp"><input name="system.competences.strategie.valeur" type="number" value="{{data.system.competences.strategie.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.strategie.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.strategie.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="strategie" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="strategie" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.strategie.pc" type="number" value="{{data.system.competences.strategie.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.strategie.exp" type="number" value="{{data.system.competences.strategie.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="strategie" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="strategie" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp">{{localize "LdC.tir"}}</div>
-        <div class="valeur-comp"><input name="system.competences.tir.valeur" type="number" value="{{data.system.competences.tir.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.tir.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.tir.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="tir" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="tir" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.tir.pc" type="number" value="{{data.system.competences.tir.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.tir.exp" type="number" value="{{data.system.competences.tir.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="tir" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="tir" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+
     </div>
-    <div class="grid-comp separateur15">
+    <div class="grid-comp-unlocked separateur15">
         <div class="titre-comp titre-rouge ">{{localize "LdC.occultisme"}}</div>
-        <div class="valeur-comp"><input name="system.competences.occultisme.valeur" type="number" value="{{data.system.competences.occultisme.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.occultisme.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.occultisme.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="occultisme" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="occultisme" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.occultisme.pc" type="number" value="{{data.system.competences.occultisme.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.occultisme.exp" type="number" value="{{data.system.competences.occultisme.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="occultisme" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="occultisme" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
 
         <div class="titre-comp titre-noir">{{localize "LdC.escrime"}}</div>
-        <div class="valeur-comp"><input name="system.competences.escrime.valeur" type="number" value="{{data.system.competences.escrime.valeur}}" min="0" max="8"></div>
-        <div class="reus-auto">( {{data.system.competences.escrime.reussiteAuto}} )</div>
+        <div class="valeur-comp">{{data.system.competences.escrime.valeur}}</div>
+        <div class="btn-pc">
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.augPC'}}" data-comp="escrime" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-pc" title="{{localize 'LdC.tooltip.dimPC'}}" data-comp="escrime" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+        <div class="valeur-comp"><input name="system.competences.escrime.pc" type="number" value="{{data.system.competences.escrime.pc}}" min="0"></div>
+        <div class="valeur-comp"><input name="system.competences.escrime.exp" type="number" value="{{data.system.competences.escrime.exp}}" min="0"></div>
+        <div class="btn-exp">
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.augExp'}}" data-comp="escrime" data-action="plus">
+                <i class="fa-solid fa-circle-plus"></i>
+            </a>
+            <a class="mod-exp" title="{{localize 'LdC.tooltip.dimExp'}}" data-comp="escrime" data-action="minus">
+                <i class="fa-solid fa-circle-minus"></i>
+            </a>
+        </div>
+
     </div>
 </div>

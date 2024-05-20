@@ -2,7 +2,7 @@ export default class LdCActorSheet extends ActorSheet {
      
     static get defaultOptions() {
         return mergeObject(super.defaultOptions, {
-            width: 700,
+            width: 750,
             height: 900,
             classes: ["ldc", "sheet", "actor"],
             tabs: [{ navSelector: ".sheet-tabs", contentSelector: ".sheet-body", initial: "carateristiques" }]
@@ -134,6 +134,12 @@ export default class LdCActorSheet extends ActorSheet {
 
             // Modifier la valeur de Vitalité ou de Ténacité
             html.find(".mod-car-sec").click(this._onModifCaracSec.bind(this));
+
+            // Modifier la valeur d'une compétence avec des points de création
+            html.find(".mod-pc").click(this._onModifCompPC.bind(this));
+
+            // Modifier la valeur d'une compétence avec des points de création
+            //html.find(".mod-exp").click(this._onModifCompExp.bind(this));
         }
     }
 
@@ -290,6 +296,50 @@ export default class LdCActorSheet extends ActorSheet {
             if(currentVal < parseInt(this.actor.system.caracteritiques[carac].max)) {
                 await this.actor.update({ [`system.caracteritiques.${carac}.valeur`] : currentVal + 1 });
                 await this.actor.update({ [`system.pcCaracs`] : currentPcCarac - 1 });
+            }
+        }
+    }
+
+    async _onModifCompPC(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+
+        let comp = element.dataset.comp;
+        let action = element.dataset.action;
+
+        let currentCompVal = parseInt(this.actor.system.competences[comp].valeur);
+        let currentPcVal = parseInt(this.actor.system.competences[comp].pc);
+        let currentPcComp = parseInt(this.actor.system.pcCompetences);
+
+        if (!this.actor.hasTwoProfils) {
+            ui.notifications.warn(game.i18n.localize("LdC.notification.deuxProfilsRequis"));
+            return;
+        }
+
+        console.log("comp value", currentCompVal, "Crea", currentPcComp);
+
+        if(action == "minus") {
+            
+            if(currentPcVal > 0) {
+                await this.actor.update({ [`system.competences.${comp}.pc`] : currentPcVal - 1 });
+                await this.actor.update({ [`system.pcCompetences`] : currentPcComp + 1 });
+            }
+        }
+        else if(action == "plus") {
+
+            if (currentPcComp == 0) {
+                ui.notifications.warn(game.i18n.localize("LdC.notification.pcCompVide"));
+                return;
+            }
+
+            if(this.actor.getCompValForProfils(comp) + currentPcVal >= 6) {
+                ui.notifications.warn(game.i18n.localize("LdC.notification.compMax"));
+                return;
+            }
+
+            if(currentCompVal < parseInt(this.actor.system.competences[comp].max)) {
+                await this.actor.update({ [`system.competences.${comp}.pc`] : currentPcVal + 1 });
+                await this.actor.update({ [`system.pcCompetences`] : currentPcComp - 1 });
             }
         }
     }
