@@ -18,7 +18,12 @@
         {{#each feintes as |feinte id|}}
             <div class="feinte-item item-box">
                 <div class="entete">
-                    <label class="item-options item-nom titre" data-item-id="{{feinte._id}}">{{feinte.name}}</label>
+                    {{#if ../unlocked}}
+                        <a class="item-suppr titre" title="{{localize 'LdC.tooltip.supprFeinte'}}" data-type="feinte" data-item-id="{{feinte._id}}">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    {{/if}}
+                    <label class="item-nom titre">{{feinte.name}}</label>
                     <img title="{{feinte.system.ecoleNom}} {{#if (ne feinte.system.ecoleSigne 'epee')}} - {{configLocalize 'signes' feinte.system.ecoleSigne}}{{/if}}" src="systems/lames-du-cardinal/images/signes/{{feinte.system.ecoleSigne}}.png">
                 </div>
                 <div class="edit-box">{{editor feinte.system.description target="feinte.system.description" button=false owner=true editable=false}}</div>
@@ -29,7 +34,12 @@
         {{#each bottes as |botte id|}}
             <div class="botte-item item-box">
                 <div class="entete">
-                    <div class="item-options item-nom titre" data-item-id="{{botte._id}}">{{botte.name}}</div>
+                    {{#if ../unlocked}}
+                        <a class="item-suppr titre" title="{{localize 'LdC.tooltip.supprBotte'}}" data-type="botte" data-item-id="{{botte._id}}">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    {{/if}}
+                    <div class="item-nom titre">{{botte.name}}</div>
                     <img title="{{botte.system.ecoleNom}} - {{configLocalize 'signes' botte.system.ecoleSigne}}" src="systems/lames-du-cardinal/images/signes/{{botte.system.ecoleSigne}}.png">
                     <label class="titre"><i class="fas fa-cards" title="{{localize 'LdC.tooltip.nbFigures'}}"></i> {{botte.system.figure}}</label>
                 </div>
@@ -43,7 +53,12 @@
         <div class="epee-item item-box">
             <div class="grid-epee">
                 <div class="col-all entete">
-                    <label class="item-options titre" data-item-id="{{epee._id}}">{{epee.name}}</label>
+                    {{#if ../unlocked}}
+                        <a class="item-suppr titre" title="{{localize 'LdC.tooltip.supprEpee'}}" data-type="epee" data-item-id="{{epee._id}}">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    {{/if}}
+                    <label class="titre">{{epee.name}}</label>
                 </div>
                 <div class="col-all edit-box">{{editor epee.system.description target="epee.system.description" button=false owner=true editable=false}}</div>
                 {{#if (or epee.system.feinte1Nom epee.system.feinte2Nom)}}

@@ -2,29 +2,23 @@
     <div class="centre titre-rouge">{{localize "LdC.ressources"}}</div>
     <div class="centre titre-rouge">{{localize "LdC.contacts"}}</div>
     <div class="ligne-valeur-car-sec">
-        <div class="btn-car-sec">
-            <a class="mod-car-sec" title="{{localize 'LdC.tooltip.dimRess'}}" data-carac="ressources" data-action="minus">
-                <i class="fa-solid fa-circle-minus"></i>
-            </a>
-        </div>
         <div class="valeur-car-sec">{{data.system.secondaires.ressources.value}}</div>
-        <div class="btn-car-sec">
-            <a class="mod-car-sec" title="{{localize 'LdC.tooltip.augRess'}}" data-carac="ressources" data-action="plus">
-                <i class="fa-solid fa-circle-plus"></i>
-            </a>
+        <div class="ligne-cases-car-sec">
+            {{#times data.system.secondaires.ressources.value}}
+                <a class="case-ress" title="{{@index}}" data-index="{{@index}}">
+                    {{#if (gte data.system.secondaires.ressources.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                </a>
+            {{/times}}
         </div>
     </div>
     <div class="ligne-valeur-car-sec">
-        <div class="btn-car-sec">
-            <a class="mod-car-sec" title="{{localize 'LdC.tooltip.dimContacts'}}" data-carac="contacts" data-action="minus">
-                <i class="fa-solid fa-circle-minus"></i>
-            </a>
-        </div>
         <div class="valeur-car-sec">{{data.system.secondaires.contacts.value}}</div>
-        <div class="btn-car-sec">
-            <a class="mod-car-sec" title="{{localize 'LdC.tooltip.augContacts'}}" data-carac="contacts" data-action="plus">
-                <i class="fa-solid fa-circle-plus"></i>
-            </a>
+        <div class="ligne-cases-car-sec">
+            {{#times data.system.secondaires.contacts.value}}
+                <a class="case-contact" title="{{@index}}" data-index="{{@index}}">
+                    {{#if (gte data.system.secondaires.contacts.utilisee @index)}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/if}}
+                </a>
+            {{/times}}
         </div>
     </div>
     <div class="centre titre-noir separateur10">{{localize "LdC.possessions"}}</div>
@@ -33,12 +27,7 @@
         {{#each equipements as |equip id|}}
             <div class="equip-item item-box">
                 <div class="equip-entete">
-                    {{#if ../unlocked}}
-                        <a class="item-suppr titre" title="{{localize 'LdC.tooltip.supprEquip'}}" data-type="equipement" data-item-id="{{equip._id}}">
-                            <i class="fa-solid fa-xmark"></i>
-                        </a>
-                    {{/if}}
-                    <div class="equip-nom">{{equip.name}}</div>
+                    <div class="item-options equip-nom" data-item-id="{{equip._id}}">{{equip.name}}</div>
                     <label><i class="fa-solid fa-shield" title="{{localize 'LdC.tooltip.qualiteEquip'}}"></i> : {{configLocalize "qualiteEquip" equip.system.qualite}}</label>
                 </div>
                 {{#if equip.system.effet}}
@@ -52,12 +41,7 @@
         {{#each contacts as |contact id|}}
             <div class="contact-item item-box">
                 <div class="contact-entete">
-                    {{#if ../unlocked}}
-                        <a class="item-suppr titre" title="{{localize 'LdC.tooltip.supprContact'}}" data-type="contact" data-item-id="{{contact._id}}">
-                            <i class="fa-solid fa-xmark"></i>
-                        </a>
-                    {{/if}}
-                    <div class="contact-nom">{{contact.name}}</div>
+                    <div class="item-options contact-nom" data-item-id="{{contact._id}}">{{contact.name}}</div>
                     <label><i class="fa-solid fa-medal" title="{{localize 'LdC.tooltip.importanceContact'}}"></i> : {{configLocalize "importance" contact.system.importance}}</label>
                 </div>
                     <div class="row-titre"> {{localize "LdC.categorie"}} : {{configLocalize "categorie" contact.system.categorie}}</div>

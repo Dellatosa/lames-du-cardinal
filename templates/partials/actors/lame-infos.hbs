@@ -26,7 +26,11 @@
             {{#each profils as |profil id|}}
                 <div class="profil-item item-box">
                     <label>{{profil.name}}</label>
-                    {{#if ../unlocked}}<a class="profil-suppr" title="{{localize 'LdC.supprProfil'}}" data-item-id="{{profil._id}}"><i class="fa-solid fa-xmark"></i></a>{{/if}}
+                    {{#if ../unlocked}}
+                        <a class="item-suppr" title="{{localize 'LdC.tooltip.supprProfil'}}" data-type="profil" data-item-id="{{profil._id}}">
+                            <i class="fa-solid fa-xmark"></i>
+                        </a>
+                    {{/if}}
                 </div>
             {{/each}}
         </div>

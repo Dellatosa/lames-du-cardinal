@@ -97,8 +97,6 @@
         "aucun": "Aucun",
         "numero": "Numéro",
         "majActiveEffects": "Mettre à jour les 'Active effects'",
-        "supprProfil": "Supprimer le profil",
-        "supprArcane": "Supprimer l'Arcane béni",
         "pc": "PC",
         "exp": "Exp",
 
@@ -111,9 +109,17 @@
             "pcCaracVide": "Vous n'avez plus de points de création disponibles pour vos caractéristiques.",
             "pcCompVide": "Vous n'avez plus de points de création disponibles pour vos compétences.",
             "deuxProfilsRequis": "Vous devez sélectionner vos deux profils avant d'utiliser vos points de création.",
-            "compMax": "Vous ne pouvez augmenter une compétence au délà de 6 à l'aide de vos points de création."
+            "compMax": "Vous ne pouvez augmenter une compétence au délà de 6 à l'aide de vos points de création.",
+            "expInsuffisante": "Vous n'aveez pas assez d'expérience disponible pour augmenter cette caractéristique."
         },
         "tooltip": {
+            "supprArcane": "Supprimer l'Arcane béni",
+            "supprProfil": "Supprimer le profil",
+            "supprFeinte": "Supprimer la feinte",
+            "supprBotte": "Supprimer la botte",
+            "supprEquip": "Supprimer l'équipement",
+            "supprContact": "Supprimer le contact",
+            "supprEpee": "Supprimer l'épée",
             "nbFigures": "Nombre de figures nécessaires pour réaliser la Botte",
             "cocherVitalite": "Cocher une case de Vitalité",
             "decocherVitalite": "Décocher une case de Vitalité",
@@ -123,13 +129,17 @@
             "qualiteEquip": "Qualité de l'équipement",
             "verrou": "Verrouiller la fiche",
             "deverrou": "Déverouiller la fiche",
-            "testComp": "Effectuer un test avec cette compétence",
+            "testComp": "Effectuer un test de compétence",
             "augCarac": "Augmenter la caractéristique",
             "dimCarac": "Diminuer la caractéristique",
             "augPC": "Augmenter la compétence avec des points de création",
             "dimPC": "Diminuer la compétence et récupérer les points de création",
             "augExp": "Augmenter la compétence avec des points d'expérience",
-            "dimExp": "Diminuer la compétence et récupérer les points d'expérience"
+            "dimExp": "Diminuer la compétence et récupérer les points d'expérience",
+            "augRess": "Augmenter la caractéristique 'Ressources'",
+            "dimRess" : "Diminuer la caractéristique 'Ressources'",
+            "augContacts": "Augmenter la caractéristique 'Contacts'",
+            "dimContacts": "Diminuer la caractéristique 'Contacts'"
         }
     },
     "CARDHANDSLIST": {

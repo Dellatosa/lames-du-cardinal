@@ -114,11 +114,8 @@ export default class LdCActorSheet extends ActorSheet {
             // Vérouiller / dévérouiller la fiche
             html.find(".sheet-change-lock").click(this._onSheetChangelock.bind(this));
 
-            // Supprimer un profil
-            html.find(".profil-suppr").click(this._onSupprimerProfil.bind(this));
-
-            // Supprimer un Arcane
-            html.find(".arcane-suppr").click(this._onSupprimerArcane.bind(this));
+            // Supprimer un Item
+            html.find(".item-suppr").click(this._onSupprimerItem.bind(this));
 
             // Cocher une case de caracteristique
             html.find(".case-carac").click(this._onCocherCaracteristique.bind(this));
@@ -132,14 +129,14 @@ export default class LdCActorSheet extends ActorSheet {
             // Modifier la valeur d'une caractéristique
             html.find(".mod-carac").click(this._onModifCarac.bind(this));
 
-            // Modifier la valeur de Vitalité ou de Ténacité
+            // Modifier la valeur de Vitalité, Ténacité, Ressources ou Contacts
             html.find(".mod-car-sec").click(this._onModifCaracSec.bind(this));
 
             // Modifier la valeur d'une compétence avec des points de création
             html.find(".mod-pc").click(this._onModifCompPC.bind(this));
 
             // Modifier la valeur d'une compétence avec des points de création
-            //html.find(".mod-exp").click(this._onModifCompExp.bind(this));
+            html.find(".mod-exp").click(this._onModifCompExp.bind(this));
         }
     }
 
@@ -182,29 +179,39 @@ export default class LdCActorSheet extends ActorSheet {
         this.actor.sheet.render(true);
     }
 
-    _onSupprimerProfil(event) {
+    _onSupprimerItem(event) {
         event.preventDefault();
 
         const element = event.currentTarget;
         const item = this.actor.items.get(element.dataset.itemId);
+        const type = element.dataset.type;
 
-        let content = `<p>Etes-vous certain de vouloir supprimer le profil <b>${item.name}</b> ?<p>`
-        let dlg = Dialog.confirm({
-        title: "Confirmation de suppression",
-        content: content,
-        yes: () => item.delete(),
-        //no: () =>, On ne fait rien sur le 'Non'
-        defaultYes: false
-        });
-    }
+        let itemTypeName;
+        switch (type) {
+            case 'feinte':
+                itemTypeName = "la feinte";
+                break;
+            case 'botte':
+                itemTypeName = "la botte";
+                break;
+            case 'arcane':
+                itemTypeName = "l'Arcane béni";
+                break;
+            case 'profil':
+                itemTypeName = "le profil";
+                break;
+            case 'epee':
+                itemTypeName = "l'épée";
+                break;
+            case 'equipement':
+                itemTypeName = "l'équipement";
+                break;
+            case 'contact':
+                itemTypeName = "le contact";
+                break;
+        }
 
-    _onSupprimerArcane(event) {
-        event.preventDefault();
-
-        const element = event.currentTarget;
-        const item = this.actor.items.get(element.dataset.itemId);
-
-        let content = `<p>Etes-vous certain de vouloir supprimer l'Arcane béni <b>${item.name}</b> ?<p>`
+        let content = `<p>Etes-vous certain de vouloir supprimer ${itemTypeName} <b>${item.name}</b> ?<p>`
         let dlg = Dialog.confirm({
         title: "Confirmation de suppression",
         content: content,
@@ -316,8 +323,6 @@ export default class LdCActorSheet extends ActorSheet {
             return;
         }
 
-        console.log("comp value", currentCompVal, "Crea", currentPcComp);
-
         if(action == "minus") {
             
             if(currentPcVal > 0) {
@@ -341,6 +346,54 @@ export default class LdCActorSheet extends ActorSheet {
                 await this.actor.update({ [`system.competences.${comp}.pc`] : currentPcVal + 1 });
                 await this.actor.update({ [`system.pcCompetences`] : currentPcComp - 1 });
             }
+        }
+    }
+
+    async _onModifCompExp(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+
+        let comp = element.dataset.comp;
+        let action = element.dataset.action;
+
+        let currentCompVal = parseInt(this.actor.system.competences[comp].valeur);
+        let currentExpVal = parseInt(this.actor.system.competences[comp].exp);
+        let currentExpDispo = parseInt(this.actor.system.experience.disponible);
+
+        console.log("currentCompVal", currentCompVal, "currentExpVal", currentExpVal, "currentExpDispo", currentExpDispo, "XpCost", this.getCompExpCost(currentCompVal));
+
+        if(action == "minus") {
+            
+            if(currentExpVal > 0) {
+                await this.actor.update({ [`system.competences.${comp}.exp`] : currentExpVal - 1 });
+                await this.actor.update({ [`system.experience.disponible`] : currentExpDispo + this.getCompExpCost(currentCompVal) });
+            }
+        }
+        else if(action == "plus") {
+
+            let compExpCost = this.getCompExpCost(currentCompVal + 1);
+
+            if (currentExpDispo < compExpCost) {
+                ui.notifications.warn(game.i18n.localize("LdC.notification.expInsuffisante"));
+                return;
+            }
+
+            if(currentCompVal < parseInt(this.actor.system.competences[comp].max)) {
+                await this.actor.update({ [`system.competences.${comp}.exp`] : currentExpVal + 1 });
+                await this.actor.update({ [`system.experience.disponible`] : currentExpDispo - compExpCost });
+            }
+        }
+    }
+
+    getCompExpCost(compVal) {
+        if (compVal == 8) {
+            return 21;
+        }
+        else if (compVal == 7) {
+            return 14;
+        }
+        else {
+            return compVal;
         }
     }
 }

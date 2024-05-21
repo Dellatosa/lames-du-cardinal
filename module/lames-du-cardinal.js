@@ -25,6 +25,7 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
       "systems/lames-du-cardinal/templates/partials/actors/lame-sante.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-escrime.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-arcanes.hbs",
+      "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-locked.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-unlocked.hbs"
     ]
 

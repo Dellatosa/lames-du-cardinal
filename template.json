@@ -54,12 +54,12 @@
                     "utilisee": 0
                 },
                 "ressources": {
-                    "valeur": 0,
+                    "value": 0,
                     "max": 8,
                     "utilisee": 0
                 },
                 "contacts": {
-                    "valeur": 0,
+                    "value": 0,
                     "max": 8,
                     "utilisee": 0
                 }
@@ -310,7 +310,7 @@
             },
             "experience": {
                 "acquise": 0,
-                "depensee": 0
+                "disponible": 0
             },
             "pcCompetences": 4,
             "pcCaracs": 8

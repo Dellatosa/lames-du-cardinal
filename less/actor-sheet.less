@@ -124,9 +124,14 @@
         }
     }
     
+    .profils {
+        margin: 3px 0;
+    }
+
     .profil-item {
         display: flex;
         align-items: center;
+        margin-right: 3px;
     }
 }
 
@@ -490,23 +495,34 @@
     }
 }
 
-.grid-ressContacts {
+.grid-car-sec {
     display: grid;
     grid-template-columns: 1fr 1fr;
 
-    .valeur-ress, .valeur-contact {
+    .ligne-valeur-car-sec {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
     }
 
-    .ligne-case-ress, .ligne-case-contact {
+    .ligne-cases-car-sec {
         margin: 0 5px;
 
         .case-ress, .case-contact {
             font-size: 1.2em;
         }
+    }
+
+    .valeur-car-sec {
+        font-size: 2.2em;
+        font-family: "GaramondPro";
+        margin: 0 5px;
+    }
+
+    .btn-car-sec {
+        font-size: 1.5em;
+        margin: 0 5px;
     }
 
     input[type="number"] {

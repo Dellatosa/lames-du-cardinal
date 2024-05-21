@@ -111,9 +111,13 @@
   text-align: center;
   margin: 3px;
 }
+.ldc.sheet.actor .sheet-header .profils {
+  margin: 3px 0;
+}
 .ldc.sheet.actor .sheet-header .profil-item {
   display: flex;
   align-items: center;
+  margin-right: 3px;
 }
 .grid-identite {
   display: grid;
@@ -405,28 +409,33 @@
   background-color: rgba(82, 77, 77, 0.075);
   font-size: 0.9em;
 }
-.grid-ressContacts {
+.grid-car-sec {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.grid-ressContacts .valeur-ress,
-.grid-ressContacts .valeur-contact {
+.grid-car-sec .ligne-valeur-car-sec {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
 }
-.grid-ressContacts .ligne-case-ress,
-.grid-ressContacts .ligne-case-contact {
+.grid-car-sec .ligne-cases-car-sec {
   margin: 0 5px;
 }
-.grid-ressContacts .ligne-case-ress .case-ress,
-.grid-ressContacts .ligne-case-contact .case-ress,
-.grid-ressContacts .ligne-case-ress .case-contact,
-.grid-ressContacts .ligne-case-contact .case-contact {
+.grid-car-sec .ligne-cases-car-sec .case-ress,
+.grid-car-sec .ligne-cases-car-sec .case-contact {
   font-size: 1.2em;
 }
-.grid-ressContacts input[type="number"] {
+.grid-car-sec .valeur-car-sec {
+  font-size: 2.2em;
+  font-family: "GaramondPro";
+  margin: 0 5px;
+}
+.grid-car-sec .btn-car-sec {
+  font-size: 1.5em;
+  margin: 0 5px;
+}
+.grid-car-sec input[type="number"] {
   width: 2.5em;
   font-family: "GaramondPro";
   text-align: center;

@@ -2,7 +2,13 @@
     <div class="grid-arcanes separateur15">
         <div class="titre-noir col-arcane-beni">{{localize "LdC.arcaneBeni"}}</div>
         <div class="titre-rouge col-arcane-oppose">{{localize "LdC.arcaneOppose"}}</div>
-        <div class="centre titre-align case-arcane-suppr"><a class="arcane-suppr" title="{{localize 'LdC.supprArcane'}}" data-item-id="{{arcane._id}}"><i class="fa-solid fa-xmark"></i></a></div>
+        <div class="centre titre-align case-arcane-suppr">
+            {{#if ../unlocked}}
+            <a class="item-suppr" title="{{localize 'LdC.tooltip.supprArcane'}}" data-type="arcane" data-item-id="{{arcane._id}}">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+            {{/if}}
+        </div>
         <div class="titre-align text-arcane">{{arcane.name}}</div>
         <div class="centre titre-align text-arcane">N° {{arcane.system.numero}}</div>
         {{#if arcane.system.arcaneOppose}}    

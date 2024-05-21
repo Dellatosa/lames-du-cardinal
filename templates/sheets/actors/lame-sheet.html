@@ -26,7 +26,11 @@
             {{> "systems/lames-du-cardinal/templates/partials/actors/lame-arcanes.hbs"}}
         </div>
         <div class="tab" data-group="principal" data-tab="ressContacts">
-            {{> "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-unlocked.hbs"}}
+            {{#if unlocked}}
+                {{> "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-unlocked.hbs"}}
+            {{else}}
+                {{> "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-locked.hbs"}}
+            {{/if}}
         </div>
         <div class="tab desc" data-group="principal" data-tab="description">
             <div class="titre-noir">{{localize "LdC.description"}}</div>
@@ -39,7 +43,7 @@
             {{#if unlocked}}
                 <div>{{editor data.system.habillement target="system.habillement" button=true owner=true editable=true}}</div>
             {{else}}
-                <div>{editor data.system.habillement target="system.habillement" button=true owner=true editable=false}}</div>
+                <div>{{editor data.system.habillement target="system.habillement" button=true owner=true editable=false}}</div>
             {{/if}}
         </div>
     </section>
