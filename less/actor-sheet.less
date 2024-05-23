@@ -93,6 +93,7 @@
 
 .ldc.sheet.actor .sheet-header {
     font-family: "GaramondPro";
+    align-items: normal;
 
     img {
         flex: 0 0 128px;
@@ -123,16 +124,6 @@
             margin: 3px;
         }
     }
-    
-    .profils {
-        margin: 3px 0;
-    }
-
-    .profil-item {
-        display: flex;
-        align-items: center;
-        margin-right: 3px;
-    }
 }
 
 .grid-identite {
@@ -143,8 +134,32 @@
     margin-top: 5px;
 
     .profils {
+        margin: 3px 0;
         grid-column: 2 / 7;
         display: flex;
+    }
+
+    .profil-item {
+        display: flex;
+        align-items: center;
+        margin-right: 3px;
+    }
+
+    .ligne-pc-exp {
+        margin: 3px 0;
+        grid-column: 1 / 7;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+
+        border-top: 1px solid;
+        border-color: grey;
+    }
+
+    .pc-exp-item {
+        flex: 1;
+        justify-self: center;
+        align-self: center;
+        margin-top: 3px;
     }
 }
 

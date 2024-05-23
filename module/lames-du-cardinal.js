@@ -9,11 +9,17 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
   export const handsModule = {
     id: 'card-hands-list',
     translationPrefix: 'CARDHANDSLIST',
-    defaultDiscardPile : "Defausse"
+    defaultDiscardPile : "Defausse",
+    defaultDeck : "Tarot des Ombres"
   };
 
   export async function playCard(hand, destPile, card) {
-    const cards = await hand.pass( destPile, [card._id], {action: 'play', chatNotification: false});
+    const cards = await hand.pass(destPile, [card._id], {action: 'play', chatNotification: false});
+    console.log(cards);
+  }
+
+  export async function lightTestCard(deck, destPile, nbCards) {
+    const cards = await deck.deal(destPile, nbCards, {action: 'deal', chatNotification: true});
     console.log(cards);
   }
 
@@ -99,6 +105,20 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
   
   function registerSystemSettings() {
 
+    /* const decks = game?.cards?.filter(c => c.type === 'deck');
+
+    game.settings.registerMenu(game.system.id, 'defaultGameDeck', {
+      name: `LdC.settings.defaultGameDeck.Name`,
+      hint: `LdC.settings.defaultGameDeck.Hint`,
+      scope: 'world',
+      //config: true,
+      type: String,
+      default: "",
+      choices: {
+
+      }
+  });*/
+
     /* Module Settings - card-hand-list */
     // Register the ownership level option
     game.settings.register(game.system.id, 'observerLevel', {
@@ -110,6 +130,7 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
         default: false,
         onChange: () => ui.cardHands.render(true)
     });
+    
 
     if (game.modules.get('minimal-ui')?.active) {
         game.settings.register(game.system.id, 'minimal-ui-behavior', {

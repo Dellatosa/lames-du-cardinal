@@ -1,3 +1,5 @@
+import { handsModule, lightTestCard } from "../lames-du-cardinal.js";
+
 export default class LdCActorSheet extends ActorSheet {
      
     static get defaultOptions() {
@@ -137,6 +139,8 @@ export default class LdCActorSheet extends ActorSheet {
 
             // Modifier la valeur d'une compétence avec des points de création
             html.find(".mod-exp").click(this._onModifCompExp.bind(this));
+
+            html.find(".draw-cards").click(this._onPiocherCarteTest.bind(this));
         }
     }
 
@@ -360,7 +364,7 @@ export default class LdCActorSheet extends ActorSheet {
         let currentExpVal = parseInt(this.actor.system.competences[comp].exp);
         let currentExpDispo = parseInt(this.actor.system.experience.disponible);
 
-        console.log("currentCompVal", currentCompVal, "currentExpVal", currentExpVal, "currentExpDispo", currentExpDispo, "XpCost", this.getCompExpCost(currentCompVal));
+        //console.log("currentCompVal", currentCompVal, "currentExpVal", currentExpVal, "currentExpDispo", currentExpDispo, "XpCost", this.getCompExpCost(currentCompVal));
 
         if(action == "minus") {
             
@@ -383,6 +387,20 @@ export default class LdCActorSheet extends ActorSheet {
                 await this.actor.update({ [`system.experience.disponible`] : currentExpDispo - compExpCost });
             }
         }
+    }
+
+    async _onPiocherCarteTest(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+
+        const deck = game.cards.getName(handsModule.defaultDeck);;
+        const destPile = game.cards.filter(c => c.name == handsModule.defaultDiscardPile);
+        //const destPile = game.cards.getName(handsModule.defaultDiscardPile);
+        //const card = await fromUuid(e.target.dataset.uuid);
+
+        lightTestCard(deck, destPile, 1);
+
+        let comp = element.dataset.comp;
     }
 
     getCompExpCost(compVal) {
