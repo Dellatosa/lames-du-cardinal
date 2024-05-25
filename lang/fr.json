@@ -108,6 +108,7 @@
             "memeProfil": "Le personnage dispose déjà de ce profil. Vous ne pouvez pas ajouter ce profil au personnage.",
             "pcCaracVide": "Vous n'avez plus de points de création disponibles pour vos caractéristiques.",
             "pcCompVide": "Vous n'avez plus de points de création disponibles pour vos compétences.",
+            "pcRessContactsVide": "Vous n'avez plus de points de création disponibles pour vos ressources et contacts.",
             "deuxProfilsRequis": "Vous devez sélectionner vos deux profils avant d'utiliser vos points de création.",
             "compMax": "Vous ne pouvez augmenter une compétence au délà de 6 à l'aide de vos points de création.",
             "expInsuffisante": "Vous n'aveez pas assez d'expérience disponible pour augmenter cette caractéristique."

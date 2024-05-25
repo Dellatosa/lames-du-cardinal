@@ -17,6 +17,9 @@
                     {{/select}} 
                 </select>
             </div>
+            <div class="img-categ categ">
+                {{#if (ne data.system.categorie "aucun")}}<div class="signe"><img src="systems/lames-du-cardinal/images/categories/{{data.system.categorie}}.png"></div>{{/if}}
+            </div>
             <div class="titre-niveau">{{localize "LdC.niveauVie"}}</div>
             <div class="valeur-niveau"><input name="system.niveauVie" type="text" value="{{data.system.niveauVie}}" placeholder="ex : 1 - 3"/></div>
 

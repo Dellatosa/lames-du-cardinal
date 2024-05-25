@@ -15,6 +15,18 @@ export default function registerHandlebarsHelpers() {
         return game.i18n.localize(CONFIG.LdC[liste][val]);
     });
 
+    /* Handlebars.registerHelper("getContactProfil", function (actor, profil) {
+      return foundry.utils.getProperty(actor.system.secondaires.contactsProfil,`${profil}`);
+    }); */
+
+    Handlebars.registerHelper("ContactProfilStatus", function(actor, profil, options) {
+      if (foundry.utils.getProperty(actor.system.secondaires.contactsProfil,`${profil}`)) {
+        return options.fn(this);
+      } else {
+        return options.inverse(this);
+      }
+    });
+
   /* Handlebar Helpers - card-hand-list */
   // Handlebar helper for concat but with a namespaced helper name so as not to override the default concat helper
   Handlebars.registerHelper('cardHandsList_Concat', function (string1, string2) {

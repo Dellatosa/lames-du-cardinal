@@ -94,6 +94,9 @@ export default class LdCActorSheet extends ActorSheet {
                 ui.notifications.warn(game.i18n.localize("LdC.notification.memeProfil"));
                 return;
             }
+
+            let pr = `system.secondaires.contactsProfil.${itemData.name}`; 
+            this.actor.update({ [`system.secondaires.contactsProfil.${itemData.name}`] : false });
     
             return super._onDropItem(event, data);
         }
@@ -128,6 +131,9 @@ export default class LdCActorSheet extends ActorSheet {
             // Cocher une case de Contacts
             html.find(".case-contact").click(this._onCocherContacts.bind(this));
 
+            // Cocher une case de contact de profil
+            html.find(".case-profil").click(this._onCocherContactProfil.bind(this));
+
             // Modifier la valeur d'une caractéristique
             html.find(".mod-carac").click(this._onModifCarac.bind(this));
 
@@ -140,6 +146,7 @@ export default class LdCActorSheet extends ActorSheet {
             // Modifier la valeur d'une compétence avec des points de création
             html.find(".mod-exp").click(this._onModifCompExp.bind(this));
 
+            // effectuer un test (piocher une ou plusieurs cartes)
             html.find(".draw-cards").click(this._onPiocherCarteTest.bind(this));
         }
     }
@@ -259,23 +266,48 @@ export default class LdCActorSheet extends ActorSheet {
         await this.actor.update({ "system.secondaires.contacts.utilisee" : pointsUtilises });
     }
 
+    async _onCocherContactProfil(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+    
+        let profil = element.dataset.profil;
+        let valeur = this.actor.system.secondaires.contactsProfil[profil];
+
+        await this.actor.update({ [`system.secondaires.contactsProfil.${profil}`] : !valeur });
+    }
+
     async _onModifCaracSec(event) {
         event.preventDefault();
         const element = event.currentTarget;
 
         let carac = element.dataset.carac;
         let action = element.dataset.action;
+        let currentPcRessContacts = parseInt(this.actor.system.pcRessContacts);
 
         if(action == "minus") {
             let currentVal = parseInt(this.actor.system.secondaires[carac].value);
             if(currentVal > 0) {
                 await this.actor.update({ [`system.secondaires.${carac}.value`] : currentVal - 1 });
+
+                if(carac == "ressources" || carac == "contacts") {
+                    await this.actor.update({ [`system.pcRessContacts`] : currentPcRessContacts + 1 });
+                }
             }
         }
         else if(action == "plus") {
+
+            if ((carac == "ressources" || carac == "contacts") && currentPcRessContacts == 0) {
+                ui.notifications.warn(game.i18n.localize("LdC.notification.pcRessContactsVide"));
+                return;
+            }
+
             let currentVal = parseInt(this.actor.system.secondaires[carac].value);
             if(currentVal < parseInt(this.actor.system.secondaires[carac].max)) {
                 await this.actor.update({ [`system.secondaires.${carac}.value`] : currentVal + 1 });
+
+                if(carac == "ressources" || carac == "contacts") {
+                    await this.actor.update({ [`system.pcRessContacts`] : currentPcRessContacts - 1 });
+                }
             }
         }
     }
@@ -364,8 +396,6 @@ export default class LdCActorSheet extends ActorSheet {
         let currentExpVal = parseInt(this.actor.system.competences[comp].exp);
         let currentExpDispo = parseInt(this.actor.system.experience.disponible);
 
-        //console.log("currentCompVal", currentCompVal, "currentExpVal", currentExpVal, "currentExpDispo", currentExpDispo, "XpCost", this.getCompExpCost(currentCompVal));
-
         if(action == "minus") {
             
             if(currentExpVal > 0) {
@@ -395,8 +425,6 @@ export default class LdCActorSheet extends ActorSheet {
 
         const deck = game.cards.getName(handsModule.defaultDeck);;
         const destPile = game.cards.filter(c => c.name == handsModule.defaultDiscardPile);
-        //const destPile = game.cards.getName(handsModule.defaultDiscardPile);
-        //const card = await fromUuid(e.target.dataset.uuid);
 
         lightTestCard(deck, destPile, 1);
 

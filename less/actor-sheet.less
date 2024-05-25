@@ -146,11 +146,12 @@
     }
 
     .ligne-pc-exp {
-        margin: 3px 0;
         grid-column: 1 / 7;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
 
+        font-size: 0.9em;
+        margin: 3px 0;
         border-top: 1px solid;
         border-color: grey;
     }
@@ -524,7 +525,7 @@
     .ligne-cases-car-sec {
         margin: 0 5px;
 
-        .case-ress, .case-contact {
+        .case-ress, .case-contact, .case-profil {
             font-size: 1.2em;
         }
     }
@@ -545,6 +546,22 @@
         font-family: "GaramondPro";
         text-align: center;
         margin: 2px 0;
+    }
+
+    .categ {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 5px;
+
+        img {
+            display: block;
+            border: none;
+            width : 40px;
+            height : 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
     }
 }
 

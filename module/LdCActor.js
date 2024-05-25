@@ -19,7 +19,9 @@ export default class LdCActor extends Actor {
                 comp.reussiteAuto = Math.floor(comp.valeur / 2); 
             }
 
-            data.secondaires.tenacite.valueInv = 8 - data.secondaires.tenacite.value; 
+            data.secondaires.tenacite.valueInv = 8 - data.secondaires.tenacite.value;
+
+            data.actor = this
         }
     }
 

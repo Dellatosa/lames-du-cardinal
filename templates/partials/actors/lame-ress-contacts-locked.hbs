@@ -20,6 +20,14 @@
                 </a>
             {{/times}}
         </div>
+        {{#each profils as |profil id|}}
+            <div class="categ"><img src="systems/lames-du-cardinal/images/categories/{{profil.system.categorie}}.png" title="{{profil.name}}"></div>
+            <div class="ligne-cases-car-sec">
+                <a class="case-profil" title="{{profil.name}}" data-profil="{{profil.name}}">
+                    {{#ContactProfilStatus ../data.system.actor profil.name}}<i class="fa-regular fa-square-check"></i>{{else}}<i class="fa-regular fa-square"></i>{{/ContactProfilStatus}}
+                </a>
+            </div>
+        {{/each}}
     </div>
     <div class="centre titre-noir separateur10">{{localize "LdC.possessions"}}</div>
     <div class="centre titre-noir separateur10">{{localize "LdC.relations"}}</div>

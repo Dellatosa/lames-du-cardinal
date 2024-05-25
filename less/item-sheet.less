@@ -55,6 +55,11 @@
     display: grid;
     grid-template-columns: 50px 1fr 2.5em 1fr 2.5em 1fr 2.5em 1fr 2.5em 1fr 2.5em;
 
+    .titre-comp, .titre-varia, .titre-categ, .titre-niveau, .titre-occulte, .titre-escrime, .valeur-categ, .valeur-niveau {
+        align-self: center;
+        margin: 0 3px;
+    }
+    
     input[type="number"] {
         width: 2.5em;
         text-align: center;
@@ -74,7 +79,11 @@
     }
 
     .valeur-categ {
-        grid-column: 3 / 7;
+        grid-column: 3 / 5;
+    }
+
+    .img-categ {
+        grid-column: 5 / 7;
     }
 
     .titre-niveau {
@@ -83,11 +92,6 @@
 
     .valeur-niveau {
         grid-column: 10 / 12;
-    }
-
-    .titre-comp, .titre-varia, .titre-categ, .titre-niveau, .titre-occulte, .titre-escrime {
-        align-self: center;
-        margin: 0 3px;
     }
 
     .valeur-comp {
@@ -103,7 +107,7 @@
         grid-column: 8 / 11;
     }
 
-    .signe {
+    .signe, .categ {
 
         img {
             display: block;
