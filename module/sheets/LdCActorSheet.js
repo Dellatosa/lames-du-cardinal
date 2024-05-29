@@ -1,4 +1,5 @@
-import { handsModule, lightTestCard } from "../lames-du-cardinal.js";
+import { handsModule } from "../lames-du-cardinal.js";
+import * as Cartes from "../Cartes.js";
 
 export default class LdCActorSheet extends ActorSheet {
      
@@ -146,8 +147,8 @@ export default class LdCActorSheet extends ActorSheet {
             // Modifier la valeur d'une compétence avec des points de création
             html.find(".mod-exp").click(this._onModifCompExp.bind(this));
 
-            // effectuer un test (piocher une ou plusieurs cartes)
-            html.find(".draw-cards").click(this._onPiocherCarteTest.bind(this));
+            // Effectuer un test (piocher une ou plusieurs cartes)
+            html.find(".draw-cards").click(this._onTestPiocherCartes.bind(this));
         }
     }
 
@@ -400,12 +401,12 @@ export default class LdCActorSheet extends ActorSheet {
             
             if(currentExpVal > 0) {
                 await this.actor.update({ [`system.competences.${comp}.exp`] : currentExpVal - 1 });
-                await this.actor.update({ [`system.experience.disponible`] : currentExpDispo + this.getCompExpCost(currentCompVal) });
+                await this.actor.update({ [`system.experience.disponible`] : currentExpDispo + this.getCoutExpComp(currentCompVal) });
             }
         }
         else if(action == "plus") {
 
-            let compExpCost = this.getCompExpCost(currentCompVal + 1);
+            let compExpCost = this.getCoutExpComp(currentCompVal + 1);
 
             if (currentExpDispo < compExpCost) {
                 ui.notifications.warn(game.i18n.localize("LdC.notification.expInsuffisante"));
@@ -419,19 +420,29 @@ export default class LdCActorSheet extends ActorSheet {
         }
     }
 
-    async _onPiocherCarteTest(event) {
+    async _onTestPiocherCartes(event) {
         event.preventDefault();
         const element = event.currentTarget;
+        const shiftPressed = event.shiftKey;
+
+        if(this.actor.getCompValue(element.dataset.comp) == 0) {
+            ui.notifications.warn(game.i18n.localize("LdC.notification.comp0TestNonAutorise"));
+            return;
+        }
 
         const deck = game.cards.getName(handsModule.defaultDeck);;
         const destPile = game.cards.filter(c => c.name == handsModule.defaultDiscardPile);
 
-        lightTestCard(deck, destPile, 1);
-
-        let comp = element.dataset.comp;
+        if(shiftPressed) {
+           let nbCards = this.actor.getCompValue(element.dataset.comp);
+           Cartes.TestPiocherCartes(deck, destPile, nbCards);
+        }
+        else {
+            Cartes.TestPiocherCartes(deck, destPile, 1);
+        }
     }
 
-    getCompExpCost(compVal) {
+    getCoutExpComp(compVal) {
         if (compVal == 8) {
             return 21;
         }

@@ -13,16 +13,6 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     defaultDeck : "Tarot des Ombres"
   };
 
-  export async function playCard(hand, destPile, card) {
-    const cards = await hand.pass(destPile, [card._id], {action: 'play', chatNotification: false});
-    console.log(cards);
-  }
-
-  export async function lightTestCard(deck, destPile, nbCards) {
-    const cards = await deck.deal(destPile, nbCards, {action: 'deal', chatNotification: true});
-    console.log(cards);
-  }
-
   async function preloadHandlebarsTemplates() {
     const templatePaths = [
       "systems/lames-du-cardinal/templates/partials/actors/lame-infos.hbs",

@@ -1,5 +1,7 @@
-import { handsModule, playCard } from "../lames-du-cardinal.js";
+import { handsModule } from "../lames-du-cardinal.js";
 import { CardHandContextMenu } from "./CardHandContextMenu.mjs";
+import * as Cartes from "../Cartes.js";
+
 /**
  * The UI element which displays the list of Hands available to the User.
  * @extends {Application}
@@ -237,7 +239,7 @@ export class CardHandsList extends Application {
         let dlg = Dialog.confirm({
             title: "Jouer cette carte ?",
             content: content,
-            yes: () => playCard(hand, destPile, card),
+            yes: () => Cartes.JouerCarte(hand, destPile, card),
             //no: () =>, On ne fait rien sur le 'Non'
             defaultYes: false
         });

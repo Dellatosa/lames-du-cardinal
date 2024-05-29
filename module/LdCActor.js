@@ -56,4 +56,8 @@ export default class LdCActor extends Actor {
     getCompValForProfils(comp) {
         return this.system.competences[comp].profil;
     }
+
+    getCompValue(comp) {
+        return this.system.competences[comp].valeur;
+    }
 }
