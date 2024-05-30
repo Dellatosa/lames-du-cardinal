@@ -4,6 +4,7 @@ import LdCItem from "./LdCItem.js";
 import registerHandlebarsHelpers from "./common/helpers.js"
 import LdCActorSheet from "./sheets/LdCActorSheet.js";
 import LdCItemSheet from "./sheets/LdCItemSheet.js";
+import * as Chat from "./chat.js";
 import { CardHandsList } from './card-hands/CardHandsList.mjs';
 
   export const handsModule = {
@@ -93,6 +94,8 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     if (game.ready) ui.cardHands.render(true);
   });
   
+  Hooks.on("renderChatLog", (app, html, data) => Chat.addChatListeners(html));
+
   function registerSystemSettings() {
 
     /* const decks = game?.cards?.filter(c => c.type === 'deck');

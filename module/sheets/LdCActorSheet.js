@@ -65,17 +65,17 @@ export default class LdCActorSheet extends ActorSheet {
     async _onDropArcaneItem(event, itemData, data) {
         event.preventDefault();
 
-        if (this.actor.hasTwoArcanes) {
+        if (this.actor.possedeDeuxArcanes) {
             ui.notifications.warn(game.i18n.localize("LdC.notification.deuxArcanes"));
             return;
         }
 
-        if (this.actor.hasThisArcane(itemData)) {
+        if (this.actor.possedeCetArcane(itemData)) {
             ui.notifications.warn(game.i18n.localize("LdC.notification.memeArcane"));
             return;
         }
 
-        if (this.actor.hasOpposedArcane(itemData)) {
+        if (this.actor.possedeArcaneOppose(itemData)) {
             ui.notifications.warn(game.i18n.localize("LdC.notification.arcaneOppose"));
             return;
         }
@@ -86,12 +86,12 @@ export default class LdCActorSheet extends ActorSheet {
         async _onDropProfilItem(event, itemData, data) {
             event.preventDefault();
     
-            if (this.actor.hasTwoProfils) {
+            if (this.actor.possedeDeuxProfils) {
                 ui.notifications.warn(game.i18n.localize("LdC.notification.deuxProfils"));
                 return;
             }
 
-            if (this.actor.hasThisProfil(itemData)) {
+            if (this.actor.possedeCeProfil(itemData)) {
                 ui.notifications.warn(game.i18n.localize("LdC.notification.memeProfil"));
                 return;
             }
@@ -374,7 +374,8 @@ export default class LdCActorSheet extends ActorSheet {
                 return;
             }
 
-            if(this.actor.getCompValForProfils(comp) + currentPcVal >= 6) {
+            
+            if(foundry.utils.getProperty(this.actor.system.competences,`${comp}.profil`) + currentPcVal >= 6) {
                 ui.notifications.warn(game.i18n.localize("LdC.notification.compMax"));
                 return;
             }
@@ -425,20 +426,20 @@ export default class LdCActorSheet extends ActorSheet {
         const element = event.currentTarget;
         const shiftPressed = event.shiftKey;
 
-        if(this.actor.getCompValue(element.dataset.comp) == 0) {
+        
+        if(foundry.utils.getProperty(this.actor.system.competences,`${element.dataset.comp}.valeur`) == 0) {
             ui.notifications.warn(game.i18n.localize("LdC.notification.comp0TestNonAutorise"));
             return;
         }
 
-        const deck = game.cards.getName(handsModule.defaultDeck);;
-        const destPile = game.cards.filter(c => c.name == handsModule.defaultDiscardPile);
+        const deck = game.cards.getName(handsModule.defaultDeck);
+        const destPile = game.cards.getName(handsModule.defaultDiscardPile);
 
         if(shiftPressed) {
-           let nbCards = this.actor.getCompValue(element.dataset.comp);
-           Cartes.TestPiocherCartes(deck, destPile, nbCards);
+           Cartes.TestPiocherCartes(this.actor, "dramatique", deck, destPile, element.dataset.comp);
         }
         else {
-            Cartes.TestPiocherCartes(deck, destPile, 1);
+            Cartes.TestPiocherCartes(this.actor, "eclair", deck, destPile, element.dataset.comp);
         }
     }
 

@@ -1,0 +1,15 @@
+<div class="test-eclair">
+    <div>Test éclair</div>
+    <div>Competence : {{competence.nom}} - {{competence.signe}} - {{competence.couleur}} - V {{competence.valeur}} - RA {{competence.reussiteAuto}}</div>
+    <div>Carte : {{carte.nom}} - {{carte.signe}} - {{carte.couleur}} - V {{carte.valeur}}</div>
+    <div><img class="card-face" src="{{carte.image}}" alt="{{carte.nom}}" data-id="{{carte.id}}" data-deck="{{carte.deck}}"/></div>
+    {{#if resultat.reussiteCritique}}
+        <div>REUSSITE CRITIQUE !</div>
+    {{else if resultat.echecCritique}}
+        <div>ECHEC CRITIQUE !</div>
+    {{else if resultat.piocheArcane}}
+    <div>ECHEC</div>
+    {{else}}
+        <div>Nombre de réussites : {{resultat.nbReussites}}</div>
+    {{/if}}
+</div>

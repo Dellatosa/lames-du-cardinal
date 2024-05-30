@@ -12,7 +12,7 @@
         },
         "Lame": {
             "templates": [ "informations" ],
-            "caracteritiques": {
+            "caracteristiques": {
                 "puissance": {
                     "valeur": 0,
                     "signe": "griffe",

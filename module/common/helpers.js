@@ -15,9 +15,14 @@ export default function registerHandlebarsHelpers() {
         return game.i18n.localize(CONFIG.LdC[liste][val]);
     });
 
-    /* Handlebars.registerHelper("getContactProfil", function (actor, profil) {
+  /* Handlebars.registerHelper("getContactProfil", function (actor, profil) {
       return foundry.utils.getProperty(actor.system.secondaires.contactsProfil,`${profil}`);
-    }); */
+    }); 
+    
+     Handlebars.registerHelper("getCompetence", function (actor, signe, competence, champ) {
+    return foundry.utils.getProperty(actor.system.competences,`${signe}.${competence}.${champ}`);
+    });
+  */
 
     Handlebars.registerHelper("ContactProfilStatus", function(actor, profil, options) {
       if (foundry.utils.getProperty(actor.system.secondaires.contactsProfil,`${profil}`)) {

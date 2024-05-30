@@ -10,6 +10,10 @@
   font-family: "GaramondPro";
   src: url("../fonts/AGaramondPro-BoldItalic.otf") format("opentype");
 }
+.chat-message .card-face {
+  cursor: pointer;
+  height: 48px;
+}
 .ldc.sheet.actor form {
   display: flex;
   flex-direction: column;

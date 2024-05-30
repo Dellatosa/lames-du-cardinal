@@ -30,34 +30,34 @@ export default class LdCActor extends Actor {
         return false;
     }
 
-    get hasTwoArcanes() {
+    get possedeDeuxArcanes() {
         return (this.items.filter(function (item) { return item.type == "Arcane"}).length == 2);
     }
 
-    hasThisArcane(item) {
-        let arcanes = this.items.filter(function (item) { return item.type == "Arcane"});
-        return (arcanes.length == 1 && arcanes[0].system.numero == item.system.numero);
+    possedeCetArcane(itemArcane) {
+        const arcanes = this.items.filter(function (item) { return item.type == "Arcane"});
+        return (arcanes.length == 1 && arcanes[0].system.numero == itemArcane.system.numero);
     }
 
-    hasOpposedArcane(item) {
-        let arcanes = this.items.filter(function (item) { return item.type == "Arcane"});
-        return (arcanes.length == 1 && 21 - arcanes[0].system.numero == item.system.numero);
+    possedeArcaneOppose(itemArcane) {
+        const arcanes = this.items.filter(function (item) { return item.type == "Arcane"});
+        return (arcanes.length == 1 && 21 - arcanes[0].system.numero == itemArcane.system.numero);
     }
 
-    get hasTwoProfils() {
+    get possedeDeuxProfils() {
         return (this.items.filter(function (item) { return item.type == "Profil"}).length == 2);
     }
 
-    hasThisProfil(item) {
+    possedeCeProfil(item) {
         let profils = this.items.filter(function (item) { return item.type == "Profil"});
         return (profils.length == 1 && profils[0].name == item.name);
     }
 
-    getCompValForProfils(comp) {
-        return this.system.competences[comp].profil;
+    estArcaneBeni(valeurCarte) {
+        return this.items.some(function (item) { return item.type == "Arcane" && item.system.numero == valeurCarte});
     }
 
-    getCompValue(comp) {
-        return this.system.competences[comp].valeur;
+    estArcaneOppose(valeurCarte) {
+        return this.items.some(function (item) { return item.type == "Arcane" && 21 - item.system.numero == valeurCarte});
     }
 }

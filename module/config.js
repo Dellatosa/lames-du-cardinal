@@ -62,3 +62,10 @@ LdC.qualiteEquip = {
     exceptionelle : "Exceptionelle",
     unique : "Unique"
 }
+
+LdC.couleurSignes = {
+    griffe: "noir",
+    souffle: "noir",
+    ecaille: "rouge",
+    sang: "rouge"
+}
