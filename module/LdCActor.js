@@ -10,7 +10,7 @@ export default class LdCActor extends Actor {
 
         if(this.type == "Lame") {
 
-            for (let [key, carac] of Object.entries(data.caracteritiques)) {
+            for (let [key, carac] of Object.entries(data.caracteristiques)) {
                 if(carac.valeur > carac.max) { carac.valeur = carac.max; }
             }
 
