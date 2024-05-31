@@ -3,6 +3,16 @@
     {{#each ecoles as |ecole id|}}
         <div><img title="{{configLocalize 'signes' ecole.system.signe}}" src="systems/lames-du-cardinal/images/signes/{{ecole.system.signe}}.png"></div>   
         <div class="titre-align nom-ecole item-options {{ecole.system.couleur}}" data-item-id="{{ecole._id}}">{{ecole.name}}</div>
+        {{#if ../unlocked}}
+            <div>Main d'escrime</div>
+            <select name="system.mainEscrime">
+            {{#select ../data.system.mainEscrime}}
+                {{#each ../data.system.cardHands as |hand _id|}}
+                    <option value="{{_id}}">{{hand.name}}</option>
+                {{/each}}
+            {{/select}} 
+            </select>
+        {{/if}}
         <details class="col-all">
             <summary class="center titre-rouge"><label>{{localize "LdC.descEcole"}}</label></summary>
             <div class="col-all edit-box">

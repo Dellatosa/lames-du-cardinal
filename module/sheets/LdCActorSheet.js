@@ -30,8 +30,11 @@ export default class LdCActorSheet extends ActorSheet {
         data.arcanes = data.items.filter(function (item) { return item.type == "Arcane"});
         data.equipements = data.items.filter(function (item) { return item.type == "Equipement"});
         data.contacts = data.items.filter(function (item) { return item.type == "Contact"});
+        data.cardHands = game.cards.filter(function (cards) { return cards.type == "hand" && cards.isOwner });
 
         data.unlocked = this.actor.isUnlocked;
+
+        console.log(data.cardHands);
 
         return data;
     }
