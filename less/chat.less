@@ -1,7 +1,58 @@
 .chat-message {
 
+    .ligne-comp {
+        display: grid;
+        grid-template-columns: 40px 1fr 40px;
+        align-items: center;
+        margin: 5px 0;
+
+        .competence {
+            font-family: "GaramondPro";
+            font-size: 1.4em;
+        }
+
+        .type-test {
+            text-align: center;
+            font-size: 1.2em;
+        }
+
+        img {
+            display: block;
+            border: none;
+            width : 40px;
+            height : 40px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .ligne-carte {
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        align-items: center;
+
+        .carte {
+            font-family: "GaramondPro";
+            font-size: 1.2em;
+        }
+    }
+
+    .grid-cartes {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+
+        .col-all {
+            grid-column: 1 / 9;
+            font-family: "GaramondPro";
+            text-align: center;
+        }
+    }
+
     .card-face {
+        height: 64px;
+    }
+
+    .view-card {
         cursor: pointer;
-        height: 48px;
     }
 }

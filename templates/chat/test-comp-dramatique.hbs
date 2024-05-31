@@ -1,14 +1,15 @@
-<div class="test-eclair">
+<div class="test-dramatique">
     <div class="ligne-comp">
         <div><img src="systems/lames-du-cardinal/images/signes/{{competence.signe}}.png"></div>
         <div class="competence">{{competence.nom}} {{competence.valeur}}</div>
-        <div class="type-test"><i class="fa-solid fa-bolt-lightning" title="Test éclair"></i></div>
+        <div class="type-test"><i class="fa-solid fa-masks-theater" title="Test dramatique"></i></div>
     </div>
-    <div class="ligne-carte">
-        <div><img class="card-face {{#if cardViewActive}}view-card{{/if}}" src="{{cartes.image}}" title="{{cartes.nom}}" alt="{{cartes.nom}}" data-id="{{cartes.id}}" data-deck="{{cartes.deck}}"/></div>
-        <div class="carte">{{cartes.nom}}</div>
+    <div class="grid-cartes">
+        <div class="col-all">Cartes piochées</div>
+        {{#each cartes as |carte id|}}
+            <div><img class="card-face {{#if ../cardViewActive}}view-card{{/if}}" src="{{carte.image}}" title="{{carte.nom}}" alt="{{carte.nom}}" data-id="{{carte.id}}" data-deck="{{carte.deck}}"/></div>
+        {{/each}}
     </div>
-    
     {{#if resultat.reussiteCritique}}
         <div>REUSSITE CRITIQUE !</div>
     {{else if resultat.echecCritique}}

@@ -10,9 +10,51 @@
   font-family: "GaramondPro";
   src: url("../fonts/AGaramondPro-BoldItalic.otf") format("opentype");
 }
+.chat-message .ligne-comp {
+  display: grid;
+  grid-template-columns: 40px 1fr 40px;
+  align-items: center;
+  margin: 5px 0;
+}
+.chat-message .ligne-comp .competence {
+  font-family: "GaramondPro";
+  font-size: 1.4em;
+}
+.chat-message .ligne-comp .type-test {
+  text-align: center;
+  font-size: 1.2em;
+}
+.chat-message .ligne-comp img {
+  display: block;
+  border: none;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.chat-message .ligne-carte {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  align-items: center;
+}
+.chat-message .ligne-carte .carte {
+  font-family: "GaramondPro";
+  font-size: 1.2em;
+}
+.chat-message .grid-cartes {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+}
+.chat-message .grid-cartes .col-all {
+  grid-column: 1 / 9;
+  font-family: "GaramondPro";
+  text-align: center;
+}
 .chat-message .card-face {
+  height: 64px;
+}
+.chat-message .view-card {
   cursor: pointer;
-  height: 48px;
 }
 .ldc.sheet.actor form {
   display: flex;

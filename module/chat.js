@@ -1,13 +1,12 @@
+import * as Cartes from "./Cartes.js";
+
 export function addChatListeners(html) {
-    html.on('click', 'img.card-face', onAfficherCarte);
+    html.on('click', 'img.view-card', onAfficherCarte);
 }
 
 function onAfficherCarte(event) {
     event.preventDefault();
     const element = event.currentTarget;
 
-    const deckName = element.dataset.deck;
-    const cardId = element.dataset.id;
-
-    game.modules.get('orcnog-card-viewer').api.view(deckName, cardId, false, false, true);
+    Cartes.AfficherUneCarte(element.dataset.deck, element.dataset.id);
 }

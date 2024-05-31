@@ -209,23 +209,13 @@ export class CardHandsList extends Application {
 
     async _onAfficherCartes(e) {
         e.stopImmediatePropagation();
+        
         const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
+        const cards = [];
+        cards.push(...hand.cards.map(item => item._id));
 
-        console.log(hand);
-
-        if (game.user.getFlag(game.system.id, 'card-viewer-active')) {
-            const cards = [];
-            cards.push(...hand.cards.map(item => item._id));
-
-            console.log(cards);
-
-            const myFancyDealer = await game.modules.get('orcnog-card-viewer').api.CardDealer({
-                deckName: hand.name,
-                discardPileName: handsModule.defaultDiscardPile
-            });
-
-            await myFancyDealer.view(cards, false, false, false, false);
-        }
+        await Cartes.AfficherCartes(hand, cards);
+        
     }
 
     // Popup de validation du jeu d'une carte depuis la main

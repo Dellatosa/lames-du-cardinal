@@ -112,7 +112,8 @@
             "deuxProfilsRequis": "Vous devez sélectionner vos deux profils avant d'utiliser vos points de création.",
             "compMax": "Vous ne pouvez augmenter une compétence au délà de 6 à l'aide de vos points de création.",
             "expInsuffisante": "Vous n'avez pas assez d'expérience disponible pour augmenter cette caractéristique.",
-            "comp0TestNonAutorise": "Le test n'est pas autorisé pour une compétence à 0."
+            "comp0TestNonAutorise": "Le test n'est pas autorisé pour une compétence à 0.",
+            "cardViewerInactif": "Impossible d'afficher la ou les cartes. Le module 'Card Viewer' est inactif."
         },
         "tooltip": {
             "supprArcane": "Supprimer l'Arcane béni",
