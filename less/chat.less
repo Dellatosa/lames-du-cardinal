@@ -1,5 +1,13 @@
 .chat-message {
 
+    .card-face {
+        height: 64px;
+    }
+
+    .view-card {
+        cursor: pointer;
+    }
+
     .ligne-comp {
         display: grid;
         grid-template-columns: 40px 1fr 40px;
@@ -48,11 +56,36 @@
         }
     }
 
-    .card-face {
-        height: 64px;
-    }
+    .ligne-result {
+        display: grid;
+        grid-template-columns: 1fr 200px 1fr;
+        
+        .resultat {
+            background: url("../images/result-back.png") no-repeat;
+            background-size: 200px 100px;
+            width: 200px;
+            height: 100px;
 
-    .view-card {
-        cursor: pointer;
+            text-align: center;
+            font-family: "GaramondPro";
+            font-size: 1.5em;
+
+            display: flex;
+            align-items: center;
+
+            .echec, .reussite {
+                flex: 1;
+            }
+            
+            .reussite-crit {
+                flex: 1;
+                color: #0e5f1b;
+            }
+
+            .echec-crit {
+                flex: 1;
+                color: #5f0e0e;
+            }
+        }
     }
 }

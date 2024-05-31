@@ -100,6 +100,13 @@
         "pc": "PC",
         "exp": "Exp",
 
+        "chat": {
+            "reussite": "réussite",
+            "reussites": "réussites",
+            "reussiteCrit": "REUSSITE CRITIQUE !",
+            "echec": "ECHEC",
+            "echecCrit": "ECHEC CRITIQUE !"
+        },
         "notification": {
             "deuxArcanes": "Le personnage dispose déjà de deux arcanes béni. Veuillez supprimer l'un des deux pour ajouter cet arcane au personnage.",
             "memeArcane": "Le personnage dispose déjà de cet arcane béni. Vous ne pouvez pas ajouter cet arcane au personnage.",

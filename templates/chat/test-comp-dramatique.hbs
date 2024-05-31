@@ -10,13 +10,29 @@
             <div><img class="card-face {{#if ../cardViewActive}}view-card{{/if}}" src="{{carte.image}}" title="{{carte.nom}}" alt="{{carte.nom}}" data-id="{{carte.id}}" data-deck="{{carte.deck}}"/></div>
         {{/each}}
     </div>
-    {{#if resultat.reussiteCritique}}
-        <div>REUSSITE CRITIQUE !</div>
-    {{else if resultat.echecCritique}}
-        <div>ECHEC CRITIQUE !</div>
-    {{else if resultat.piocheArcane}}
-    <div>ECHEC</div>
-    {{else}}
-        <div>Nombre de réussites : {{resultat.totalReussites}}</div>
-    {{/if}}
+    <div class="ligne-result">
+        <div></div>
+        {{#if resultat.reussiteCritique}}
+            <div class="resultat">
+                <div class="reussite-crit">{{localize "LdC.chat.reussiteCrit"}}</div>
+            </div>
+        {{else if resultat.echecCritique}}
+            <div class="resultat">
+                <div class="echec-crit">{{localize "LdC.chat.echecCrit"}}</div>
+            </div>
+        {{else if resultat.piocheArcane}}
+            <div class="resultat">
+                <div class="echec">{{localize "LdC.chat.echec"}}</div>
+            </div>
+        {{else if (eq resultat.totalReussites 0)}}
+            <div class="resultat">
+                <div class="echec">{{localize "LdC.chat.echec"}}</div>
+            </div>
+        {{else}}
+            <div class="resultat">
+                <div class="reussite">{{resultat.totalReussites}} {{#if (gt resultat.totalReussites 1)}}{{localize "LdC.chat.reussites"}}{{else}}{{localize "LdC.chat.reussite"}}{{/if}}</div>
+            </div>
+        {{/if}}
+        <div></div>
+    </div>
 </div>

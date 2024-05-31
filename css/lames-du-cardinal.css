@@ -10,6 +10,12 @@
   font-family: "GaramondPro";
   src: url("../fonts/AGaramondPro-BoldItalic.otf") format("opentype");
 }
+.chat-message .card-face {
+  height: 64px;
+}
+.chat-message .view-card {
+  cursor: pointer;
+}
 .chat-message .ligne-comp {
   display: grid;
   grid-template-columns: 40px 1fr 40px;
@@ -50,11 +56,32 @@
   font-family: "GaramondPro";
   text-align: center;
 }
-.chat-message .card-face {
-  height: 64px;
+.chat-message .ligne-result {
+  display: grid;
+  grid-template-columns: 1fr 200px 1fr;
 }
-.chat-message .view-card {
-  cursor: pointer;
+.chat-message .ligne-result .resultat {
+  background: url("../images/result-back.png") no-repeat;
+  background-size: 200px 100px;
+  width: 200px;
+  height: 100px;
+  text-align: center;
+  font-family: "GaramondPro";
+  font-size: 1.5em;
+  display: flex;
+  align-items: center;
+}
+.chat-message .ligne-result .resultat .echec,
+.chat-message .ligne-result .resultat .reussite {
+  flex: 1;
+}
+.chat-message .ligne-result .resultat .reussite-crit {
+  flex: 1;
+  color: #0e5f1b;
+}
+.chat-message .ligne-result .resultat .echec-crit {
+  flex: 1;
+  color: #5f0e0e;
 }
 .ldc.sheet.actor form {
   display: flex;
