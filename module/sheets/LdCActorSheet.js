@@ -240,9 +240,9 @@ export default class LdCActorSheet extends ActorSheet {
         let index = element.dataset.index;
         let carac = element.dataset.carac;
 
-        let pointsUtilises = parseInt(this.actor.system.caracteritiques[carac].utilisee != index ? index : index - 1);
+        let pointsUtilises = parseInt(this.actor.system.caracteristiques[carac].utilisee != index ? index : index - 1);
 
-        await this.actor.update({ [`system.caracteritiques.${carac}.utilisee`] : pointsUtilises });
+        await this.actor.update({ [`system.caracteristiques.${carac}.utilisee`] : pointsUtilises });
     }
 
     async _onCocherRessources(event) {
@@ -320,13 +320,13 @@ export default class LdCActorSheet extends ActorSheet {
         let carac = element.dataset.carac;
         let action = element.dataset.action;
 
-        let currentVal = parseInt(this.actor.system.caracteritiques[carac].valeur);
+        let currentVal = parseInt(this.actor.system.caracteristiques[carac].valeur);
         let currentPcCarac = parseInt(this.actor.system.pcCaracs);
 
         if(action == "minus") {
             
             if(currentVal > 0) {
-                await this.actor.update({ [`system.caracteritiques.${carac}.valeur`] : currentVal - 1 });
+                await this.actor.update({ [`system.caracteristiques.${carac}.valeur`] : currentVal - 1 });
                 await this.actor.update({ [`system.pcCaracs`] : currentPcCarac + 1 });
             }
         }
@@ -337,8 +337,8 @@ export default class LdCActorSheet extends ActorSheet {
                 return;
             }
 
-            if(currentVal < parseInt(this.actor.system.caracteritiques[carac].max)) {
-                await this.actor.update({ [`system.caracteritiques.${carac}.valeur`] : currentVal + 1 });
+            if(currentVal < parseInt(this.actor.system.caracteristiques[carac].max)) {
+                await this.actor.update({ [`system.caracteristiques.${carac}.valeur`] : currentVal + 1 });
                 await this.actor.update({ [`system.pcCaracs`] : currentPcCarac - 1 });
             }
         }
