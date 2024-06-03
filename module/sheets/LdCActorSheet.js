@@ -30,11 +30,11 @@ export default class LdCActorSheet extends ActorSheet {
         data.arcanes = data.items.filter(function (item) { return item.type == "Arcane"});
         data.equipements = data.items.filter(function (item) { return item.type == "Equipement"});
         data.contacts = data.items.filter(function (item) { return item.type == "Contact"});
-        data.cardHands = game.cards.filter(function (cards) { return cards.type == "hand" && cards.isOwner });
+        data.mainsCartes = game.cards.filter(function (cards) { return cards.type == "hand" && cards.isOwner });
 
         data.unlocked = this.actor.isUnlocked;
 
-        console.log(data.cardHands);
+        console.log(handsModule);
 
         return data;
     }
@@ -59,6 +59,8 @@ export default class LdCActorSheet extends ActorSheet {
                     return this._onDropArcaneItem(event, itemData, data);
                 case "Profil":
                     return this._onDropProfilItem(event, itemData, data);
+                case "Ecole":
+                    return this._onDropEcoleItem(event, itemData, data);
                 default:
                     return super._onDropItem(event, data);
             }
@@ -86,24 +88,35 @@ export default class LdCActorSheet extends ActorSheet {
         return super._onDropItem(event, data);
     }
 
-        async _onDropProfilItem(event, itemData, data) {
-            event.preventDefault();
+    async _onDropProfilItem(event, itemData, data) {
+        event.preventDefault();
     
-            if (this.actor.possedeDeuxProfils) {
-                ui.notifications.warn(game.i18n.localize("LdC.notification.deuxProfils"));
-                return;
-            }
-
-            if (this.actor.possedeCeProfil(itemData)) {
-                ui.notifications.warn(game.i18n.localize("LdC.notification.memeProfil"));
-                return;
-            }
-
-            let pr = `system.secondaires.contactsProfil.${itemData.name}`; 
-            this.actor.update({ [`system.secondaires.contactsProfil.${itemData.name}`] : false });
-    
-            return super._onDropItem(event, data);
+        if (this.actor.possedeDeuxProfils) {
+            ui.notifications.warn(game.i18n.localize("LdC.notification.deuxProfils"));
+            return;
         }
+
+        if (this.actor.possedeCeProfil(itemData)) {
+            ui.notifications.warn(game.i18n.localize("LdC.notification.memeProfil"));
+            return;
+        }
+
+        let pr = `system.secondaires.contactsProfil.${itemData.name}`; 
+        this.actor.update({ [`system.secondaires.contactsProfil.${itemData.name}`] : false });
+    
+        return super._onDropItem(event, data);
+    }
+
+    async _onDropEcoleItem(event, itemData, data) {
+        event.preventDefault();
+
+        if (this.actor.possedeUneEcole) {
+            ui.notifications.warn(game.i18n.localize("LdC.notification.uneEcole"));
+            return;
+        }
+
+        return super._onDropItem(event, data);
+    }
 
     async _onSheetChangelock(event) {
         event.preventDefault();
@@ -118,13 +131,16 @@ export default class LdCActorSheet extends ActorSheet {
         super.activateListeners(html);
 
         if (this.actor.isOwner) {
-            new ContextMenu(html, ".item-options", this.profilContextMenu);
+            /* new ContextMenu(html, ".item-options", this.profilContextMenu); */
 
             // Vérouiller / dévérouiller la fiche
             html.find(".sheet-change-lock").click(this._onSheetChangelock.bind(this));
 
             // Supprimer un Item
             html.find(".item-suppr").click(this._onSupprimerItem.bind(this));
+
+            // Affciher la description d'un item dans le chat
+            html.find(".item-desc").click(this._onDescriptionItem.bind(this));
 
             // Cocher une case de caracteristique
             html.find(".case-carac").click(this._onCocherCaracteristique.bind(this));
@@ -152,10 +168,13 @@ export default class LdCActorSheet extends ActorSheet {
 
             // Effectuer un test (piocher une ou plusieurs cartes)
             html.find(".draw-cards").click(this._onTestPiocherCartes.bind(this));
+
+            // Piocher la main d'escrime
+            html.find(".draw-esc-cards").click(this._onTestPiocherCartesEscrime.bind(this));
         }
     }
 
-    profilContextMenu = [
+    /* profilContextMenu = [
         {
             name: "Editer",
             icon: '<i class="fas fa-edit"></i>',
@@ -183,7 +202,7 @@ export default class LdCActorSheet extends ActorSheet {
                 });
             }
         }
-    ];
+    ]; */
 
     async _onSheetChangelock(event) {
         event.preventDefault();
@@ -194,6 +213,17 @@ export default class LdCActorSheet extends ActorSheet {
         this.actor.sheet.render(true);
     }
 
+    // Afficher la description de l'item dans un message du chat
+    _onDescriptionItem(event) {
+        event.preventDefault();
+        const element = event.currentTarget;
+
+        let item = this.actor.items.get(element.dataset.itemId);
+
+        item.messageDesc();
+    }
+
+    // Supprimer un item de la fiche personnage
     _onSupprimerItem(event) {
         event.preventDefault();
 
@@ -203,6 +233,9 @@ export default class LdCActorSheet extends ActorSheet {
 
         let itemTypeName;
         switch (type) {
+            case 'ecole':
+                itemTypeName = "l'école d'escrime";
+                break;
             case 'feinte':
                 itemTypeName = "la feinte";
                 break;
@@ -444,6 +477,17 @@ export default class LdCActorSheet extends ActorSheet {
         else {
             Cartes.TestPiocherCartes(this.actor, "eclair", deck, destPile, element.dataset.comp);
         }
+    }
+
+    async _onTestPiocherCartesEscrime() {
+        event.preventDefault();
+        const element = event.currentTarget;
+        //const shiftPressed = event.shiftKey;
+
+        const deck = game.cards.getName(handsModule.defaultDeck);
+        const destPile = game.cards.get(element.dataset.handId);
+
+        Cartes.PiocherMainEscrime(this.actor, deck, destPile);
     }
 
     getCoutExpComp(compVal) {

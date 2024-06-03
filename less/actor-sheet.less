@@ -414,10 +414,13 @@
 
 .grid-ecole {
     display: grid;
-    grid-template-columns: 5em 1fr 1fr 1fr;
+    grid-template-columns: 5em 1fr 2.5em 1fr 1fr 2.5em;
+    font-family: "GaramondPro";
 
-    .col-all {
-        grid-column: 1 / 5;
+    .col-main-escrime {
+        grid-column: 4 / 6;
+        align-self: center;
+        text-align: right;
     }
 
     img {
@@ -427,6 +430,12 @@
         height : 50px;
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .btn {
+        align-self: center;
+        text-align: center;
+        font-size: 1.3em;
     }
 
     .nom-ecole {
@@ -494,10 +503,9 @@
     .case-arcane-suppr {
         grid-column: 5 / 6;
         grid-row: 1 / 3;
-    }
-
-    .arcane-suppr {
-        font-size: 1.2em;
+        align-self: center;
+        text-align: center;
+        font-size: 1.3em;
     }
 
     .text-arcane {

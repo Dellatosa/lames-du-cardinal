@@ -15,6 +15,10 @@ export default function registerHandlebarsHelpers() {
         return game.i18n.localize(CONFIG.LdC[liste][val]);
     });
 
+    Handlebars.registerHelper("getCardsHand", function(id) {
+      return game.cards.get(id).name;
+  });
+
   /* Handlebars.registerHelper("getContactProfil", function (actor, profil) {
       return foundry.utils.getProperty(actor.system.secondaires.contactsProfil,`${profil}`);
     }); 

@@ -28,6 +28,14 @@ export async function JouerCarte(hand, destPile, card) {
   console.log(cards);
 }
 
+export async function PiocherMainEscrime(actor, deck, destPile) {
+
+  const nbCards = actor.system.competences.escrime.valeur;
+  const cards = await destPile.draw(deck, nbCards, {action: 'draw', chatNotification: false});
+
+  //await testCompetence(actor, type, competence, cards, deck);
+}
+
 export async function TestPiocherCartes(actor, type, deck, destPile, competence) {
 
   const nbCards = type == "eclair" ? 1 : foundry.utils.getProperty(actor.system.competences,`${competence}.valeur`);

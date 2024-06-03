@@ -53,6 +53,7 @@
         "categorie": "Catégorie",
         "niveauVie": "Niveau de vie",
         "ecole": "Ecole",
+        "selMainEscrime": "Sélection de la main d'escrime",
         "signe": "Signe",
         "nbFigures": "Nb de figures",
         "epee": "Epée",
@@ -86,6 +87,8 @@
         "importante": "Importante",
         "emblematique": "Emblématique",
 
+        "aucuneMainEscrime": "Aucune main d'escrime sélectionnée",
+        "piocherMainEscrime": "Piocher la main d'escrime vers",
         "placeHolderEffet": "Ex : +1 en Résistance",
         
         "nom": "Nom",
@@ -113,6 +116,7 @@
             "arcaneOppose": "Le personnage dispose déjà de l'arcane béni opposé. Vous ne pouvez pas ajouter cet arcane au personnage.",
             "deuxProfils": "Le personnage dispose déjà de deux profils. Veuillez supprimer l'un des deux pour ajouter ce profil au personnage.",
             "memeProfil": "Le personnage dispose déjà de ce profil. Vous ne pouvez pas ajouter ce profil au personnage.",
+            "uneEcole": "Le personnage dispose déjà d'une école d'escrime. Veuillez supprimer cette école pour en ajouter une nouvelle.",
             "pcCaracVide": "Vous n'avez plus de points de création disponibles pour vos caractéristiques.",
             "pcCompVide": "Vous n'avez plus de points de création disponibles pour vos compétences.",
             "pcRessContactsVide": "Vous n'avez plus de points de création disponibles pour vos ressources et contacts.",
@@ -130,6 +134,8 @@
             "supprEquip": "Supprimer l'équipement",
             "supprContact": "Supprimer le contact",
             "supprEpee": "Supprimer l'épée",
+            "supprEcole": "Supprimer l'école d'escrime",
+            "piocherMainEscrime": "Piocher la main d'escrime",
             "nbFigures": "Nombre de figures nécessaires pour réaliser la Botte",
             "cocherVitalite": "Cocher une case de Vitalité",
             "decocherVitalite": "Décocher une case de Vitalité",
@@ -150,6 +156,16 @@
             "dimRess" : "Diminuer la caractéristique 'Ressources'",
             "augContacts": "Augmenter la caractéristique 'Contacts'",
             "dimContacts": "Diminuer la caractéristique 'Contacts'"
+        },
+        "settings": {
+            "defaultGameDeck": {
+                "Name": "Tarot des Ombres",
+                "Hint": "Sélectionner parmi les paquets de pioche existants celui qui correpond au Tarot des Ombres."
+            },
+            "defaultGamePile": {
+                "Name": "Défausse",
+                "Hint": "Sélectionner parmi les piles existantes celle qui correpond à la défausse."
+            }
         }
     },
     "CARDHANDSLIST": {
@@ -165,11 +181,11 @@
         "DefaultsMessage": "Sélectionner les options de pioche par défaut pour <strong>{name}</strong>",
         "UnsetDefaults": "Supprimer le paramétrage par défaut",
         "ObserverLevel": {
-            "Name": "Mains de cartes - Afficher les mains de cartes avec les droits Observateur",
-            "Hint": "Afficher les mains de cartes pour lesquelles les utilisateurs dispose des droits Observateur. Par défaut, seules les mains avec les droits Propriétaire sont affichées."
+            "Name": "Cartes - Visible aux Observateurs",
+            "Hint": "Afficher les mains de cartes pour lesquelles les utilisateurs disposent des droits Observateur. Par défaut, seules les mains avec les droits Propriétaire sont affichées."
         },
         "MinimalUIBehavior": {
-            "Name": "Mains de cartes - Comportement pour le module Minimal UI",
+            "Name": "Cartes - Comportement pour le module Minimal UI",
             "Hint": "Utiliser ce paramétrage pour adapter le module de gestion des mains de cartes si vous utilisez le module Minimal UI."
         },
         "Afficher": "Afficher les cartes"

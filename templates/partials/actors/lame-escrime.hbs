@@ -2,23 +2,41 @@
 <div class="grid-ecole">
     {{#each ecoles as |ecole id|}}
         <div><img title="{{configLocalize 'signes' ecole.system.signe}}" src="systems/lames-du-cardinal/images/signes/{{ecole.system.signe}}.png"></div>   
-        <div class="titre-align nom-ecole item-options {{ecole.system.couleur}}" data-item-id="{{ecole._id}}">{{ecole.name}}</div>
+        <div class="titre-align nom-ecole {{ecole.system.couleur}}">{{ecole.name}}</div>
+        <div class="btn">
+                <a class="item-desc" title="{{localize 'LdC.descEcole'}}" data-type="ecole" data-item-id="{{ecole._id}}">
+                    <i class="fa-regular fa-comment-lines"></i>
+                </a>
+            </div>
         {{#if ../unlocked}}
-            <div>Main d'escrime</div>
-            <select name="system.mainEscrime">
+            <div class="titre-align">{{localize "LdC.selMainEscrime"}}</div>
+            <select class="titre-align" name="system.mainEscrime">
             {{#select ../data.system.mainEscrime}}
-                {{#each ../data.system.cardHands as |hand _id|}}
-                    <option value="{{_id}}">{{hand.name}}</option>
+                <option value=""></option>
+                {{#each ../mainsCartes as |hand id|}}
+                    <option value="{{hand._id}}">{{hand.name}}</option>
                 {{/each}}
             {{/select}} 
             </select>
-        {{/if}}
-        <details class="col-all">
-            <summary class="center titre-rouge"><label>{{localize "LdC.descEcole"}}</label></summary>
-            <div class="col-all edit-box">
-                {{editor ecole.system.description target="system.description" button=false owner=true editable=false}}
+            <div class="btn">
+                <a class="item-suppr" title="{{localize 'LdC.tooltip.supprEcole'}}" data-type="ecole" data-item-id="{{ecole._id}}">
+                    <i class="fa-solid fa-xmark"></i>
+                </a>
             </div>
-        </details>
+        {{else}}
+            {{#if ../data.system.mainEscrime}}
+                <div class="col-main-escrime titre-align">
+                    <div>{{localize "LdC.piocherMainEscrime"}} '{{getCardsHand ../data.system.mainEscrime}}'</div>
+                </div>
+                <div class="btn">
+                    <a class="draw-esc-cards" title="{{localize 'LdC.tooltip.piocherMainEscrime'}}" data-hand-id="{{../data.system.mainEscrime}}">
+                        <i class="fas fa-cards"></i>
+                    </a>
+                </div>
+            {{else}}
+                <div class="col-main-escrime titre-align">{{localize "LdC.aucuneMainEscrime"}}</div>
+            {{/if}}
+        {{/if}}
     {{/each}}
 </div>
 <div class="grid-escrime-items">

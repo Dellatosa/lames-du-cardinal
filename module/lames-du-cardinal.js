@@ -7,11 +7,13 @@ import LdCItemSheet from "./sheets/LdCItemSheet.js";
 import * as Chat from "./chat.js";
 import { CardHandsList } from './card-hands/CardHandsList.mjs';
 
-  export const handsModule = {
+  export let handsModule = {
     id: 'card-hands-list',
     translationPrefix: 'CARDHANDSLIST',
     defaultDiscardPile : "Defausse",
-    defaultDeck : "Tarot des Ombres"
+    defaultDiscardPileId: "",
+    defaultDeck : "Tarot des Ombres",
+    defaultDeckId: ""
   };
 
   async function preloadHandlebarsTemplates() {
@@ -87,6 +89,52 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
       await game.user.setFlag(game.system.id, "card-viewer-active", false);
     }
     
+    // Decks et defausse par défaut
+    console.log(game.cards);
+
+    const deckMap = new Map();
+    game?.cards?.filter(c => c.type === 'deck').forEach(deck => {
+      deckMap.set(deck.id, deck.name);
+    });
+
+    game.settings.register(game.system.id, 'defaultGameDeck', {
+      name: `LdC.settings.defaultGameDeck.Name`,
+      hint: `LdC.settings.defaultGameDeck.Hint`,
+      scope: 'world',
+      config: true,
+      type: String,
+      default: "",
+      choices: Object.fromEntries(deckMap),
+      onChange: value => {
+        handsModule.defaultDeckId = value;
+        handsModule.defaultDeck = game.cards.get(value).name;
+      }
+    });
+
+    const pileMap = new Map();
+    game?.cards?.filter(c => c.type === 'pile').forEach(pile => {
+      pileMap.set(pile.id, pile.name);
+    });
+
+    game.settings.register(game.system.id, 'defaultGamePile', {
+      name: `LdC.settings.defaultGamePile.Name`,
+      hint: `LdC.settings.defaultGamePile.Hint`,
+      scope: 'world',
+      config: true,
+      type: String,
+      default: "",
+      choices: Object.fromEntries(pileMap),
+      onChange: value => {
+        handsModule.defaultDiscardPileId = value;
+        handsModule.defaultDiscardPile = game.cards.get(value).name;
+      }
+    });
+
+    handsModule.defaultDeckId = game.settings.get(game.system.id,'defaultGameDeck');
+    handsModule.defaultDeck = game.cards.get(handsModule.defaultDeckId).name;
+
+    handsModule.defaultDiscardPileId = game.settings.get(game.system.id,'defaultGamePile');
+    handsModule.defaultDiscardPile = game.cards.get(handsModule.defaultDiscardPileId).name;
   });
   
   // When the Player List is rendered, render the module UI
@@ -98,6 +146,8 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
 
   function registerSystemSettings() {
 
+    
+    
     /* const decks = game?.cards?.filter(c => c.type === 'deck');
 
     game.settings.registerMenu(game.system.id, 'defaultGameDeck', {

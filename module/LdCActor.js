@@ -30,18 +30,20 @@ export default class LdCActor extends Actor {
         return false;
     }
 
+    get possedeUneEcole() {
+        return this.items.some(function (item) { return item.type == "Ecole"});
+    }
+    
     get possedeDeuxArcanes() {
         return (this.items.filter(function (item) { return item.type == "Arcane"}).length == 2);
     }
 
     possedeCetArcane(itemArcane) {
-        const arcanes = this.items.filter(function (item) { return item.type == "Arcane"});
-        return (arcanes.length == 1 && arcanes[0].system.numero == itemArcane.system.numero);
+        return this.items.some(function (item) { return item.type == "Arcane" && item.system.numero == itemArcane.system.numero});
     }
 
     possedeArcaneOppose(itemArcane) {
-        const arcanes = this.items.filter(function (item) { return item.type == "Arcane"});
-        return (arcanes.length == 1 && 21 - arcanes[0].system.numero == itemArcane.system.numero);
+        return this.items.some(function (item) { return item.type == "Arcane" && 21 - item.system.numero == itemArcane.system.numero});
     }
 
     get possedeDeuxProfils() {

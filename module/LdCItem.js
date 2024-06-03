@@ -70,6 +70,10 @@ export default class  LdCItem extends Item {
         }
     }
 
+    chatTemplate = {
+        "Ecole": "systems/lames-du-cardinal/templates/chat/desc-ecole.hbs"
+    }
+
     // Mise à jour des Active effects de profils
     updateProfilActiveEffects() {
         for (let [key, comp] of Object.entries(CONFIG.LdC.competences)) {
@@ -118,5 +122,23 @@ export default class  LdCItem extends Item {
         };
 
         this.createEmbeddedDocuments("ActiveEffect", [effectData]);
+    }
+
+    async messageDesc() {
+        let chatData = {
+            user: game.user.id,
+            speaker: ChatMessage.getSpeaker({ actor: this.actor })
+        };
+
+        let msgData = {
+            ...this,
+            isToken: this.actor.isToken ? 1 : 0,
+            owner: this.actor.isToken ? this.actor.token.id : this.actor.id,
+            _id: this._id
+        };
+
+        chatData.content = await renderTemplate(this.chatTemplate[this.type], msgData);
+
+        return ChatMessage.create(chatData);
     }
 }
