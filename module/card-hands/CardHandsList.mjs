@@ -222,7 +222,7 @@ export class CardHandsList extends Application {
     async _onJouerCarte(e) {
         e.stopImmediatePropagation();
         const hand = game.cards.get(e.target.parentElement.parentElement.dataset.handId);
-        const destPile = game.cards.getName(handsModule.defaultDiscardPile);
+        const destPile = game.cards.get(handsModule.defaultDiscardPileId);
         const card = await fromUuid(e.target.dataset.uuid);
 
         let content = `<p>Etes-vous certain de vouloir jouer la carte <b>${card.name}</b> ?<p>`

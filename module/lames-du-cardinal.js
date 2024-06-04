@@ -10,10 +10,12 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
   export let handsModule = {
     id: 'card-hands-list',
     translationPrefix: 'CARDHANDSLIST',
-    defaultDiscardPile : "Defausse",
+    defaultDeck : "",
+    defaultDeckId: "",
+    defaultDiscardPile : "",
     defaultDiscardPileId: "",
-    defaultDeck : "Tarot des Ombres",
-    defaultDeckId: ""
+    defaultArcaneHand: "Arcanes MJ",
+    defaultArcaneHandId: ""
   };
 
   async function preloadHandlebarsTemplates() {
@@ -25,7 +27,9 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
       "systems/lames-du-cardinal/templates/partials/actors/lame-escrime.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-arcanes.hbs",
       "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-locked.hbs",
-      "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-unlocked.hbs"
+      "systems/lames-du-cardinal/templates/partials/actors/lame-ress-contacts-unlocked.hbs",
+      `systems/lames-du-cardinal/templates/card-hands/${handsModule.id}-container.hbs`,
+      `systems/lames-du-cardinal/templates/card-hands/hand-list-item.hbs`
     ]
 
     return loadTemplates(templatePaths);
@@ -51,24 +55,57 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
     Items.unregisterSheet("core", ItemSheet);
     Items.registerSheet(game.system.id, LdCItemSheet, {makeDefault: true});
 
+    // Chargement des templates des Handlebars
     preloadHandlebarsTemplates();
 
-    registerSystemSettings();
-
-    // Register Handlebars Helpers
+    // Enregistrement des Handlebars Helpers personnalisés
 	  registerHandlebarsHelpers();
-})
+  })
 
   Hooks.on('setup', async function () {
 
-    console.log("Les Lames du Cardinal | Parametrage du module de gestion des mains de cartes")
-    // Preload the template and render the UI
-    loadTemplates([
-      `systems/lames-du-cardinal/templates/card-hands/${handsModule.id}-container.hbs`,
-      `systems/lames-du-cardinal/templates/card-hands/hand-list-item.hbs`
-    ]);
-  
+    // Enregistrement des paramètres
+    console.log("Les Lames du Cardinal | Enregistrement des paramètres du système");
+    registerSystemSettings();
+
+    console.log("Les Lames du Cardinal | Paramétrage du module de gestion des mains de cartes");
     ui.cardHands = new CardHandsList;
+    
+    let deckId = game.settings.get(game.system.id,'defaultGameDeck');
+    if(deckId) {
+      handsModule.defaultDeckId = deckId;
+      handsModule.defaultDeck = game.cards.get(deckId).name;
+    }
+    
+    let pileId = game.settings.get(game.system.id,'defaultGamePile');
+    if(pileId) {
+      handsModule.defaultDiscardPileId = pileId
+      handsModule.defaultDiscardPile = game.cards.get(pileId).name;
+    }
+
+    const gmMap = new Map();
+    gmMap.set("default", 0);
+    game?.users?.filter(u => u.isGM === true).forEach(user => {
+      gmMap.set(user.id, 3);
+    });
+
+    if (!game.cards.some(function (cards) { return cards.type == "hand" && cards.name == "Arcanes"})) {
+      const cardsData = {
+        name: "Arcanes",  
+        type: "hand",
+        system: {},
+        description: "",
+        img: "icons/svg/card-hand.svg",
+        cards : {},
+        ownership: Object.fromEntries(gmMap),
+        flags: {}
+      };
+      
+      //console.log(game.cards.createDocument(cardsData)); 
+      //console.log(game.cards);
+      
+    } 
+
   });
 
   Hooks.on('ready', async function () {
@@ -89,9 +126,18 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
       await game.user.setFlag(game.system.id, "card-viewer-active", false);
     }
     
-    // Decks et defausse par défaut
-    console.log(game.cards);
+  });
+  
+  // When the Player List is rendered, render the module UI
+  Hooks.on('renderPlayerList', async (data) => {
+    if (game.ready) ui.cardHands.render(true);
+  });
+  
+  Hooks.on("renderChatLog", (app, html, data) => Chat.addChatListeners(html));
 
+  function registerSystemSettings() {
+
+    // Deck 'Tarot des Ombres' par défaut
     const deckMap = new Map();
     game?.cards?.filter(c => c.type === 'deck').forEach(deck => {
       deckMap.set(deck.id, deck.name);
@@ -111,6 +157,7 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
       }
     });
 
+    // Defausse par défaut
     const pileMap = new Map();
     game?.cards?.filter(c => c.type === 'pile').forEach(pile => {
       pileMap.set(pile.id, pile.name);
@@ -129,38 +176,6 @@ import { CardHandsList } from './card-hands/CardHandsList.mjs';
         handsModule.defaultDiscardPile = game.cards.get(value).name;
       }
     });
-
-    handsModule.defaultDeckId = game.settings.get(game.system.id,'defaultGameDeck');
-    handsModule.defaultDeck = game.cards.get(handsModule.defaultDeckId).name;
-
-    handsModule.defaultDiscardPileId = game.settings.get(game.system.id,'defaultGamePile');
-    handsModule.defaultDiscardPile = game.cards.get(handsModule.defaultDiscardPileId).name;
-  });
-  
-  // When the Player List is rendered, render the module UI
-  Hooks.on('renderPlayerList', async (data) => {
-    if (game.ready) ui.cardHands.render(true);
-  });
-  
-  Hooks.on("renderChatLog", (app, html, data) => Chat.addChatListeners(html));
-
-  function registerSystemSettings() {
-
-    
-    
-    /* const decks = game?.cards?.filter(c => c.type === 'deck');
-
-    game.settings.registerMenu(game.system.id, 'defaultGameDeck', {
-      name: `LdC.settings.defaultGameDeck.Name`,
-      hint: `LdC.settings.defaultGameDeck.Hint`,
-      scope: 'world',
-      //config: true,
-      type: String,
-      default: "",
-      choices: {
-
-      }
-  });*/
 
     /* Module Settings - card-hand-list */
     // Register the ownership level option

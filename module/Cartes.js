@@ -23,17 +23,17 @@ export async function AfficherUneCarte(deckName, cardId) {
   }
 }
 
+export async function CreerPaquetArcanes() {
+  const arcaneHand = game.cards.getName(handsModule.defaultArcaneHand);
+}
+
 export async function JouerCarte(hand, destPile, card) {
   const cards = await hand.pass(destPile, [card._id], {action: 'play', chatNotification: false});
-  console.log(cards);
 }
 
 export async function PiocherMainEscrime(actor, deck, destPile) {
-
   const nbCards = actor.system.competences.escrime.valeur;
   const cards = await destPile.draw(deck, nbCards, {action: 'draw', chatNotification: false});
-
-  //await testCompetence(actor, type, competence, cards, deck);
 }
 
 export async function TestPiocherCartes(actor, type, deck, destPile, competence) {
